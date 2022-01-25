@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="X.PagedList" Version="8.1.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DapperServices\DapperServices.csproj" />
+    <ProjectReference Include="..\DATA_ACCESS_LAYAR_INTERFACE\DATA_ACCESS_LAYAR_INTERFACE.csproj" />
+  </ItemGroup>
+
+</Project>

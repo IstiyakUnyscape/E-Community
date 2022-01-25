@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BUSINESS_ACCESS_LAYAR_INTERFACE\BUSINESS_ACCESS_LAYAR_INTERFACE.csproj" />
+    <ProjectReference Include="..\CustomModel\CustomModel.csproj" />
+    <ProjectReference Include="..\DATA_ACCESS_LAYAR_DEFINATION\DATA_ACCESS_LAYAR_DEFINATION.csproj" />
+    <ProjectReference Include="..\DATA_ACCESS_LAYAR_INTERFACE\DATA_ACCESS_LAYAR_INTERFACE.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions">
+      <HintPath>..\COMMON_SERVICES_DEFINATION\bin\Debug\net5.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
