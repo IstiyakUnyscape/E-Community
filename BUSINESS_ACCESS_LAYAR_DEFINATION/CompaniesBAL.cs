@@ -110,7 +110,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Tradelicense_Copy = entities.Tradelicense_Copy;
             }
-            if ( entities.Tradelicense_Copy_File != null)
+            if ( entities.TRN_Certificate_File != null)
             {
                 entities.TRN_Certificate = utility.FileUpload("UploadFile", entities.TRN_Certificate_File, webHostEnvironment);
             }
@@ -118,7 +118,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.TRN_Certificate = entities.TRN_Certificate;
             }
-            if (entities.Tradelicense_Copy_File != null)
+            if (entities.Owner_Passport_Copy_File != null)
             {
                 entities.Owner_Passport_Copy = utility.FileUpload("UploadFile", entities.Owner_Passport_Copy_File, webHostEnvironment);
             }
@@ -126,7 +126,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Owner_Passport_Copy = entities.Owner_Passport_Copy;
             }
-            if (entities.Tradelicense_Copy_File != null)
+            if (entities.Owner_Visa_Copy_File != null)
             {
                 entities.Owner_Visa_Copy = utility.FileUpload("UploadFile", entities.Owner_Visa_Copy_File, webHostEnvironment);
             }
@@ -134,7 +134,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Owner_Visa_Copy = entities.Owner_Visa_Copy;
             }
-            if (entities.Tradelicense_Copy_File != null)
+            if (entities.Additional_Certificates_File != null)
             {
                 entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
             }
