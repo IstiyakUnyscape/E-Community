@@ -41,6 +41,7 @@ namespace CustomModel
         [Required]
         public int City { get; set; }
         [Display(Name = "Postal Code")]
+        [Required]
         public string Postal_Code { get; set; }
         [Required]
         public string Community { get; set; }
