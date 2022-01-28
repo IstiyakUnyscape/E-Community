@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.AspNetCore.Hosting">
-      <HintPath>bin\Debug\net5.0\Microsoft.AspNetCore.Hosting.dll</HintPath>
+      <HintPath>D:\Unyscape\Ext_Library\Microsoft.AspNetCore.Hosting.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions">
       <HintPath>bin\Debug\net5.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>

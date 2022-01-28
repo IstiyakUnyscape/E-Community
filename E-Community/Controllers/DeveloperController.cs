@@ -93,7 +93,7 @@ namespace E_Community.Controllers
                 return BadRequest();
             }
         }
-        [HttpPut, Route("UpdateCompany")]
+        [HttpPut, Route("UpdateDeveloper")]
         public IActionResult Update([FromForm] DeveloperModel entites)
         {
 
