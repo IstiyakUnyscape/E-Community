@@ -81,7 +81,7 @@ namespace E_Community.Controllers
                 var res = _DeveloperBAL.DeleteDeveloper(Id);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, Message = "Data Deleted Succesffully ", });
+                    return Ok(new { Code = 200, Message = "Data Deleted Successfully ", });
                 }
                 else
                 {
@@ -93,7 +93,7 @@ namespace E_Community.Controllers
                 return BadRequest();
             }
         }
-        [HttpPut, Route("UpdateCompany")]
+        [HttpPut, Route("UpdateDeveloper")]
         public IActionResult Update([FromForm] DeveloperModel entites)
         {
 
@@ -102,7 +102,7 @@ namespace E_Community.Controllers
                 var res = _DeveloperBAL.UpdateDeveloper(entites);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, Message = "Data Update Succesffully ", });
+                    return Ok(new { Code = 200, Message = "Data Update Successfully ", });
                 }
                 else
                 {

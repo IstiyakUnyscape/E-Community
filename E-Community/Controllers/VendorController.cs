@@ -101,7 +101,7 @@ namespace E_Community.Controllers
                 var res = _vendorBAL.DeleteVendors(Id);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, data = res, Message = "Data Deleted Succesffully ", });
+                    return Ok(new { Code = 200, data = res, Message = "Data Deleted Successfully ", });
                 }
                 else
                 {
@@ -123,7 +123,7 @@ namespace E_Community.Controllers
                 var res = _vendorBAL.UpdateVendors(entites);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, data = res, Message = "Data Update Succesffully ", });
+                    return Ok(new { Code = 200, data = res, Message = "Data Update Successfully ", });
                 }
                 else
                 {

@@ -121,7 +121,7 @@ namespace E_Community.Controllers
                 var res = _companiesBAL.DeleteCompany(Id);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, Message = "Data Deleted Succesffully ", });
+                    return Ok(new { Code = 200, Message = "Data Deleted Successfully ", });
                 }
                 else
                 {
@@ -142,7 +142,7 @@ namespace E_Community.Controllers
                 var res = _companiesBAL.UpdateCompany(entites);
                 if (res.Result==0)
                 {
-                    return Ok(new { Code = 200, Message = "Data Update Succesffully ", });
+                    return Ok(new { Code = 200, Message = "Data Update Successfully ", });
                 }
                 else
                 {
