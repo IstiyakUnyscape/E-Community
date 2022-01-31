@@ -11,7 +11,9 @@ using System.Threading.Tasks;
 
 namespace E_Community.Controllers
 {
-    public class DeveloperController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class DeveloperController : ControllerBase
     {
         private readonly IDeveloperBAL _DeveloperBAL;
         public DeveloperController(IWebHostEnvironment host, IMapper mapper)
@@ -81,7 +83,7 @@ namespace E_Community.Controllers
                 var res = _DeveloperBAL.DeleteDeveloper(Id);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, Message = "Data Deleted Succesffully ", });
+                    return Ok(new { Code = 200, Message = "Data Deleted Successfully ", });
                 }
                 else
                 {
@@ -102,7 +104,7 @@ namespace E_Community.Controllers
                 var res = _DeveloperBAL.UpdateDeveloper(entites);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, Message = "Data Update Succesffully ", });
+                    return Ok(new { Code = 200, Message = "Data Update Successfully ", });
                 }
                 else
                 {

@@ -88,7 +88,7 @@ namespace E_Community.Controllers
                 var res = _GuestBAL.DeleteGuest(Id);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, Message = "Data Deleted Succesffully ", });
+                    return Ok(new { Code = 200, Message = "Data Deleted Successfully ", });
                 }
                 else
                 {
@@ -109,7 +109,7 @@ namespace E_Community.Controllers
                 var res = _GuestBAL.UpdateGuest(entites);
                 if (res.Result == 0)
                 {
-                    return Ok(new { Code = 200, Message = "Data Update Succesffully ", });
+                    return Ok(new { Code = 200, Message = "Data Update Successfully ", });
                 }
                 else
                 {
