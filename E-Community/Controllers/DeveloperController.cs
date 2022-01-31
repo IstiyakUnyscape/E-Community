@@ -11,7 +11,9 @@ using System.Threading.Tasks;
 
 namespace E_Community.Controllers
 {
-    public class DeveloperController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class DeveloperController : ControllerBase
     {
         private readonly IDeveloperBAL _DeveloperBAL;
         public DeveloperController(IWebHostEnvironment host, IMapper mapper)
