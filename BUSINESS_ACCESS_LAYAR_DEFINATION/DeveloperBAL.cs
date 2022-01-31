@@ -89,9 +89,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             return await _DeveloperDAL.Update(data);
         }
 
-        public Task<int> DeleteDeveloper(string id)
+        public async Task<int> DeleteDeveloper(string id)
         {
-            throw new NotImplementedException();
+            int Id = Convert.ToInt32(_Iencryption.DecryptID(id));
+            return await _DeveloperDAL.Delete(Id);
         }
     }
 }
