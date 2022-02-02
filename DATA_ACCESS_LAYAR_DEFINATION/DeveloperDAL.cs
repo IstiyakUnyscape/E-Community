@@ -129,9 +129,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Postal_Code", entity.Postal_Code);
             dbparams.Add("Contact_Person", entity.Contact_Person);
             dbparams.Add("License_Document", entity.License_Document);
-            dbparams.Add("Created_at", DateTime.Now);
+            dbparams.Add("Modified_at", DateTime.Now);
             dbparams.Add("Isactive", true);
-            dbparams.Add("Isdeleted", false);
+            //dbparams.Add("Isdeleted", false);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateDeveloper", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
