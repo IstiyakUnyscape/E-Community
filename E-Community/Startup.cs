@@ -55,7 +55,7 @@ namespace E_Community
             services.AddScoped<Iemail, IemailDefination>();
             services.AddControllers();
             services.AddAutoMapper(typeof(AutoMapperProfile));
-            
+
             services.AddMvc(config =>
             {
                 config.Filters.Add(typeof(CustomExceptionHandler));
