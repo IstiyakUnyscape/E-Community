@@ -64,29 +64,33 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public async Task<int> CreateGuest(GuestModel entities)
         {
-            if (entities.Upload_ID_No_File.Length > 0)
+            if (entities.Upload_ID_No_File != null)
             {
                 entities.Upload_ID_No = utility.FileUpload("UploadFile", entities.Upload_ID_No_File, webHostEnvironment);
             }
-            if (entities.Staff_ID_Card_Image_File.Length > 0)
+            if (entities.Car_Registration_Card_File != null)
+            {
+                entities.Car_Registration_Card = utility.FileUpload("UploadFile", entities.Car_Registration_Card_File, webHostEnvironment);
+            }
+            if (entities.Staff_ID_Card_Image_File != null)
             {
                 entities.Staff_ID_Card_Image = utility.FileUpload("UploadFile", entities.Staff_ID_Card_Image_File, webHostEnvironment);
             }
 
-            if (entities.Staff_ID_Card_image1_File.Length > 0)
+            if (entities.Staff_ID_Card_image1_File != null)
             {
                 entities.Staff_ID_Card_image1 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image1_File, webHostEnvironment);
             }
 
-            if (entities.Staff_ID_Card_image2_File.Length > 0)
+            if (entities.Staff_ID_Card_image2_File != null)
             {
                 entities.Staff_ID_Card_image2 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image2_File, webHostEnvironment);
             }
-            if (entities.Staff_ID_Card_image3_File.Length > 0)
+            if (entities.Staff_ID_Card_image3_File != null)
             {
                 entities.Staff_ID_Card_image3 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image3_File, webHostEnvironment);
             }
-            if (entities.Staff_ID_Card_image4_File.Length > 0)
+            if (entities.Staff_ID_Card_image4_File != null)
             {
                 entities.Staff_ID_Card_image4 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image4_File, webHostEnvironment);
             }
@@ -105,7 +109,15 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Upload_ID_No = entities.Upload_ID_No;
             }
-            if (entities.Staff_ID_Card_Image_File==null)
+            if (entities.Car_Registration_Card_File != null)
+            {
+                entities.Car_Registration_Card = utility.FileUpload("UploadFile", entities.Car_Registration_Card_File, webHostEnvironment);
+            }
+            else
+            {
+                entities.Car_Registration_Card = entities.Car_Registration_Card;
+            }
+            if (entities.Staff_ID_Card_Image_File != null)
             {
                 entities.Staff_ID_Card_Image = utility.FileUpload("UploadFile", entities.Staff_ID_Card_Image_File, webHostEnvironment);
             }
@@ -113,7 +125,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Staff_ID_Card_Image = entities.Staff_ID_Card_Image;
             }
-            if (entities.Staff_ID_Card_image1_File==null)
+            if (entities.Staff_ID_Card_image1_File != null)
             {
                 entities.Staff_ID_Card_image1 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image1_File, webHostEnvironment);
             }
@@ -121,7 +133,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Staff_ID_Card_image1 = entities.Staff_ID_Card_image1;
             }
-            if (entities.Staff_ID_Card_image2_File.Length > 0)
+            if (entities.Staff_ID_Card_image2_File != null)
             {
                 entities.Staff_ID_Card_image2 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image2_File, webHostEnvironment);
             }
@@ -129,7 +141,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Staff_ID_Card_image2 = entities.Staff_ID_Card_image2;
             }
-            if (entities.Staff_ID_Card_image3_File.Length > 0)
+            if (entities.Staff_ID_Card_image3_File != null)
             {
                 entities.Staff_ID_Card_image3 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image3_File, webHostEnvironment);
             }
@@ -137,7 +149,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Staff_ID_Card_image3 = entities.Staff_ID_Card_image3;
             }
-            if (entities.Staff_ID_Card_image4_File.Length > 0)
+            if (entities.Staff_ID_Card_image4_File != null)
             {
                 entities.Staff_ID_Card_image4 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image4_File, webHostEnvironment);
             }

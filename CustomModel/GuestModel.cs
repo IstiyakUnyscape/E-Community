@@ -35,7 +35,7 @@ namespace CustomModel
         public string Community { get; set; }
         [Required]
         [Display(Name = "Floor")]
-        public string Floor { get; set; }
+        public int Floor { get; set; }
         [Required]
         [Display(Name = "Date of visit")]
         [DataType(DataType.Date) ,DisplayFormat(DataFormatString ="yyyy-MM-dd")]
@@ -52,7 +52,11 @@ namespace CustomModel
         public string Car_model_details { get; set; }
         [Display(Name = "Plate No")]
         public string Plate_No { get; set; }
-        [Display(Name = "Car Registration Card")]
+        [DataType(DataType.Upload)]
+        [MaxFileSize(2 * 1024 * 1024)]
+        [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]
+        public IFormFile Car_Registration_Card_File { get; set; }
+        [Display(Name = "Car Registration Card File")]
         public string Car_Registration_Card { get; set; }
         [Display(Name = "ID No")]
         public string ID_No { get; set; }
@@ -79,7 +83,7 @@ namespace CustomModel
         [Display(Name = "Company Name")]
         public string Company_Name { get; set; }
         [Display(Name = "Number of Staff to Reach the Unit")]
-        public string Number_of_Staff_to_Reach_the_Unit { get; set; }
+        public int Number_of_Staff_to_Reach_the_Unit { get; set; }
         [Display(Name = "Scope of Work")]
         public string Scope_of_Work { get; set; }
         [Display(Name = "Materials carrie in")]

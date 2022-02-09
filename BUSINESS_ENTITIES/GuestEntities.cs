@@ -16,7 +16,7 @@ namespace BUSINESS_ENTITIES
         public long Mobile_No { get; set; }
         public int Type_of_Visit { get; set; }
         public string Community { get; set; }
-        public string Floor { get; set; }
+        public int Floor { get; set; }
         public DateTime Date_of_visit { get; set; }
         public TimeSpan Time_of_visit { get; set; }
         public string Purpose_of_the_visit { get; set; }
@@ -32,7 +32,7 @@ namespace BUSINESS_ENTITIES
         public string Staff_ID_Card_Image { get; set; }
         public int Type_of_Delivery { get; set; }
         public string Company_Name { get; set; }
-        public string Number_of_Staff_to_Reach_the_Unit { get; set; }
+        public int Number_of_Staff_to_Reach_the_Unit { get; set; }
         public string Scope_of_Work { get; set; }
         public string Materials_carrie_in { get; set; }
         public string Service_Provider_Staff_Name { get; set; }
