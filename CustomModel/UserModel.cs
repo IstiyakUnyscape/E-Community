@@ -15,5 +15,7 @@ namespace CustomModel
         [Display(Name = "Email ID")]
         public string Email_id { get; set; }
         public string token { get; set; }
+        public int RoleID { get; set; }
+        public string Role { get; set; }
     }
 }

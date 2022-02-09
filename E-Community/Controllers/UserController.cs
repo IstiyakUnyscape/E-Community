@@ -38,5 +38,31 @@ namespace E_Community.Controllers
                return Ok(new { Code = 204, data = res, Message = "No Data Found", });
             }
         }
+        [HttpPost, Route("Register User")]
+        public IActionResult Post(string EmailId)
+        {
+
+            int i = 0;
+            if (ModelState.IsValid)
+            {
+                if (EmailId != null)
+                {
+                    i = _UserBAL.CreateUser(EmailId).Result;
+                }
+
+            }
+            else
+            {
+                return BadRequest();
+            }
+            if (i > 0)
+            {
+                return Ok(new { UserId = i, Code = 200, Message = "Registation Successfully", }) ;
+            }
+            else
+            {
+                return Ok(new { Code = 204, Message = "Something went wrong", });
+            }
+        }
     }
 }

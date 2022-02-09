@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BUSINESS_ACCESS_LAYAR_INTERFACE;
+using BUSINESS_ENTITIES;
 using COMMON_SERVICES_DEFINATION;
 using COMMON_SERVICES_INTERFACE;
 using CustomModel;
@@ -29,6 +30,17 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             _Iencryption = new EncryptionDefination();
             _igetAppsetting = new GetAppsettingDefination();
         }
+
+        public async Task<int> CreateUser(string obj)
+        {
+            UserEntities entities = new UserEntities();
+            entities.Email_id = obj;
+            var guid = Guid.NewGuid().ToString().Replace("-", "");
+            var password = guid.Substring(0,8);
+            entities.Password= _Iencryption.EncryptID(password);
+            return await _UserDAL.Create(entities);
+        }
+
         public async Task<UserModel> UserLogin(LoginEntitiies obj)
         {
             var data = new UserModel();
@@ -46,7 +58,8 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                    new Claim(ClaimTypes.Name,data.Id.ToString())
+                          new Claim(ClaimTypes.Name,data.Id.ToString()),
+                          new Claim(ClaimTypes.Role, data.Role)
                         }),
                         Expires = DateTime.Now.AddDays(7),
                         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

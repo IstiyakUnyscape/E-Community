@@ -4,6 +4,7 @@ using BUSINESS_ACCESS_LAYAR_INTERFACE;
 using BUSINESS_ENTITIES;
 using CustomModel;
 using E_Community.CustomFilter;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,7 @@ namespace E_Community.Controllers
                _companiesBAL = new CompaniesBAL(host, mapper);
         }
         // GET: api/<CompanyController>
+        [Authorize(Roles= "Zylin Admin")]
         [HttpGet, Route("GetAll")]
         public async Task<IActionResult> GetAll()
         {
