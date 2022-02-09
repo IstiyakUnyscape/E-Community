@@ -11,5 +11,6 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
     public interface IUserDAL
     {
        UserEntities Login(LoginEntitiies _obj);
+       Task<int> Create(UserEntities entity);
     }
 }

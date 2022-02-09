@@ -10,5 +10,6 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
     public interface IUserBAL
     {
         Task<UserModel> UserLogin(LoginEntitiies obj);
+        public Task<int> CreateUser(string obj);
     }
 }

@@ -15,5 +15,7 @@ namespace BUSINESS_ENTITIES
         public DateTime? Modified_at { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
+        public int RoleID { get; set; }
+        public string Role { get; set; }
     }
 }
