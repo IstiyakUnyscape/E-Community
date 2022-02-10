@@ -32,6 +32,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Type_of_Visit", entity.Type_of_Visit);
             dbparams.Add("Community", entity.Community);
             dbparams.Add("Floor", entity.Floor);
+            dbparams.Add("Unit", entity.Unit);
             dbparams.Add("Date_of_visit", entity.Date_of_visit);
             dbparams.Add("Time_of_visit", entity.Time_of_visit);
             dbparams.Add("Purpose_of_the_visit", entity.Purpose_of_the_visit);
@@ -146,6 +147,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Type_of_Visit", entity.Type_of_Visit);
             dbparams.Add("Community", entity.Community);
             dbparams.Add("Floor", entity.Floor);
+            dbparams.Add("Unit", entity.Unit);
             dbparams.Add("Date_of_visit", entity.Date_of_visit);
             dbparams.Add("Time_of_visit", entity.Time_of_visit);
             dbparams.Add("Purpose_of_the_visit", entity.Purpose_of_the_visit);
