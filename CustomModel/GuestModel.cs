@@ -93,6 +93,7 @@ namespace CustomModel
         [Display(Name = "Service Provider Staff Name")]
         public string Service_Provider_Staff_Name { get; set; }
         [Display(Name = "Staff Mobile Number")]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         public long Staff_Mobile_Number { get; set; }
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
