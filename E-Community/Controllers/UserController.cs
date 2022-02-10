@@ -38,7 +38,7 @@ namespace E_Community.Controllers
                return Ok(new { Code = 204, data = res, Message = "No Data Found", });
             }
         }
-        [HttpPost, Route("Register User")]
+        [HttpPost, Route("RegisterUser")]
         public IActionResult Post(string EmailId)
         {
 
