@@ -17,6 +17,7 @@ namespace BUSINESS_ENTITIES
         public int Type_of_Visit { get; set; }
         public string Community { get; set; }
         public int Floor { get; set; }
+        public int Unit { get; set; }
         public DateTime Date_of_visit { get; set; }
         public TimeSpan Time_of_visit { get; set; }
         public string Purpose_of_the_visit { get; set; }

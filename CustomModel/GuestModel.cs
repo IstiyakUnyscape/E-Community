@@ -37,6 +37,8 @@ namespace CustomModel
         [Display(Name = "Floor")]
         public int Floor { get; set; }
         [Required]
+        public int Unit { get; set; }
+        [Required]
         [Display(Name = "Date of visit")]
         [DataType(DataType.Date) ,DisplayFormat(DataFormatString ="yyyy-MM-dd")]
         public DateTime Date_of_visit { get; set; }
