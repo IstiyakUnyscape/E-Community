@@ -117,10 +117,10 @@ namespace E_Community
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "E_Community v1"));
+               
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "E_Community v1"));
             app.UseHttpsRedirection();
             app.UseStaticFiles(new StaticFileOptions
             {
