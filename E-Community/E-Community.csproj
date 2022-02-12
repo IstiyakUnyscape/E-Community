@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="PublishedFiles\" />
     <Folder Include="UploadFile\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
