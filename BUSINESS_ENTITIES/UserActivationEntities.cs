@@ -10,7 +10,7 @@ namespace BUSINESS_ENTITIES
     {
         public int id { get; set; }
         public int UserID { get; set; }
-        public string VarificationCode { get; set; }
+        public string VerificationCode { get; set; }
         public bool IsVarified { get; set; }
         public DateTime IsVarified_at { get; set; }
         public DateTime Created_at { get; set; }
