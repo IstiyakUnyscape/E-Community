@@ -18,7 +18,7 @@ namespace COMMON_SERVICES_DEFINATION
         {
             _mailSettings = mailSettings;
         }
-        public async Task<Boolean> SendasynchronouslyEmail(MailRequestEntites mailRequestEntites)
+        public async Task<bool> SendasynchronouslyEmail(MailRequestEntites mailRequestEntites)
         {
             bool IsSent = false;
             string MailContent = "";

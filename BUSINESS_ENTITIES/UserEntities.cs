@@ -17,5 +17,6 @@ namespace BUSINESS_ENTITIES
         public bool Isdeleted { get; set; }
         public int RoleID { get; set; }
         public string Role { get; set; }
+        public bool IsPasswordCreated { get; set; }
     }
 }

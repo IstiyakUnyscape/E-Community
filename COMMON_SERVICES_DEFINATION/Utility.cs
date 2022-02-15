@@ -51,6 +51,7 @@ namespace COMMON_SERVICES_DEFINATION
             FilePath = webHostEnvironment.ContentRootPath + "\\" + FolderName + "\\";
             return FilePath;
         }
+
         public void RemoveDirectoryPath(string filePath)
         {
 
@@ -59,6 +60,20 @@ namespace COMMON_SERVICES_DEFINATION
                 Directory.Delete(filePath);
             }
 
+        }
+        public void RemoveFile(string filename, string FolderName, IWebHostEnvironment webHostEnvironment)
+        {
+            if (!string.IsNullOrEmpty(filename))
+            {
+                string FilePath = webHostEnvironment.ContentRootPath + "\\" + FolderName + "\\" + filename;
+                if (!string.IsNullOrEmpty(FilePath))
+                {
+                    if (File.Exists(FilePath))
+                    {
+                        File.Delete(FilePath);
+                    }
+                }
+            }
         }
         public DataTable ExcelToDatable(string Path)
         {

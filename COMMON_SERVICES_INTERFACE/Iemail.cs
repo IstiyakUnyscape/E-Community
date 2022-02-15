@@ -9,6 +9,6 @@ namespace COMMON_SERVICES_INTERFACE
 {
     public interface Iemail
     {
-        Task<Boolean> SendasynchronouslyEmail(MailRequestEntites _obj);
+        Task<bool> SendasynchronouslyEmail(MailRequestEntites _obj);
     }
 }
