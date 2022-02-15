@@ -140,7 +140,8 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         public async Task<int> CreatePassword(string UserId, string Password)
         {
             var id = _Iencryption.DecryptID(UserId);
-            var res = await _UserDAL.CreatePassword(id, Password);
+            var password = _Iencryption.EncryptID(Password);
+            var res = await _UserDAL.CreatePassword(id, password);
             return res;
         }
     }
