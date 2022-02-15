@@ -69,7 +69,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
         {
             var dbparams = new DynamicParameters();
             dbparams.Add("UserId", UserId, DbType.Int32);
-            dbparams.Add("VarificationCode", Code, DbType.String);
+            dbparams.Add("VerificationCode", Code, DbType.String);
             var res = await Task.FromResult(_dapper.Get<UserActivationEntities>("sp_ValidateVerificationCode", dbparams, commandType: CommandType.StoredProcedure));
             return res;
         }

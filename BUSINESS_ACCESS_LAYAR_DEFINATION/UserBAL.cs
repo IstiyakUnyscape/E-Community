@@ -43,7 +43,15 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             //var password = guid.Substring(0,8);
             //entities.Password= _Iencryption.EncryptID(password);
             var res= await _UserDAL.Create(entities);
-            return _Iencryption.EncryptID(res.ToString());
+            if(res==-1)
+            {
+                return res.ToString();
+            }
+            else
+            {
+                return _Iencryption.EncryptID(res.ToString());
+            }
+            
         }
 
         public async Task<bool> VerificatoinLink(string UserId)
@@ -120,7 +128,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             }
             else
             {
-                if (expiredate > currentdate)
+                if (expiredate < currentdate)
                 {
                     status = 2;
                 }
