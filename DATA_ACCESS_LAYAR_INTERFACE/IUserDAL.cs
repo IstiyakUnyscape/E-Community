@@ -10,7 +10,11 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
 {
     public interface IUserDAL
     {
-       UserEntities Login(LoginEntitiies _obj);
+       IEnumerable<UserEntities> GetAll();
        Task<int> Create(UserEntities entity);
+       public Task<UserActivationEntities> ValidateVerificationCode (string UserId, string Code);
+       public Task<int> UserActivation(string UserId, string Code);
+        public Task<int> UserVerification(string UserId, string Code);
+        public Task<int> CreatePassword(string UserId, string Password);
     }
 }

@@ -18,7 +18,7 @@ namespace E_Community.Controllers
     [EnableCors("MyPolicy")]
     [CustomExceptionHandler]
     [Consumes("multipart/form-data")]
-    public class GuestController : Controller
+    public class GuestController : ControllerBase
     {
         private readonly IGuestBAL _GuestBAL;
         public GuestController(IWebHostEnvironment host, IMapper mapper)
