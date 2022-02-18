@@ -117,7 +117,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             var currentdate = DateTime.Now;
             var expiredate = res.Created_at.AddDays(7); //Convert.ToInt32(currentdate.Subtract(res.Created_at));
            
-            if (res.IsVarified == true)
+            if (res.IsVerified == true)
             {
                 status = 1;
                 var _data = _UserDAL.GetAll().Where(x => x.Id == id).FirstOrDefault();
@@ -151,6 +151,43 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             var password = _Iencryption.EncryptID(Password);
             var res = await _UserDAL.CreatePassword(id, password);
             return res;
+        }
+        public async Task<UserModel> LoginByUserId(string UserId, string Password)
+        {
+            var data = new UserModel();
+            try
+            {
+                var id= _Iencryption.DecryptID(UserId);
+                var password = _Iencryption.EncryptID(Password);
+                var configuration = _igetAppsetting.getIconfiguration();
+                var Key = configuration.GetSection("JWTKEY").Value;
+                var _data = _UserDAL.GetAll().Where(x => x.Id == id && x.Password == password).FirstOrDefault();
+                data = _mapper.Map<UserModel>(_data);
+                if (data != null)
+                {
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var key = Encoding.ASCII.GetBytes(Key);
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                          new Claim(ClaimTypes.Name,data.Id.ToString()),
+                          new Claim(ClaimTypes.Role, data.Role)
+                        }),
+                        Expires = DateTime.Now.AddDays(7),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+                    data.token = tokenHandler.WriteToken(token);
+                    data.Id = _Iencryption.EncryptID(data.Id);
+                    return data;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return data;
         }
     }
 }

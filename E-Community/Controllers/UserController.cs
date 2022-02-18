@@ -118,5 +118,18 @@ namespace E_Community.Controllers
             }
 
         }
+        [HttpPost, Route("LoginByUserId")]
+        public async Task<IActionResult> UserLogin(string UserId, string Password)
+        {
+            var res = _UserBAL.LoginByUserId(UserId, Password);
+            if (res.Result != null)
+            {
+                return Ok(await Task.FromResult(res));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = res, Message = "No Data Found", });
+            }
+        }
     }
 }

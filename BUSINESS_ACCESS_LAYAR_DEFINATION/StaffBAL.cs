@@ -31,33 +31,24 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             _Iencryption = new EncryptionDefination();
             webHostEnvironment = _host;
         }
-        public async Task<int> CreateStaff(StaffModel entities)
+        public async Task<string> CreateStaff(StaffModel entities)
         {
-            //StaffEntities obj = new StaffEntities();
-            //obj.F_Name = entities.F_Name;
-            //obj.M_Name = entities.M_Name;
-            //obj.L_Name = entities.L_Name;
-            //obj.Email_Id = entities.Email_Id;
-            //obj.Mobile_No = entities.Mobile_No;
-            //obj.Designation = entities.Designation;
-            //obj.Reporting_To = entities.Reporting_To;
-            //obj.Address = entities.Address;
-            //obj.Country = entities.Country;
-            //obj.State = entities.State;
-            //obj.City = entities.City;
-            //obj.Postal_Code = entities.Postal_Code;
-            //obj.Community = entities.Community;
-            //obj.Identification_CardNo = entities.Id;
-            //obj.ID_expiry_Date = entities.ID_expiry_Date;
-            if (entities.ID_upload_Picture_File.Length > 0)
+          
+            if (entities.ID_upload_Picture_File!=null)
             {
                 entities.ID_upload_Picture = utility.FileUpload("UploadFile", entities.ID_upload_Picture_File, webHostEnvironment);
             }
-            //entities.Created_at = DateTime.Now;
-            //entities.Isactive = true;
-            //entities.Isdeleted = false;
+            
             var data = _mapper.Map<StaffEntities>(entities);
-            return await _StaffDAL.Create(data);
+            var res= await _StaffDAL.Create(data);
+            if (res == -1)
+            {
+                return res.ToString();
+            }
+            else
+            {
+                return _Iencryption.EncryptID(res.ToString());
+            }
         }
 
         public async Task<int> DeleteStaff(string id)

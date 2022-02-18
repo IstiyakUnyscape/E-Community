@@ -9,6 +9,7 @@ namespace BUSINESS_ENTITIES
     public class StaffEntities
     {
         public string Id { get; set; }
+        public int Company_id { get; set; }
         public string F_Name { get; set; }
         public string M_Name { get; set; }
         public string L_Name { get; set; }
@@ -26,8 +27,12 @@ namespace BUSINESS_ENTITIES
         public DateTime ID_expiry_Date { get; set; }
         public string ID_upload_Picture { get; set; }
         public DateTime Created_at { get; set; }
+        public int CreatedBy { get; set; }
         public DateTime? Modified_at { get; set; }
+        public int ModifiedBy { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
+        public int Country_Code { get; set; }
+        public int Std_Code { get; set; }
     }
 }

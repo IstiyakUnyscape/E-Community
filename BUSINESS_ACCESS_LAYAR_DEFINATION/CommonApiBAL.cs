@@ -50,5 +50,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         {
             return _CommonApiDAL.GetDeliveryType();
         }
+
+        public IEnumerable<TypeMasterDetailEntities> GetTypeMasterDetail()
+        {
+            return _CommonApiDAL.GetTypeMasterDetail();
+        }
     }
 }

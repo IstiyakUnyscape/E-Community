@@ -49,9 +49,12 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Total_Managed_Common_Area", entity.Total_Managed_Common_Area);
             dbparams.Add("Additional_Certificates", entity.Additional_Certificates);
             dbparams.Add("Created_at", DateTime.Now);
+            dbparams.Add("CreatedBy", entity.CreatedBy);
             dbparams.Add("Isactive", true);
             dbparams.Add("Isdeleted", false);
-            //dbparams.Add("retVal", DbType.Int32, direction: ParameterDirection.Output);
+            dbparams.Add("Country_Code", entity.Country_Code);
+            dbparams.Add("Std_Code", entity.Std_Code);
+            dbparams.Add("TenantTypeID", entity.TenantTypeID);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
             
@@ -156,7 +159,13 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Total_Managed_Common_Area", entity.Total_Managed_Common_Area);
             dbparams.Add("Additional_Certificates", entity.Additional_Certificates);
             dbparams.Add("Modified_at", DateTime.Now);
+            dbparams.Add("ModifiedBy", entity.ModifiedBy);
             dbparams.Add("Isactive",true);
+            dbparams.Add("Country_Code", entity.Country_Code);
+            dbparams.Add("Std_Code", entity.Std_Code);
+            dbparams.Add("StatusTypeDetailID", entity.StatusTypeDetailID);
+            dbparams.Add("ApprovedDate", entity.ApprovedDate);
+            dbparams.Add("Remarks", entity.Remarks);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }

@@ -135,5 +135,19 @@ namespace E_Community.Controllers
                 return Ok(new { Code = 204, data = result, Message = "No Data Found", });
             }
         }
+        [HttpGet, Route("GetTypeMasterDetail")]
+        public async Task<IActionResult> GetTypeMasterDetail()
+        {
+
+            var result = _CommonApiBAL.GetTypeMasterDetail();
+            if (result != null)
+            {
+                return Ok(await Task.FromResult(result));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = result, Message = "No Data Found", });
+            }
+        }
     }
 }

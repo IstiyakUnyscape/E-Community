@@ -107,10 +107,20 @@ namespace CustomModel
         [Display(Name = "Additional Certificates")]
         public IFormFile Additional_Certificates_File { get; set; }
         public string Additional_Certificates { get; set; }
-        //public DateTime Created_at { get; set; }
-        //public DateTime? Modified_at { get; set; }
-        //public bool Isactive { get; set; }
-        //public bool Isdeleted { get; set; }
+        public DateTime Created_at { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? Modified_at { get; set; }
+        public int ModifiedBy { get; set; }
+        public bool Isactive { get; set; }
+        public bool Isdeleted { get; set; }
+        public int Country_Code { get; set; }
+        public int Std_Code { get; set; }
+        [Required]
+        public int TenantTypeID { get; set; }
+        [Required]
+        public int StatusTypeDetailID { get; set; }
+        public DateTime? ApprovedDate { get; set; }
+        public string Remarks { get; set; }
     }
     public class MaxFileSizeAttribute : ValidationAttribute
     {

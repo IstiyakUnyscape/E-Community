@@ -24,7 +24,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
         public async Task<int> Create(StaffEntities entity)
         {
             var dbparams = new DynamicParameters();
-            //dbparams.Add("id", Convert.ToInt32(entity.Id));
+            dbparams.Add("Company_id", entity.Company_id);
             dbparams.Add("F_Name", entity.F_Name);
             dbparams.Add("M_Name", entity.M_Name);
             dbparams.Add("L_Name", entity.L_Name);
@@ -44,6 +44,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Created_at", DateTime.Now);
             dbparams.Add("Isactive", true);
             dbparams.Add("Isdeleted", false);
+            dbparams.Add("CreatedBy", entity.CreatedBy);
+            dbparams.Add("Country_Code", entity.Country_Code);
+            dbparams.Add("Std_Code", entity.Std_Code);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertStaff", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
@@ -52,7 +55,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
         {
             var dbparams = new DynamicParameters();
             dbparams.Add("id", id, DbType.Int32);
-            var res = await Task.FromResult(_dapper.Get<int>("sp_DeleteStaff", dbparams, commandType: CommandType.StoredProcedure));
+            var res = await Task.FromResult(_dapper.Update<int>("sp_DeleteStaff", dbparams, commandType: CommandType.StoredProcedure));
             return res;
         }
 
@@ -122,6 +125,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
         {
             var dbparams = new DynamicParameters();
             dbparams.Add("id", Convert.ToInt32(entity.Id));
+            dbparams.Add("Company_id", entity.Company_id);
             dbparams.Add("F_Name", entity.F_Name);
             dbparams.Add("M_Name", entity.M_Name);
             dbparams.Add("L_Name", entity.L_Name);
@@ -139,8 +143,10 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("ID_expiry_Date", entity.ID_expiry_Date);
             dbparams.Add("ID_upload_Picture", entity.ID_upload_Picture);
             dbparams.Add("Modified_at", DateTime.Now);
+            dbparams.Add("ModifiedBy", entity.ModifiedBy);
             dbparams.Add("Isactive", true);
-            //dbparams.Add("Isdeleted", entity.Isdeleted);
+            dbparams.Add("Country_Code", entity.Country_Code);
+            dbparams.Add("Std_Code", entity.Std_Code);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateStaff", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }

@@ -13,6 +13,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
         public Task<string> CreateUser(string obj);
         public Task<bool> VerificatoinLink(string UserId);
         public Task<int> UserVerified(string UserId, string Code);
-        public Task<int> CreatePassword(string UserId, string Password);
+        public Task<int> CreatePassword(string UserId, string Password); 
+        public Task<UserModel> LoginByUserId(string UserId, string Password);
     }
 }

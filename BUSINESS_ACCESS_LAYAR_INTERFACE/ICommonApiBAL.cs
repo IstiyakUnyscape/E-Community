@@ -16,5 +16,6 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
         public IEnumerable<ServiceEntities> GetService();
         public IEnumerable<Type_Of_VisitEntities> GetVisitType();
         public IEnumerable<Type_of_DeliveryEntities> GetDeliveryType();
+        public IEnumerable<TypeMasterDetailEntities> GetTypeMasterDetail();
     }
 }

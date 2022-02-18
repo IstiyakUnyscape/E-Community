@@ -74,7 +74,7 @@ namespace E_Community.Controllers
         public IActionResult Post([FromForm] StaffModel entities)
         {
 
-            int i = 0;
+            string i = string.Empty;
             if (ModelState.IsValid)
             {
                 if (entities != null)
@@ -87,9 +87,9 @@ namespace E_Community.Controllers
             {
                 return BadRequest();
             }
-            if (i == 0)
+            if (i != "-1")
             {
-                return Ok(new { Code = 200, Message = "Registation Successfully", });
+                return Ok(new { Code = 200, StaffUserId = i, Message = "Registation Successfully", }) ;
             }
             else
             {

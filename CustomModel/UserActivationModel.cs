@@ -14,8 +14,8 @@ namespace CustomModel
         public int UserID { get; set; }
         [Required]
         public string VerificationCode { get; set; }
-        public bool IsVarified { get; set; }
-        public DateTime IsVarified_at { get; set; }
+        public bool IsVerified { get; set; }
+        public DateTime IsVerified_at { get; set; }
         public DateTime Created_at { get; set; }
     }
 }

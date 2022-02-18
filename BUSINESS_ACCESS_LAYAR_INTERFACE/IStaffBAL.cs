@@ -13,7 +13,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
     {
         public StaticPagedList<StaffModel> GetAllStaff(SearchStaffModel search);
         public StaffModel GetStaffById(string id);
-        public Task<int> CreateStaff(StaffModel entities);
+        public Task<string> CreateStaff(StaffModel entities);
         public Task<int> UpdateStaff(StaffModel entities);
         public Task<int> DeleteStaff(string id);
     }

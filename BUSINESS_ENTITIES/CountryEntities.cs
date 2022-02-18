@@ -47,4 +47,15 @@ namespace BUSINESS_ENTITIES
         public string Delivery_Type { get; set; }
 
     }
+    public class TypeMasterDetailEntities
+    {
+        public int TypeMaster_Id { get; set; }
+        public string TypeMasterCode { get; set; }
+        public bool IsTypeMasterActive { get; set; }
+        public int TypeDetail_Id { get; set; }
+        public string TypeDetailCode { get; set; }
+        public bool IsTypeDetailActive { get; set; }
+        public int Sequence { get; set; }
+
+    }
 }
