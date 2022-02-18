@@ -80,7 +80,8 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 var configuration = _igetAppsetting.getIconfiguration();
                 var Key = configuration.GetSection("JWTKEY").Value;
-                var _data = _UserDAL.GetAll().Where(x => x.Email_id == obj.Email && x.Password == obj.Password).FirstOrDefault();
+                string pwd=  _Iencryption.EncryptID(obj.Password); ;
+                var _data = _UserDAL.GetAll().Where(x => x.Email_id == obj.Email && x.Password ==pwd).FirstOrDefault();
                 data = _mapper.Map<UserModel>(_data);
                 if (data != null)
                 {
