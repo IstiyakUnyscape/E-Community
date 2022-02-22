@@ -36,7 +36,7 @@ namespace COMMON_SERVICES_DEFINATION
                     {
                         foreach (var v in _mailSettings.CCEmail.Split(','))
                         {
-                            email.Cc.Add(MailboxAddress.Parse(v.ToString()));
+                            email.Bcc.Add(MailboxAddress.Parse(v.ToString()));
                         }
                     }
                     if (!String.IsNullOrEmpty(_mailSettings.BCCEmail))
