@@ -81,7 +81,7 @@ namespace E_Community.Controllers
             }
             
         }
-        [HttpGet, Route("VerifyUser")]
+        [HttpGet, Route("VerifyUserEmail")]
         public IActionResult UserVarified(string userid,string code)
         {
             var res = _UserBAL.UserVerified(userid, code);
