@@ -58,13 +58,13 @@ namespace E_Community.Controllers
                 }
                 else
                 {
-                    return Ok(new { Code = 200, Message = "Registation Successfully But Not Sent Varification Link", });
+                    return Ok(new { Code = 200, Message = "Registation Successfully But Not Sent Verification Link", });
                 }
                 
             }
             else
             {
-                return Ok(new { Code = 204, Message = "Email Id Already Exsit or Something went wrong", });
+                return Ok(new { Code = 204, Message = "Email Id Already Exist or Something went wrong", });
             }
         }
         [HttpPost, Route("SendVarificatoinLink")]
@@ -81,7 +81,7 @@ namespace E_Community.Controllers
             }
             
         }
-        [HttpGet, Route("UserVarified")]
+        [HttpGet, Route("VerifyUserEmail")]
         public IActionResult UserVarified(string userid,string code)
         {
             var res = _UserBAL.UserVerified(userid, code);
