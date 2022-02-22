@@ -7,6 +7,7 @@ using CustomModel;
 using DATA_ACCESS_LAYAR_DEFINATION;
 using DATA_ACCESS_LAYAR_INTERFACE;
 using Microsoft.AspNetCore.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,10 +53,23 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Owner_Visa_Copy = utility.FileUpload("UploadFile", entities.Owner_Visa_Copy_File, webHostEnvironment);
             }
-            if (entities.Additional_Certificates_File != null)
+            //if (entities.Additional_Certificates_File != null)
+            //{
+            //    entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
+            //}
+            List<FileUploadModel> fileuplaod = new List<FileUploadModel>();
+            foreach (var item in entities.Additional_Certificates_FileUpload)
             {
-                entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
+                if (item.Additional_Certificate_File != null)
+                {
+                    item.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
+                }
+                
+                fileuplaod.Add(item);
+
             }
+
+            entities.Additional_Certificates = JsonConvert.SerializeObject(fileuplaod);
             var data = _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Create(data);
            
@@ -134,14 +148,20 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Owner_Visa_Copy = entities.Owner_Visa_Copy;
             }
-            if (entities.Additional_Certificates_File != null)
+            foreach(var item in entities.Additional_Certificates_FileUpload)
             {
-                entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
+                if (item.Additional_Certificate_File != null)
+                {
+                    item.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
+                }
+                else
+                {
+                    item.Additional_Certificates = item.Additional_Certificates;
+                }
+                entities.Additional_Certificates= JsonConvert.SerializeObject(item);
+
             }
-            else
-            {
-                entities.Additional_Certificates = entities.Additional_Certificates;
-            }
+
             var data= _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Update(data);
 

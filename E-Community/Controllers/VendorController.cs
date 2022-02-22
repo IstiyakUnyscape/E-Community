@@ -83,7 +83,7 @@ namespace E_Community.Controllers
             {
                 return BadRequest();
             }
-            if (i == 0)
+            if (i > 0)
             {
                 return Ok(new { Code = 200, Message = "Registation Successfully", });
             }
@@ -121,7 +121,7 @@ namespace E_Community.Controllers
             if (ModelState.IsValid)
             {
                 var res = _vendorBAL.UpdateVendors(entites);
-                if (res.Result == 0)
+                if (res.Result > 0)
                 {
                     return Ok(new { Code = 200, data = res, Message = "Data Update Successfully ", });
                 }

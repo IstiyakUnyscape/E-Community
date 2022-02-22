@@ -9,7 +9,7 @@ namespace BUSINESS_ENTITIES
     public class StaffEntities
     {
         public string Id { get; set; }
-        public int Company_id { get; set; }
+        public int Tenant_Id { get; set; }
         public string F_Name { get; set; }
         public string M_Name { get; set; }
         public string L_Name { get; set; }
@@ -34,5 +34,6 @@ namespace BUSINESS_ENTITIES
         public bool Isdeleted { get; set; }
         public int Country_Code { get; set; }
         public int Std_Code { get; set; }
+        public int TenantTypeId { get; set; }
     }
 }

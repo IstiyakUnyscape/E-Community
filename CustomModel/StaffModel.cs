@@ -11,7 +11,7 @@ namespace CustomModel
     public class StaffModel
     {
         public string Id { get; set; }
-        public int Company_id { get; set; }
+        public int Tenant_Id { get; set; }
         [Display(Name = "First Name")]
         [Required]
         public string F_Name { get; set; }
@@ -67,5 +67,6 @@ namespace CustomModel
         //public bool Isdeleted { get; set; }
         public int Country_Code { get; set; }
         public int Std_Code { get; set; }
+        public int TenantTypeId { get; set; }
     }
 }
