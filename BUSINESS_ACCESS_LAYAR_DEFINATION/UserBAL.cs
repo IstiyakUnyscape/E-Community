@@ -63,7 +63,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             var res = await _UserDAL.UserActivation(id, VerificationCode);
             var configuration = _igetAppsetting.getIconfiguration();
             var Url = configuration.GetSection("BaseUrl").Value;
-            var varifylink= "<br /><a href ='" +Url+ "create-password/UserId=" + UserId + "&VerificationCode=" + VerificationCode + "'>Click here to activate your account.</a>";
+            var varifylink= "<br /><a href ='" +Url+ "create-password?UserId=" + UserId + "&VerificationCode=" + VerificationCode + "'>Click here to activate your account.</a>";
             MailRequestEntites _obj = new MailRequestEntites(new string[] { _data.Email_id }, varifylink, new List<IFormFile> { });
             if(res==1)
             {
