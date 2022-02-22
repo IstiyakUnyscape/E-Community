@@ -77,10 +77,9 @@ namespace COMMON_SERVICES_DEFINATION
                             await client.SendAsync(email);
                             IsSent = true;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             IsSent = false;
-
                         }
                         finally
                         {
