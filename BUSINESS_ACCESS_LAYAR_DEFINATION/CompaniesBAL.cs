@@ -57,19 +57,23 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             //{
             //    entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
             //}
-            List<FileUploadModel> fileuplaod = new List<FileUploadModel>();
+            List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
             foreach (var item in entities.Additional_Certificates_FileUpload)
             {
+               AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
+
                 if (item.Additional_Certificate_File != null)
                 {
-                    item.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
+                    Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
+                    Jsondataobj.Additional_Certificate_Title = item.Additional_Certificate_Title;
+                    Jsondataobj.Additional_Certificate_ExpiryDate = item.Additional_Certificate_ExpiryDate;
                 }
-                
-                fileuplaod.Add(item);
+
+                Jsondata.Add(Jsondataobj);
 
             }
 
-            entities.Additional_Certificates = JsonConvert.SerializeObject(fileuplaod);
+            entities.Additional_Certificates = JsonConvert.SerializeObject(Jsondata);
             entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Create(data);
@@ -149,19 +153,19 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Owner_Visa_Copy = entities.Owner_Visa_Copy;
             }
-            foreach(var item in entities.Additional_Certificates_FileUpload)
-            {
-                if (item.Additional_Certificate_File != null)
-                {
-                    item.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
-                }
-                else
-                {
-                    item.Additional_Certificates = item.Additional_Certificates;
-                }
-                entities.Additional_Certificates= JsonConvert.SerializeObject(item);
+            //foreach(var item in entities.Additional_Certificates_FileUpload)
+            //{
+            //    if (item.Additional_Certificate_File != null)
+            //    {
+            //        item.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
+            //    }
+            //    else
+            //    {
+            //        item.Additional_Certificates = item.Additional_Certificates;
+            //    }
+            //    entities.Additional_Certificates= JsonConvert.SerializeObject(item);
 
-            }
+            //}
             entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data= _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Update(data);

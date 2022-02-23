@@ -156,5 +156,31 @@ namespace E_Community.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost, Route("PostTest")]
+        public async Task<IActionResult> PostTest([FromForm] List<FileUploadModel> entities)
+        {
+
+            int i = 0;
+            if (ModelState.IsValid)
+            {
+                if (entities != null)
+                {
+                    //i = await _companiesBAL.CreateCompany(entities);
+                }
+
+            }
+            else
+            {
+                return BadRequest();
+            }
+            if (i > 0)
+            {
+                return Ok(new { Code = 200, Message = "Registation Successfully", });
+            }
+            else
+            {
+                return Ok(new { Code = 204, Message = "Something went wrong", });
+            }
+        }
     }
 }

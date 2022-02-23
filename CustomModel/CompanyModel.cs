@@ -127,11 +127,16 @@ namespace CustomModel
     {
         [Display(Name = "Additional Certificate")]
         public IFormFile Additional_Certificate_File { get; set; }
-        public string Additional_Certificates { get; set; }
-        [Display(Name = "Additional Certificate Title")]
+        //public string Additional_Certificates { get; set; }
         public string Additional_Certificate_Title { get; set; }
         [Display(Name = "Additional Certificate Expiry Date")]
         [DataType(DataType.Date)]
+        public DateTime Additional_Certificate_ExpiryDate { get; set; }
+    }
+    public class AdditionalCertificateJson
+    {
+        public string Additional_Certificates { get; set; }
+        public string Additional_Certificate_Title { get; set; }
         public DateTime Additional_Certificate_ExpiryDate { get; set; }
     }
     public class MaxFileSizeAttribute : ValidationAttribute
