@@ -24,7 +24,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
         public async Task<int> Create(StaffEntities entity)
         {
             var dbparams = new DynamicParameters();
-            dbparams.Add("Tenant_Id", entity.Tenant_Id);
+            dbparams.Add("Tenant_Id", entity.Company_id);
             dbparams.Add("F_Name", entity.F_Name);
             dbparams.Add("M_Name", entity.M_Name);
             dbparams.Add("L_Name", entity.L_Name);
@@ -126,7 +126,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
         {
             var dbparams = new DynamicParameters();
             dbparams.Add("id", Convert.ToInt32(entity.Id));
-            dbparams.Add("Tenant_Id", entity.Tenant_Id);
+            dbparams.Add("Company_id", entity.Company_id);
             dbparams.Add("F_Name", entity.F_Name);
             dbparams.Add("M_Name", entity.M_Name);
             dbparams.Add("L_Name", entity.L_Name);

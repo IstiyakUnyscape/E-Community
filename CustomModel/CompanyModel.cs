@@ -111,9 +111,9 @@ namespace CustomModel
         public List<FileUploadModel> Additional_Certificates_FileUpload { get; set; }
         public string Additional_Certificates { get; set; }
         //public DateTime Created_at { get; set; }
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         //public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
+        public string ModifiedBy { get; set; }
         //public bool Isactive { get; set; }
         //public bool Isdeleted { get; set; }
         public int Country_Code { get; set; }

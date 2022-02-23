@@ -65,6 +65,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Certificate = utility.FileUpload("UploadFile", entities.Additional_Certificate_File, webHostEnvironment);
             }
+            entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<VendorsEntities>(entities);
             return await _VendorsDAL.Create(data);
         }
@@ -174,6 +175,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Certificate = entities.Additional_Certificate;
             }
+            entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data = _mapper.Map<VendorsEntities>(entities);
             return await _VendorsDAL.Update(data);
         }

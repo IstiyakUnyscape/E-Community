@@ -70,6 +70,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             }
 
             entities.Additional_Certificates = JsonConvert.SerializeObject(fileuplaod);
+            entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Create(data);
            
@@ -161,7 +162,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                 entities.Additional_Certificates= JsonConvert.SerializeObject(item);
 
             }
-
+            entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data= _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Update(data);
 
