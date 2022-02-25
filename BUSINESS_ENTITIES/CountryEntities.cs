@@ -23,12 +23,7 @@ namespace BUSINESS_ENTITIES
         public string City_Name { get; set; }
         public int State_id { get; set; }
     }
-    public class DesignationEntities
-    {
-        public int id { get; set; }
-        public string Designation { get; set; }
-       
-    }
+   
     public class ServiceEntities
     {
         public int id { get; set; }
