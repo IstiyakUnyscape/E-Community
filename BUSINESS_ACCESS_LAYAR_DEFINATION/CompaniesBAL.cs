@@ -56,6 +56,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
             }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
             var data = _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Create(data);
            
@@ -141,6 +145,14 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             else
             {
                 entities.Additional_Certificates = entities.Additional_Certificates;
+            }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
+            else
+            {
+                entities.Profile_Image = entities.Profile_Image;
             }
             var data= _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Update(data);

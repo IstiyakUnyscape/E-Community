@@ -55,6 +55,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Country_Code", entity.Country_Code);
             dbparams.Add("Std_Code", entity.Std_Code);
             dbparams.Add("TenantTypeID", entity.TenantTypeID);
+            dbparams.Add("Profile_Image", entity.Profile_Image);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
             
@@ -163,9 +164,11 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Isactive",true);
             dbparams.Add("Country_Code", entity.Country_Code);
             dbparams.Add("Std_Code", entity.Std_Code);
+            dbparams.Add("IsShowAdmin", entity.IsShowAdmin);
             dbparams.Add("StatusTypeDetailID", entity.StatusTypeDetailID);
             dbparams.Add("ApprovedDate", entity.ApprovedDate);
             dbparams.Add("Remarks", entity.Remarks);
+            dbparams.Add("Profile_Image", entity.Profile_Image);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
