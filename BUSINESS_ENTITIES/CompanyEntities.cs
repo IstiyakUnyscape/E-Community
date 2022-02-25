@@ -45,5 +45,6 @@ namespace BUSINESS_ENTITIES
         public int StatusTypeDetailID { get; set; }
         public DateTime? ApprovedDate { get; set; }
         public string Remarks { get; set; }
+        public string Profile_Image { get; set; }
     }
 }

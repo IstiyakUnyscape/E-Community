@@ -53,6 +53,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Owner_Visa_Copy = utility.FileUpload("UploadFile", entities.Owner_Visa_Copy_File, webHostEnvironment);
             }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
             //if (entities.Additional_Certificates_File != null)
             //{
             //    entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
