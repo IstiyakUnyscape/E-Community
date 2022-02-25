@@ -65,6 +65,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Certificate = utility.FileUpload("UploadFile", entities.Additional_Certificate_File, webHostEnvironment);
             }
+            entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<VendorsEntities>(entities);
             return await _VendorsDAL.Create(data);
         }
@@ -92,24 +93,24 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         public VendorsModel GetVendorsById(string id)
         {
             var res = new VendorsEntities();
-            
+
             int Id = Convert.ToInt32(_Iencryption.DecryptID(id));
             try
             {
-                res =  _VendorsDAL.GetById(Id);
+                res = _VendorsDAL.GetById(Id);
                 res.Id = _Iencryption.EncryptID(res.Id);
             }
             catch (Exception ex)
             {
 
             }
-            return _mapper.Map<VendorsModel>(res); 
+            return _mapper.Map<VendorsModel>(res);
         }
 
         public async Task<int> UpdateVendors(VendorsModel entities)
         {
             entities.Id = _Iencryption.DecryptID(entities.Id);
-            if (entities.Tradelicense_Copy_File!= null)
+            if (entities.Tradelicense_Copy_File != null)
             {
                 entities.Tradelicense_Copy = utility.FileUpload("UploadFile", entities.Tradelicense_Copy_File, webHostEnvironment);
             }
@@ -174,6 +175,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Certificate = entities.Additional_Certificate;
             }
+            entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data = _mapper.Map<VendorsEntities>(entities);
             return await _VendorsDAL.Update(data);
         }

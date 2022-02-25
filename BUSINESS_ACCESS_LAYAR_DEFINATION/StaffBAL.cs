@@ -33,14 +33,14 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         }
         public async Task<string> CreateStaff(StaffModel entities)
         {
-          
-            if (entities.ID_upload_Picture_File!=null)
+
+            if (entities.ID_upload_Picture_File != null)
             {
                 entities.ID_upload_Picture = utility.FileUpload("UploadFile", entities.ID_upload_Picture_File, webHostEnvironment);
             }
-            
+            entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<StaffEntities>(entities);
-            var res= await _StaffDAL.Create(data);
+            var res = await _StaffDAL.Create(data);
             if (res == -1)
             {
                 return res.ToString();
@@ -77,7 +77,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             int Id = Convert.ToInt32(_Iencryption.DecryptID(id));//(_Iencryption.DecryptID(id));
             try
             {
-                res =  _StaffDAL.GetById(Id);
+                res = _StaffDAL.GetById(Id);
                 res.Id = _Iencryption.EncryptID(res.Id);
             }
             catch (Exception ex)
@@ -90,7 +90,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         public async Task<int> UpdateStaff(StaffModel entities)
         {
             entities.Id = _Iencryption.DecryptID(entities.Id);
-            if (entities.ID_upload_Picture_File!= null)
+            if (entities.ID_upload_Picture_File != null)
             {
                 entities.ID_upload_Picture = utility.FileUpload("UploadFile", entities.ID_upload_Picture_File, webHostEnvironment);
             }
@@ -98,10 +98,9 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.ID_upload_Picture = entities.ID_upload_Picture;
             }
-            //entities.Modified_at = DateTime.Now;
-            //entities.Isactive = true;
+            entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data = _mapper.Map<StaffEntities>(entities);
-          
+
             return await _StaffDAL.Update(data);
         }
     }

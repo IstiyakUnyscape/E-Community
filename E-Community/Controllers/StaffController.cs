@@ -89,7 +89,7 @@ namespace E_Community.Controllers
             }
             if (i != "-1")
             {
-                return Ok(new { Code = 200, StaffUserId = i, Message = "Registation Successfully", }) ;
+                return Ok(new { Code = 200, StaffUserId = i, Message = "Registation Successfully", });
             }
             else
             {
@@ -119,7 +119,7 @@ namespace E_Community.Controllers
         }
 
         [HttpPut, Route("UpdateStaff")]
-        public IActionResult Update([FromForm]StaffModel entites)
+        public IActionResult Update([FromForm] StaffModel entites)
         {
 
             if (ModelState.IsValid)

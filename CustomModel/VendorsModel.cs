@@ -156,9 +156,18 @@ namespace CustomModel
         [Required(ErrorMessage = "Please select a Service Type.")]
         [Display(Name = "Service Type")]
         public int Service_Type { get; set; }
+        public string ModifiedBy { get; set; }
+        public string CreatedBy { get; set; }
         //public DateTime Created_at { get; set; }
         //public DateTime? Modified_at { get; set; }
+
         //public bool Isactive { get; set; }
         //public bool Isdeleted { get; set; }
+        public int Country_Code { get; set; }
+        public int Std_Code { get; set; }
+        public bool IsShowAdmin { get; set; }
+        public int StatusTypeDetailID { get; set; }
+        public DateTime? ApprovedDate { get; set; }
+        public string Remarks { get; set; }
     }
 }
