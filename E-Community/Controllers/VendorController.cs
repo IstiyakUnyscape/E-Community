@@ -3,6 +3,8 @@ using BUSINESS_ACCESS_LAYAR_DEFINATION;
 using BUSINESS_ACCESS_LAYAR_INTERFACE;
 using BUSINESS_ENTITIES;
 using CustomModel;
+using E_Community.CustomFilter;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +17,9 @@ namespace E_Community.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("MyPolicy")]
+    [CustomExceptionHandler]
+    [Consumes("multipart/form-data")]
     public class VendorController : ControllerBase
     {
         private readonly IVendorsBAL _vendorBAL;
@@ -83,7 +88,7 @@ namespace E_Community.Controllers
             {
                 return BadRequest();
             }
-            if (i == 0)
+            if (i > 0)
             {
                 return Ok(new { Code = 200, Message = "Registation Successfully", });
             }
@@ -115,13 +120,13 @@ namespace E_Community.Controllers
         }
 
         [HttpPut, Route("UpdateVendor")]
-        public IActionResult Update([FromForm]VendorsModel entites)
+        public IActionResult Update([FromForm] VendorsModel entites)
         {
 
             if (ModelState.IsValid)
             {
                 var res = _vendorBAL.UpdateVendors(entites);
-                if (res.Result == 0)
+                if (res.Result > 0)
                 {
                     return Ok(new { Code = 200, data = res, Message = "Data Update Successfully ", });
                 }

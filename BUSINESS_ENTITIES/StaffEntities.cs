@@ -34,5 +34,6 @@ namespace BUSINESS_ENTITIES
         public bool Isdeleted { get; set; }
         public int Country_Code { get; set; }
         public int Std_Code { get; set; }
+        public int TenantTypeId { get; set; }
     }
 }

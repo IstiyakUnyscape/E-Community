@@ -54,10 +54,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Isdeleted", false);
             dbparams.Add("Country_Code", entity.Country_Code);
             dbparams.Add("Std_Code", entity.Std_Code);
-            dbparams.Add("TenantTypeID", entity.TenantTypeID);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
-            
+
         }
 
         public async Task<int> Delete(int id)
@@ -75,27 +74,27 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             IQueryable<CompanyEntities> result = _dapper.GetAll<CompanyEntities>("sp_GetCompanies", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
             if (!string.IsNullOrEmpty(search.Name))
             {
-                result= result.Where(x=>x.Company_Name.Trim().ToUpper()==search.Name.Trim().ToUpper());
+                result = result.Where(x => x.Company_Name.Trim().ToUpper() == search.Name.Trim().ToUpper());
             }
-            if(!string.IsNullOrEmpty(search.Company_Email))
+            if (!string.IsNullOrEmpty(search.Company_Email))
             {
-                result = result.Where(x => x.Company_Email_Id.Trim().ToUpper()==search.Company_Email.Trim().ToUpper());
-            }
-            if (!string.IsNullOrEmpty(search.Postal_Code))
-            {
-                result = result.Where(x => x.Postal_Code.Trim().ToUpper()==search.Postal_Code.Trim().ToUpper());
+                result = result.Where(x => x.Company_Email_Id.Trim().ToUpper() == search.Company_Email.Trim().ToUpper());
             }
             if (!string.IsNullOrEmpty(search.Postal_Code))
             {
-                result = result.Where(x => x.Postal_Code.Trim().ToUpper()==search.Postal_Code.Trim().ToUpper());
+                result = result.Where(x => x.Postal_Code.Trim().ToUpper() == search.Postal_Code.Trim().ToUpper());
+            }
+            if (!string.IsNullOrEmpty(search.Postal_Code))
+            {
+                result = result.Where(x => x.Postal_Code.Trim().ToUpper() == search.Postal_Code.Trim().ToUpper());
             }
             if (!string.IsNullOrEmpty(search.Trade_License_No))
             {
-                result = result.Where(x => x.Trade_License_No.Trim().ToUpper()==search.Trade_License_No.Trim().ToUpper());
+                result = result.Where(x => x.Trade_License_No.Trim().ToUpper() == search.Trade_License_No.Trim().ToUpper());
             }
-            if (search.Tax_Return_Number >0)
+            if (search.Tax_Return_Number > 0)
             {
-                result = result.Where(x => x.Tax_Return_Number==search.Tax_Return_Number);
+                result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
             }
             IOrderedQueryable<CompanyEntities> OrderedQuery = null;
 
@@ -133,7 +132,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
         public async Task<int> Update(CompanyEntities entity)
         {
             var dbparams = new DynamicParameters();
-            dbparams.Add("id",Convert.ToInt32(entity.Id));
+            dbparams.Add("id", Convert.ToInt32(entity.Id));
             dbparams.Add("Company_Name", entity.Company_Name);
             dbparams.Add("Company_Address", entity.Company_Address);
             dbparams.Add("Country_id", entity.Country);
@@ -160,12 +159,13 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Additional_Certificates", entity.Additional_Certificates);
             dbparams.Add("Modified_at", DateTime.Now);
             dbparams.Add("ModifiedBy", entity.ModifiedBy);
-            dbparams.Add("Isactive",true);
+            dbparams.Add("Isactive", true);
             dbparams.Add("Country_Code", entity.Country_Code);
             dbparams.Add("Std_Code", entity.Std_Code);
             dbparams.Add("StatusTypeDetailID", entity.StatusTypeDetailID);
             dbparams.Add("ApprovedDate", entity.ApprovedDate);
             dbparams.Add("Remarks", entity.Remarks);
+            dbparams.Add("IsShowAdmin", entity.IsShowAdmin);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
@@ -177,4 +177,5 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return res;
         }
     }
+
 }

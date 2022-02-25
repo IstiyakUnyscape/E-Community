@@ -34,13 +34,13 @@ namespace CustomModel
         [Required]
         [Display(Name = "Owner Last Name")]
         public string Owner_Lname { get; set; }
-       
+
         [Display(Name = "Owner Mobile No.")]
         [Required(ErrorMessage = "Mobile Number is required.")]
         [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         public long Owner_MobileNo { get; set; }
         [Required(ErrorMessage = "Email is Requirde")]
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +@"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" + @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",ErrorMessage = "Email is not valid")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" + @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" + @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Email is not valid")]
         [Display(Name = "Owner Email_ID")]
         public string Owner_Email_ID { get; set; }
         [Required]
@@ -68,19 +68,19 @@ namespace CustomModel
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]
         [Display(Name = "Trade license Copy")]
-        public IFormFile  Tradelicense_Copy_File { get; set; }
+        public IFormFile Tradelicense_Copy_File { get; set; }
         public string Tradelicense_Copy { get; set; }
         [Required]
         [Display(Name = "Tax Return Number")]
         public long Tax_Return_Number { get; set; }
-       // [Required(ErrorMessage = "Please select a file.")]
+        // [Required(ErrorMessage = "Please select a file.")]
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]
         [Display(Name = "TRN Certificate")]
         public IFormFile TRN_Certificate_File { get; set; }
         public string TRN_Certificate { get; set; }
-       // [Required(ErrorMessage = "Please select a file.")]
+        // [Required(ErrorMessage = "Please select a file.")]
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]
@@ -105,22 +105,39 @@ namespace CustomModel
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]
         [Display(Name = "Additional Certificates")]
-        public IFormFile Additional_Certificates_File { get; set; }
+        //public IFormFile Additional_Certificates_File { get; set; }
+        //public string Additional_Certificates { get; set; }
+        //public List<IFormFile> Additional_CertificatesFiles { get; set; }
+        public List<FileUploadModel> Additional_Certificates_FileUpload { get; set; }
         public string Additional_Certificates { get; set; }
-        public DateTime Created_at { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
-        public bool Isactive { get; set; }
-        public bool Isdeleted { get; set; }
+        //public DateTime Created_at { get; set; }
+        public string CreatedBy { get; set; }
+        //public DateTime? Modified_at { get; set; }
+        public string ModifiedBy { get; set; }
+        //public bool Isactive { get; set; }
+        //public bool Isdeleted { get; set; }
         public int Country_Code { get; set; }
         public int Std_Code { get; set; }
-        [Required]
-        public int TenantTypeID { get; set; }
-        [Required]
+        public bool IsShowAdmin { get; set; }
         public int StatusTypeDetailID { get; set; }
         public DateTime? ApprovedDate { get; set; }
         public string Remarks { get; set; }
+    }
+    public class FileUploadModel
+    {
+        [Display(Name = "Additional Certificate")]
+        public IFormFile Additional_Certificate_File { get; set; }
+        //public string Additional_Certificates { get; set; }
+        public string Additional_Certificate_Title { get; set; }
+        [Display(Name = "Additional Certificate Expiry Date")]
+        [DataType(DataType.Date)]
+        public DateTime Additional_Certificate_ExpiryDate { get; set; }
+    }
+    public class AdditionalCertificateJson
+    {
+        public string Additional_Certificates { get; set; }
+        public string Additional_Certificate_Title { get; set; }
+        public DateTime Additional_Certificate_ExpiryDate { get; set; }
     }
     public class MaxFileSizeAttribute : ValidationAttribute
     {

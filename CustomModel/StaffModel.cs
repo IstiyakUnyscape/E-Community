@@ -11,7 +11,7 @@ namespace CustomModel
     public class StaffModel
     {
         public string Id { get; set; }
-        public int Company_id { get; set; }
+        public int Tenant_Id { get; set; }
         [Display(Name = "First Name")]
         [Required]
         public string F_Name { get; set; }
@@ -60,12 +60,13 @@ namespace CustomModel
         public IFormFile ID_upload_Picture_File { get; set; }
         public string ID_upload_Picture { get; set; }
         //public DateTime Created_at { get; set; }
-        public int CreatedBy { get; set; }
-       // public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
+        public string CreatedBy { get; set; }
+        // public DateTime? Modified_at { get; set; }
+        public string ModifiedBy { get; set; }
         //public bool Isactive { get; set; }
         //public bool Isdeleted { get; set; }
         public int Country_Code { get; set; }
         public int Std_Code { get; set; }
+        public int TenantTypeId { get; set; }
     }
 }

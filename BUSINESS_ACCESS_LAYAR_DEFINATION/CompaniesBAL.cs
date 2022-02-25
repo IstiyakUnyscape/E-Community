@@ -7,6 +7,7 @@ using CustomModel;
 using DATA_ACCESS_LAYAR_DEFINATION;
 using DATA_ACCESS_LAYAR_INTERFACE;
 using Microsoft.AspNetCore.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public async Task<int> CreateCompany(CompanyModel entities)
         {
-            if (entities.Tradelicense_Copy_File !=null)
+            if (entities.Tradelicense_Copy_File != null)
             {
                 entities.Tradelicense_Copy = utility.FileUpload("UploadFile", entities.Tradelicense_Copy_File, webHostEnvironment);
             }
@@ -42,23 +43,41 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.TRN_Certificate = utility.FileUpload("UploadFile", entities.TRN_Certificate_File, webHostEnvironment);
             }
-           
+
             if (entities.Owner_Passport_Copy_File != null)
             {
                 entities.Owner_Passport_Copy = utility.FileUpload("UploadFile", entities.Owner_Passport_Copy_File, webHostEnvironment);
             }
-           
+
             if (entities.Owner_Visa_Copy_File != null)
             {
                 entities.Owner_Visa_Copy = utility.FileUpload("UploadFile", entities.Owner_Visa_Copy_File, webHostEnvironment);
             }
-            if (entities.Additional_Certificates_File != null)
+            //if (entities.Additional_Certificates_File != null)
+            //{
+            //    entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
+            //}
+            List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
+            foreach (var item in entities.Additional_Certificates_FileUpload)
             {
-                entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
+                AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
+
+                if (item.Additional_Certificate_File != null)
+                {
+                    Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
+                    Jsondataobj.Additional_Certificate_Title = item.Additional_Certificate_Title;
+                    Jsondataobj.Additional_Certificate_ExpiryDate = item.Additional_Certificate_ExpiryDate;
+                }
+
+                Jsondata.Add(Jsondataobj);
+
             }
+
+            entities.Additional_Certificates = JsonConvert.SerializeObject(Jsondata);
+            entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Create(data);
-           
+
         }
 
         public async Task<int> DeleteCompany(string id)
@@ -101,8 +120,8 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public async Task<int> UpdateCompany(CompanyModel entities)
         {
-            entities.Id= _Iencryption.DecryptID(entities.Id);
-            if (entities.Tradelicense_Copy_File!=null)
+            entities.Id = _Iencryption.DecryptID(entities.Id);
+            if (entities.Tradelicense_Copy_File != null)
             {
                 entities.Tradelicense_Copy = utility.FileUpload("UploadFile", entities.Tradelicense_Copy_File, webHostEnvironment);
             }
@@ -110,7 +129,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Tradelicense_Copy = entities.Tradelicense_Copy;
             }
-            if ( entities.TRN_Certificate_File != null)
+            if (entities.TRN_Certificate_File != null)
             {
                 entities.TRN_Certificate = utility.FileUpload("UploadFile", entities.TRN_Certificate_File, webHostEnvironment);
             }
@@ -134,15 +153,26 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Owner_Visa_Copy = entities.Owner_Visa_Copy;
             }
-            if (entities.Additional_Certificates_File != null)
+            List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
+            foreach (var item in entities.Additional_Certificates_FileUpload)
             {
-                entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
+                AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
+
+                if (item.Additional_Certificate_File != null)
+                {
+                    Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
+                    Jsondataobj.Additional_Certificate_Title = item.Additional_Certificate_Title;
+                    Jsondataobj.Additional_Certificate_ExpiryDate = item.Additional_Certificate_ExpiryDate;
+                }
+                else
+                {
+                    entities.Additional_Certificates = entities.Additional_Certificates;
+                }
+                Jsondata.Add(Jsondataobj);
+
             }
-            else
-            {
-                entities.Additional_Certificates = entities.Additional_Certificates;
-            }
-            var data= _mapper.Map<CompanyEntities>(entities);
+            entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
+            var data = _mapper.Map<CompanyEntities>(entities);
             return await _CompaniesDAL.Update(data);
 
         }

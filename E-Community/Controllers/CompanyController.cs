@@ -28,11 +28,11 @@ namespace E_Community.Controllers
         //private IWebHostEnvironment webHostEnvironment;
         public CompanyController(IWebHostEnvironment host, IMapper mapper)
         {
-                //webHostEnvironment = host;
-               _companiesBAL = new CompaniesBAL(host, mapper);
+            //webHostEnvironment = host;
+            _companiesBAL = new CompaniesBAL(host, mapper);
         }
         // GET: api/<CompanyController>
-        [Authorize(Roles= "Zylin Admin")]
+        [Authorize(Roles = "Zylin Admin")]
         [HttpGet, Route("GetAll")]
         public async Task<IActionResult> GetAll()
         {
@@ -73,7 +73,7 @@ namespace E_Community.Controllers
                 var res = _companiesBAL.GetCompanyById(id);
                 if (res != null)
                 {
-                   return Ok(await Task.FromResult(res));
+                    return Ok(await Task.FromResult(res));
                 }
                 else
                 {
@@ -95,17 +95,17 @@ namespace E_Community.Controllers
             int i = 0;
             if (ModelState.IsValid)
             {
-                if(entities!=null)
+                if (entities != null)
                 {
-                    i =await _companiesBAL.CreateCompany(entities);
+                    i = await _companiesBAL.CreateCompany(entities);
                 }
-                 
+
             }
             else
             {
                 return BadRequest();
             }
-            if (i == 0)
+            if (i > 0)
             {
                 return Ok(new { Code = 200, Message = "Registation Successfully", });
             }
@@ -129,20 +129,21 @@ namespace E_Community.Controllers
                 {
                     return Ok(new { Code = 204, Message = "Data Not Found", });
                 }
-            }else
+            }
+            else
             {
                 return BadRequest();
             }
         }
 
         [HttpPut, Route("UpdateCompany")]
-        public IActionResult Update([FromForm]CompanyModel entites)
+        public IActionResult Update([FromForm] CompanyModel entites)
         {
 
             if (ModelState.IsValid)
             {
                 var res = _companiesBAL.UpdateCompany(entites);
-                if (res.Result==0)
+                if (res.Result > 0)
                 {
                     return Ok(new { Code = 200, Message = "Data Update Successfully ", });
                 }
@@ -156,5 +157,6 @@ namespace E_Community.Controllers
                 return BadRequest();
             }
         }
+       
     }
 }
