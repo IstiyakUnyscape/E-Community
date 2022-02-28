@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,7 +92,6 @@ namespace E_Community.Controllers
         [HttpPost, Route("SaveCompany")]
         public async Task<IActionResult> Post([FromForm] CompanyModel entities)
         {
-
             int i = 0;
             if (ModelState.IsValid)
             {

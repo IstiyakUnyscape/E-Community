@@ -122,6 +122,7 @@ namespace CustomModel
         public int StatusTypeDetailID { get; set; }
         public DateTime? ApprovedDate { get; set; }
         public string Remarks { get; set; }
+        public string TenantTypeId { get; set; }
     }
     public class FileUploadModel
     {
