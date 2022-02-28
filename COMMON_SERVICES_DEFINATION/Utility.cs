@@ -10,6 +10,7 @@ using System.Data;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using ClosedXML.Excel;
+using CustomModel;
 
 namespace COMMON_SERVICES_DEFINATION
 {
@@ -137,6 +138,37 @@ namespace COMMON_SERVICES_DEFINATION
                 wb.SaveAs(Path);
             }
             return Path;
+        }
+
+        /// <summary>
+        /// This Method is Created to Bind 
+        /// List<Additional_CertificatesFiles>
+        /// List<Additional_Certificate_ExpiryDate>
+        /// List<Additional_Certificate_Title> To 
+        /// List<AddtionalFilesDynamic>
+        /// </summary>
+        public List<AddtionalFilesDynamic> GetListModel(List<IFormFile> Additional_CertificatesFiles, 
+            List<string> Additional_Certificate_Title, List<string> Additional_Certificate_ExpiryDate)
+        {
+            //if(Additional_CertificatesFiles.Count().Equals(Additional_Certificate_Title.Count()).Equals(Additional_Certificate_ExpiryDate.Count()))
+            //{
+                List<AddtionalFilesDynamic> list = new List<AddtionalFilesDynamic>();
+                int i = 0;
+                foreach (IFormFile Additional_Certificate in Additional_CertificatesFiles)
+                {
+                    AddtionalFilesDynamic afd = new AddtionalFilesDynamic();
+                    afd.Additional_Certificate_ExpiryDate =Convert.ToDateTime(Additional_Certificate_ExpiryDate[i]);
+                    afd.Additional_Certificate_Title = Additional_Certificate_Title[i];
+                    afd.Additional_CertificatesFiles = Additional_CertificatesFiles[i];
+                    list.Add(afd);
+                i++;
+                }
+                return list;
+            //}
+            //else
+            //{
+            //    throw (new Exception("Invalid Listed Parameters are passed. Number of elements in each list must be same."));
+            //}
         }
     }
 }

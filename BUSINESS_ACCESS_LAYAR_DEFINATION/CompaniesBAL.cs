@@ -62,30 +62,30 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             //    entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
             //}
             List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
-            AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
 
-            foreach (var file in entities.Additional_CertificatesFiles)
+            List<AddtionalFilesDynamic> addtionalFilesDynamics = utility.GetListModel(entities.Additional_CertificatesFiles,
+
+entities.Additional_Certificate_Title, entities.Additional_Certificate_ExpiryDate
+                );
+
+
+            foreach (var additionObj  in addtionalFilesDynamics)
             {
-               
+            AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
+                var file = additionObj.Additional_CertificatesFiles;
                 if (file != null)
                 {
                     Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", file, webHostEnvironment);
                    
                 }
+
+                Jsondataobj.Additional_Certificate_ExpiryDate = additionObj.Additional_Certificate_ExpiryDate;
+                Jsondataobj.Additional_Certificate_Title = additionObj.Additional_Certificate_Title;
                
                 Jsondata.Add(Jsondataobj);
 
             }
-            foreach (var title in entities.Additional_Certificate_Title)
-            {
-                Jsondataobj.Additional_Certificate_Title = title;
-                Jsondata.Add(Jsondataobj);
-            }
-            foreach (var ExpiryDate in entities.Additional_Certificate_ExpiryDate)
-            {
-                Jsondataobj.Additional_Certificate_ExpiryDate = ExpiryDate;
-                Jsondata.Add(Jsondataobj);
-            }
+            
             entities.Additional_Certificates = JsonConvert.SerializeObject(Jsondata);
             entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<CompanyEntities>(entities);
