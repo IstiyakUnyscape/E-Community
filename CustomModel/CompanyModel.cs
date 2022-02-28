@@ -105,11 +105,13 @@ namespace CustomModel
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]
         [Display(Name = "Additional Certificates")]
-        //public IFormFile Additional_Certificates_File { get; set; }
-        //public string Additional_Certificates { get; set; }
-        //public List<IFormFile> Additional_CertificatesFiles { get; set; }
-        public List<FileUploadModel> Additional_Certificates_FileUpload { get; set; }
+        public List<IFormFile> Additional_CertificatesFiles { get; set; }
         public string Additional_Certificates { get; set; }
+        [Display(Name = "Additional Certificate Title")]
+        public List<string> Additional_Certificate_Title { get; set; }
+        [Display(Name = "Additional Certificate Expiry Date")]
+        [DataType(DataType.Date)]
+        public List<DateTime> Additional_Certificate_ExpiryDate { get; set; }
         //public DateTime Created_at { get; set; }
         public string CreatedBy { get; set; }
         //public DateTime? Modified_at { get; set; }
@@ -122,6 +124,7 @@ namespace CustomModel
         public int StatusTypeDetailID { get; set; }
         public DateTime? ApprovedDate { get; set; }
         public string Remarks { get; set; }
+        public string TenantTypeId { get; set; }
         [DataType(DataType.Upload)]
         [MaxFileSize(1 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".png", ".jpg", ".jpeg" })]
