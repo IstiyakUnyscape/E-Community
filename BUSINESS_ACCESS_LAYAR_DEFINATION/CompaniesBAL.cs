@@ -62,21 +62,30 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             //    entities.Additional_Certificates = utility.FileUpload("UploadFile", entities.Additional_Certificates_File, webHostEnvironment);
             //}
             List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
-            foreach (var item in entities.Additional_Certificates_FileUpload)
+            AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
+
+            foreach (var file in entities.Additional_CertificatesFiles)
             {
-                AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
-
-                if (item.Additional_Certificate_File != null)
+               
+                if (file != null)
                 {
-                    Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
-                    Jsondataobj.Additional_Certificate_Title = item.Additional_Certificate_Title;
-                    Jsondataobj.Additional_Certificate_ExpiryDate = item.Additional_Certificate_ExpiryDate;
+                    Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", file, webHostEnvironment);
+                   
                 }
-
+               
                 Jsondata.Add(Jsondataobj);
 
             }
-
+            foreach (var title in entities.Additional_Certificate_Title)
+            {
+                Jsondataobj.Additional_Certificate_Title = title;
+                Jsondata.Add(Jsondataobj);
+            }
+            foreach (var ExpiryDate in entities.Additional_Certificate_ExpiryDate)
+            {
+                Jsondataobj.Additional_Certificate_ExpiryDate = ExpiryDate;
+                Jsondata.Add(Jsondataobj);
+            }
             entities.Additional_Certificates = JsonConvert.SerializeObject(Jsondata);
             entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<CompanyEntities>(entities);
@@ -158,15 +167,15 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                 entities.Owner_Visa_Copy = entities.Owner_Visa_Copy;
             }
             List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
-            foreach (var item in entities.Additional_Certificates_FileUpload)
+            foreach (var item in entities.Additional_CertificatesFiles)
             {
                 AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
 
-                if (item.Additional_Certificate_File != null)
+                if (item != null)
                 {
-                    Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", item.Additional_Certificate_File, webHostEnvironment);
-                    Jsondataobj.Additional_Certificate_Title = item.Additional_Certificate_Title;
-                    Jsondataobj.Additional_Certificate_ExpiryDate = item.Additional_Certificate_ExpiryDate;
+                    Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", item, webHostEnvironment);
+                    //Jsondataobj.Additional_Certificate_Title = item.Additional_Certificate_Title;
+                    //Jsondataobj.Additional_Certificate_ExpiryDate = item.Additional_Certificate_ExpiryDate;
                 }
                 else
                 {

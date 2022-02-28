@@ -9,7 +9,7 @@ namespace BUSINESS_ENTITIES
     public class StaffEntities
     {
         public string Id { get; set; }
-        public int Company_id { get; set; }
+        public int Tenant_Id { get; set; }
         public string F_Name { get; set; }
         public string M_Name { get; set; }
         public string L_Name { get; set; }
