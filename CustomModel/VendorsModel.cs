@@ -169,5 +169,11 @@ namespace CustomModel
         public int StatusTypeDetailID { get; set; }
         public DateTime? ApprovedDate { get; set; }
         public string Remarks { get; set; }
+        [DataType(DataType.Upload)]
+        [MaxFileSize(1 * 1024 * 1024)]
+        [AllowedExtensions(new string[] { ".png", ".jpg", ".jpeg" })]
+        [Display(Name = "Profile Image")]
+        public IFormFile Profile_Image_File { get; set; }
+        public string Profile_Image { get; set; }
     }
 }

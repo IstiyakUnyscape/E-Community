@@ -35,5 +35,6 @@ namespace BUSINESS_ENTITIES
         public int Country_Code { get; set; }
         public int Std_Code { get; set; }
         public int TenantTypeId { get; set; }
+        public string Profile_Image { get; set; }
     }
 }

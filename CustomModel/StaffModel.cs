@@ -68,5 +68,11 @@ namespace CustomModel
         public int Country_Code { get; set; }
         public int Std_Code { get; set; }
         public int TenantTypeId { get; set; }
+        [DataType(DataType.Upload)]
+        [MaxFileSize(1 * 1024 * 1024)]
+        [AllowedExtensions(new string[] { ".png", ".jpg", ".jpeg" })]
+        [Display(Name = "Profile Image")]
+        public IFormFile Profile_Image_File { get; set; }
+        public string Profile_Image { get; set; }
     }
 }
