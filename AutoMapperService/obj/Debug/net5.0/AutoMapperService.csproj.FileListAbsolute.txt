@@ -1,0 +1,17 @@
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\bin\Debug\net5.0\AutoMapperService.deps.json
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\bin\Debug\net5.0\AutoMapperService.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\bin\Debug\net5.0\ref\AutoMapperService.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\bin\Debug\net5.0\AutoMapperService.pdb
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\bin\Debug\net5.0\BUSINESS_ENTITIES.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\bin\Debug\net5.0\CustomModel.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\bin\Debug\net5.0\BUSINESS_ENTITIES.pdb
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\bin\Debug\net5.0\CustomModel.pdb
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\AutoMapperService.csproj.AssemblyReference.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\AutoMapperService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\AutoMapperService.AssemblyInfoInputs.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\AutoMapperService.AssemblyInfo.cs
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\AutoMapperService.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\AutoMapperService.csproj.CopyComplete
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\AutoMapperService.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\ref\AutoMapperService.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\AutoMapperService\obj\Debug\net5.0\AutoMapperService.pdb

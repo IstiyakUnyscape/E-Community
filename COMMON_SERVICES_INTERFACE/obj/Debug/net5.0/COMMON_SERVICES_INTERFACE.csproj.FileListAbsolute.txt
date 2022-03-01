@@ -1,0 +1,15 @@
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\bin\Debug\net5.0\COMMON_SERVICES_INTERFACE.deps.json
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\bin\Debug\net5.0\COMMON_SERVICES_INTERFACE.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\bin\Debug\net5.0\ref\COMMON_SERVICES_INTERFACE.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\bin\Debug\net5.0\COMMON_SERVICES_INTERFACE.pdb
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\bin\Debug\net5.0\BUSINESS_ENTITIES.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\bin\Debug\net5.0\BUSINESS_ENTITIES.pdb
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\COMMON_SERVICES_INTERFACE.csproj.AssemblyReference.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\COMMON_SERVICES_INTERFACE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\COMMON_SERVICES_INTERFACE.AssemblyInfoInputs.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\COMMON_SERVICES_INTERFACE.AssemblyInfo.cs
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\COMMON_SERVICES_INTERFACE.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\COMMON_SERVICES_INTERFACE.csproj.CopyComplete
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\COMMON_SERVICES_INTERFACE.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\ref\COMMON_SERVICES_INTERFACE.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\COMMON_SERVICES_INTERFACE\obj\Debug\net5.0\COMMON_SERVICES_INTERFACE.pdb

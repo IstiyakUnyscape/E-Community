@@ -1,0 +1,11 @@
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\bin\Debug\net5.0\CustomModel.deps.json
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\bin\Debug\net5.0\CustomModel.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\bin\Debug\net5.0\ref\CustomModel.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\bin\Debug\net5.0\CustomModel.pdb
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\obj\Debug\net5.0\CustomModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\obj\Debug\net5.0\CustomModel.AssemblyInfoInputs.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\obj\Debug\net5.0\CustomModel.AssemblyInfo.cs
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\obj\Debug\net5.0\CustomModel.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\obj\Debug\net5.0\CustomModel.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\obj\Debug\net5.0\ref\CustomModel.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\CustomModel\obj\Debug\net5.0\CustomModel.pdb

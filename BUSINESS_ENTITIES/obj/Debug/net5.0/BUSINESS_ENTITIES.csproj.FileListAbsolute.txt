@@ -1,0 +1,11 @@
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\bin\Debug\net5.0\BUSINESS_ENTITIES.deps.json
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\bin\Debug\net5.0\BUSINESS_ENTITIES.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\bin\Debug\net5.0\ref\BUSINESS_ENTITIES.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\bin\Debug\net5.0\BUSINESS_ENTITIES.pdb
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\obj\Debug\net5.0\BUSINESS_ENTITIES.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\obj\Debug\net5.0\BUSINESS_ENTITIES.AssemblyInfoInputs.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\obj\Debug\net5.0\BUSINESS_ENTITIES.AssemblyInfo.cs
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\obj\Debug\net5.0\BUSINESS_ENTITIES.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\obj\Debug\net5.0\BUSINESS_ENTITIES.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\obj\Debug\net5.0\ref\BUSINESS_ENTITIES.dll
+C:\Users\Admin\Source\Repos\IstiyakUnyscape\E-Community\BUSINESS_ENTITIES\obj\Debug\net5.0\BUSINESS_ENTITIES.pdb
