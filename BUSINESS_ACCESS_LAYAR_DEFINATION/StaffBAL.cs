@@ -38,6 +38,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.ID_upload_Picture = utility.FileUpload("UploadFile", entities.ID_upload_Picture_File, webHostEnvironment);
             }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
             entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<StaffEntities>(entities);
             var res = await _StaffDAL.Create(data);
@@ -98,6 +102,15 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.ID_upload_Picture = entities.ID_upload_Picture;
             }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
+            else
+            {
+                entities.Profile_Image = entities.Profile_Image;
+            }
+            entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data = _mapper.Map<StaffEntities>(entities);
 

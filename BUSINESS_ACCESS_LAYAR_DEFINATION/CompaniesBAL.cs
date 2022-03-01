@@ -166,6 +166,14 @@ entities.Additional_Certificate_Title, entities.Additional_Certificate_ExpiryDat
             {
                 entities.Owner_Visa_Copy = entities.Owner_Visa_Copy;
             }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
+            else
+            {
+                entities.Profile_Image = entities.Profile_Image;
+            }
             List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
             foreach (var item in entities.Additional_CertificatesFiles)
             {

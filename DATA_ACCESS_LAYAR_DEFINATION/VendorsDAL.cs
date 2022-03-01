@@ -67,6 +67,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Isdeleted", false);
             dbparams.Add("Country_Code", entity.Country_Code);
             dbparams.Add("Std_Code", entity.Std_Code);
+            dbparams.Add("Profile_Image", entity.Profile_Image);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertVendors", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
