@@ -65,6 +65,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Certificate = utility.FileUpload("UploadFile", entities.Additional_Certificate_File, webHostEnvironment);
             }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
             entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<VendorsEntities>(entities);
             return await _VendorsDAL.Create(data);
@@ -175,6 +179,15 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Certificate = entities.Additional_Certificate;
             }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
+            else
+            {
+                entities.Profile_Image = entities.Profile_Image;
+            }
+
             entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data = _mapper.Map<VendorsEntities>(entities);
             return await _VendorsDAL.Update(data);

@@ -168,7 +168,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Remarks", entity.Remarks);
             dbparams.Add("IsShowAdmin", entity.IsShowAdmin);
             dbparams.Add("Profile_Image", entity.Profile_Image);
-            dbparams.Add("Profile_Image", entity.TenantTypeId);
+            //dbparams.Add("TenantTypeId", entity.TenantTypeId);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
