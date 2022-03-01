@@ -109,6 +109,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Profile_Image = entities.Profile_Image;
             }
+            entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy); 
             entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data = _mapper.Map<StaffEntities>(entities);
 
