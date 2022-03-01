@@ -110,8 +110,8 @@ namespace CustomModel
         [Display(Name = "Additional Certificate Title")]
         public List<string> Additional_Certificate_Title { get; set; }
         [Display(Name = "Additional Certificate Expiry Date")]
-        [DataType(DataType.Date)]
-        public List<DateTime> Additional_Certificate_ExpiryDate { get; set; }
+      //  [DataType(DataType.Text)] //Changed to Text because Swagger was not detecting datetime to list 
+        public List<string> Additional_Certificate_ExpiryDate { get; set; }
         //public DateTime Created_at { get; set; }
         public string CreatedBy { get; set; }
         //public DateTime? Modified_at { get; set; }
@@ -148,6 +148,22 @@ namespace CustomModel
         public string Additional_Certificate_Title { get; set; }
         public DateTime Additional_Certificate_ExpiryDate { get; set; }
     }
+    /// <summary>
+    /// This Model is Created to Bind 
+    /// List<Additional_CertificatesFiles>
+    /// List<Additional_Certificate_ExpiryDate>
+    /// List<Additional_Certificate_Title> To 
+    /// List<AddtionalFilesDynamic>
+    /// </summary>
+    public class AddtionalFilesDynamic
+    {
+        public string Additional_Certificate_Title { get; set; }
+        public DateTime Additional_Certificate_ExpiryDate { get; set; }
+        public IFormFile Additional_CertificatesFiles { get; set; }
+    }
+
+
+
     public class MaxFileSizeAttribute : ValidationAttribute
     {
         private readonly int _maxFileSize;
