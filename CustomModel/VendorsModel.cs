@@ -151,7 +151,7 @@ namespace CustomModel
         [Display(Name = "Additional Certificate Title")]
         public List<string> Additional_Certificate_Title { get; set; }
         [Display(Name = "Additional Certificate Expiry Date")]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         public List<string> Additional_Certificate_ExpiryDate { get; set; }
         [Required(ErrorMessage = "Please select a Service Type.")]
         [Display(Name = "Service Type")]
