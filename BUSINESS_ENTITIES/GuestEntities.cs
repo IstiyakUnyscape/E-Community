@@ -19,7 +19,7 @@ namespace BUSINESS_ENTITIES
         public int Floor { get; set; }
         public int Unit { get; set; }
         public DateTime Date_of_visit { get; set; }
-        public TimeSpan Time_of_visit { get; set; }
+        public DateTime Time_of_visit { get; set; }
         public string Purpose_of_the_visit { get; set; }
         public bool Parking_required { get; set; }
         public string Car_model_details { get; set; }
@@ -46,5 +46,6 @@ namespace BUSINESS_ENTITIES
         public DateTime Modified_at { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
+        public string Profile_Image { get; set; }
     }
 }

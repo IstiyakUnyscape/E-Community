@@ -60,6 +60,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Created_at", DateTime.Now);
             dbparams.Add("Isactive", true);
             dbparams.Add("Isdeleted", false);
+            dbparams.Add("Profile_Image", entity.Profile_Image);
             //dbparams.Add("retVal", DbType.Int32, direction: ParameterDirection.Output);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertGuest", dbparams, commandType: CommandType.StoredProcedure));
             return result;
@@ -174,6 +175,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Staff_ID_Card_image4", entity.Staff_ID_Card_image4);
             dbparams.Add("Modified_at", DateTime.Now);
             dbparams.Add("Isactive", true);
+            dbparams.Add("Profile_Image", entity.Profile_Image);
             //dbparams.Add("retVal", DbType.Int32, direction: ParameterDirection.Output);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateGuest", dbparams, commandType: CommandType.StoredProcedure));
             return result;
