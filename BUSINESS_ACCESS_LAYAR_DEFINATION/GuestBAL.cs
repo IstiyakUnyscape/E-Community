@@ -94,6 +94,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Staff_ID_Card_image4 = utility.FileUpload("UploadFile", entities.Staff_ID_Card_image4_File, webHostEnvironment);
             }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
             var data = _mapper.Map<GuestEntities>(entities);
             return await _GuestDAL.Create(data);
         }
@@ -163,6 +167,14 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             else
             {
                 entities.Staff_ID_Card_image4= entities.Staff_ID_Card_image4;
+            }
+            if (entities.Profile_Image_File != null)
+            {
+                entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
+            }
+            else
+            {
+                entities.Profile_Image = entities.Profile_Image;
             }
             var data = _mapper.Map<GuestEntities>(entities);
             return await _GuestDAL.Update(data);

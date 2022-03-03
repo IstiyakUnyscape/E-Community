@@ -45,7 +45,7 @@ namespace CustomModel
         [Required]
         [Display(Name = "Time of visit")]
         [DataType(DataType.Time)]
-        public TimeSpan Time_of_visit { get; set; }
+        public DateTime Time_of_visit { get; set; }
         [Display(Name = "Purpose of the visit")]
         public string Purpose_of_the_visit { get; set; }
         [Display(Name = "Parking Required")]
@@ -118,6 +118,13 @@ namespace CustomModel
         public IFormFile Staff_ID_Card_image4_File { get; set; }
         [Display(Name = "Staff ID Card Image4")]
         public string Staff_ID_Card_image4 { get; set; }
-        
+
+        [DataType(DataType.Upload)]
+        [MaxFileSize(1 * 1024 * 1024)]
+        [AllowedExtensions(new string[] { ".png", ".jpg", ".jpeg" })]
+        [Display(Name = "Profile Image")]
+        public IFormFile Profile_Image_File { get; set; }
+        public string Profile_Image { get; set; }
+
     }
 }
