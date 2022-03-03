@@ -124,7 +124,7 @@ namespace CustomModel
         public int StatusTypeDetailID { get; set; }
         public DateTime? ApprovedDate { get; set; }
         public string Remarks { get; set; }
-        public string TenantTypeId { get; set; }
+        //public string TenantTypeId { get; set; }
         [DataType(DataType.Upload)]
         [MaxFileSize(1 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".png", ".jpg", ".jpeg" })]
@@ -155,11 +155,11 @@ namespace CustomModel
     /// List<Additional_Certificate_Title> To 
     /// List<AddtionalFilesDynamic>
     /// </summary>
-    public class AddtionalFilesDynamic
+    public class FilesDynamic
     {
-        public string Additional_Certificate_Title { get; set; }
-        public DateTime Additional_Certificate_ExpiryDate { get; set; }
-        public IFormFile Additional_CertificatesFiles { get; set; }
+        public string Title { get; set; }
+        public DateTime ExpiryDate { get; set; }
+        public IFormFile Files { get; set; }
     }
 
 

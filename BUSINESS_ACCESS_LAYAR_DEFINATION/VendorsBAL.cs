@@ -7,6 +7,7 @@ using CustomModel;
 using DATA_ACCESS_LAYAR_DEFINATION;
 using DATA_ACCESS_LAYAR_INTERFACE;
 using Microsoft.AspNetCore.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,9 +62,26 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Insurance = utility.FileUpload("UploadFile", entities.Additional_Insurance_File, webHostEnvironment);
             }
-            if (entities.Additional_Certificate_File.Length > 0)
+            if (entities.Additional_Certificate_Files.Count > 0)
             {
-                entities.Additional_Certificate = utility.FileUpload("UploadFile", entities.Additional_Certificate_File, webHostEnvironment);
+                List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
+                List<FilesDynamic> addtionalFilesDynamics = utility.GetListModel(entities.Additional_Certificate_Files, entities.Additional_Certificate_Title, entities.Additional_Certificate_ExpiryDate);
+                foreach (var additionObj in addtionalFilesDynamics)
+                {
+                    AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
+                    var file = additionObj.Files;
+                    if (file != null)
+                    {
+                        Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", file, webHostEnvironment);
+                    }
+
+                    Jsondataobj.Additional_Certificate_ExpiryDate = additionObj.ExpiryDate;
+                    Jsondataobj.Additional_Certificate_Title = additionObj.Title;
+
+                    Jsondata.Add(Jsondataobj);
+
+                }
+                entities.Additional_Certificate = JsonConvert.SerializeObject(Jsondata);
             }
             if (entities.Profile_Image_File != null)
             {
@@ -171,14 +189,28 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Additional_Insurance = entities.Additional_Insurance;
             }
-            if (entities.Additional_Certificate_File != null)
+            if (entities.Additional_Certificate_Files.Count > 0)
             {
-                entities.Additional_Certificate = utility.FileUpload("UploadFile", entities.Additional_Certificate_File, webHostEnvironment);
+                List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
+                List<FilesDynamic> addtionalFilesDynamics = utility.GetListModel(entities.Additional_Certificate_Files, entities.Additional_Certificate_Title, entities.Additional_Certificate_ExpiryDate);
+                foreach (var additionObj in addtionalFilesDynamics)
+                {
+                    AdditionalCertificateJson Jsondataobj = new AdditionalCertificateJson();
+                    var file = additionObj.Files;
+                    if (file != null)
+                    {
+                        Jsondataobj.Additional_Certificates = utility.FileUpload("UploadFile", file, webHostEnvironment);
+                    }
+
+                    Jsondataobj.Additional_Certificate_ExpiryDate = additionObj.ExpiryDate;
+                    Jsondataobj.Additional_Certificate_Title = additionObj.Title;
+
+                    Jsondata.Add(Jsondataobj);
+
+                }
+                entities.Additional_Certificate = JsonConvert.SerializeObject(Jsondata);
             }
-            else
-            {
-                entities.Additional_Certificate = entities.Additional_Certificate;
-            }
+           
             if (entities.Profile_Image_File != null)
             {
                 entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);

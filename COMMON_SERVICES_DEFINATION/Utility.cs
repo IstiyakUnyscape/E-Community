@@ -147,19 +147,18 @@ namespace COMMON_SERVICES_DEFINATION
         /// List<Additional_Certificate_Title> To 
         /// List<AddtionalFilesDynamic>
         /// </summary>
-        public List<AddtionalFilesDynamic> GetListModel(List<IFormFile> Additional_CertificatesFiles, 
-            List<string> Additional_Certificate_Title, List<string> Additional_Certificate_ExpiryDate)
+        public List<FilesDynamic> GetListModel(List<IFormFile> Files, List<string> Title, List<string> ExpiryDate)
         {
             //if(Additional_CertificatesFiles.Count().Equals(Additional_Certificate_Title.Count()).Equals(Additional_Certificate_ExpiryDate.Count()))
             //{
-                List<AddtionalFilesDynamic> list = new List<AddtionalFilesDynamic>();
+                List<FilesDynamic> list = new List<FilesDynamic>();
                 int i = 0;
-                foreach (IFormFile Additional_Certificate in Additional_CertificatesFiles)
+                foreach (IFormFile Additional_Certificate in Files)
                 {
-                    AddtionalFilesDynamic afd = new AddtionalFilesDynamic();
-                    afd.Additional_Certificate_ExpiryDate =Convert.ToDateTime(Additional_Certificate_ExpiryDate[i]);
-                    afd.Additional_Certificate_Title = Additional_Certificate_Title[i];
-                    afd.Additional_CertificatesFiles = Additional_CertificatesFiles[i];
+                    FilesDynamic afd = new FilesDynamic();
+                    afd.ExpiryDate =Convert.ToDateTime(ExpiryDate[i]);
+                    afd.Title = Title[i];
+                    afd.Files = Files[i];
                     list.Add(afd);
                 i++;
                 }

@@ -58,8 +58,8 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Additional_Insurance", entity.Additional_Insurance);
             dbparams.Add("Additional_Insurance_ExpiryDate", entity.Additional_Insurance_ExpiryDate);
             dbparams.Add("Additional_Certificate", entity.Additional_Certificate);
-            dbparams.Add("Additional_Certificate_Title", entity.Additional_Certificate_Title);
-            dbparams.Add("Additional_Certificate_ExpiryDate", entity.Additional_Certificate_ExpiryDate);
+            //dbparams.Add("Additional_Certificate_Title", entity.Additional_Certificate_Title);
+            //dbparams.Add("Additional_Certificate_ExpiryDate", entity.Additional_Certificate_ExpiryDate);
             dbparams.Add("Service_Type", entity.Service_Type);
             dbparams.Add("Created_at", DateTime.Now);
             dbparams.Add("CreatedBy", entity.CreatedBy);
@@ -180,8 +180,8 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Additional_Insurance", entity.Additional_Insurance);
             dbparams.Add("Additional_Insurance_ExpiryDate", entity.Additional_Insurance_ExpiryDate);
             dbparams.Add("Additional_Certificate", entity.Additional_Certificate);
-            dbparams.Add("Additional_Certificate_Title", entity.Additional_Certificate_Title);
-            dbparams.Add("Additional_Certificate_ExpiryDate", entity.Additional_Certificate_ExpiryDate);
+            //dbparams.Add("Additional_Certificate_Title", entity.Additional_Certificate_Title);
+            //dbparams.Add("Additional_Certificate_ExpiryDate", entity.Additional_Certificate_ExpiryDate);
             dbparams.Add("Service_Type", entity.Service_Type);
             dbparams.Add("Modified_at", DateTime.Now);
             dbparams.Add("ModifiedBy", entity.ModifiedBy);
