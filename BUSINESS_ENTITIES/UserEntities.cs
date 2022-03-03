@@ -19,5 +19,7 @@ namespace BUSINESS_ENTITIES
         public string Role { get; set; }
         public bool IsPasswordCreated { get; set; }
         public int TenantID { get; set; }
+        public int TenantTypeId { get; set; }
+        public int SelfTenantTypeId { get; set; }
     }
 }

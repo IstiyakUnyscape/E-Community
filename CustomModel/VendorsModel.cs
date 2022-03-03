@@ -141,18 +141,18 @@ namespace CustomModel
         [Display(Name = "Additional Insurance ExpiryDate")]
         [DataType(DataType.Date)]
         public DateTime Additional_Insurance_ExpiryDate { get; set; }
-        //[Required(ErrorMessage = "Please select a file.")]
+        [Required(ErrorMessage = "Please select a file.")]
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]
         [Display(Name = "Additional Certificate")]
-        public IFormFile Additional_Certificate_File { get; set; }
+        public List<IFormFile> Additional_Certificate_Files { get; set; }
         public string Additional_Certificate { get; set; }
         [Display(Name = "Additional Certificate Title")]
-        public string Additional_Certificate_Title { get; set; }
+        public List<string> Additional_Certificate_Title { get; set; }
         [Display(Name = "Additional Certificate Expiry Date")]
         [DataType(DataType.Date)]
-        public DateTime Additional_Certificate_ExpiryDate { get; set; }
+        public List<string> Additional_Certificate_ExpiryDate { get; set; }
         [Required(ErrorMessage = "Please select a Service Type.")]
         [Display(Name = "Service Type")]
         public int Service_Type { get; set; }
