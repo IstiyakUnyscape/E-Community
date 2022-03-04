@@ -39,6 +39,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Tradelicense_Copy = utility.FileUpload("UploadFile", entities.Tradelicense_Copy_File, webHostEnvironment);
             }
+            if (entities.Insurance_File != null)
+            {
+                entities.Insurance = utility.FileUpload("UploadFile", entities.Insurance_File, webHostEnvironment);
+            }
             if (entities.TRN_Certificate_File != null)
             {
                 entities.TRN_Certificate = utility.FileUpload("UploadFile", entities.TRN_Certificate_File, webHostEnvironment);
@@ -133,6 +137,14 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             else
             {
                 entities.Tradelicense_Copy = entities.Tradelicense_Copy;
+            }
+            if (entities.Insurance_File != null)
+            {
+                entities.Insurance = utility.FileUpload("UploadFile", entities.Insurance_File, webHostEnvironment);
+            }
+            else
+            {
+                entities.Insurance = entities.Insurance;
             }
             if (entities.TRN_Certificate_File != null)
             {

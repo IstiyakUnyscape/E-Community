@@ -71,8 +71,8 @@ namespace CustomModel
         public IFormFile Tradelicense_Copy_File { get; set; }
         public string Tradelicense_Copy { get; set; }
         [Required]
-        [Display(Name = "Tax Return Number")]
-        public long Tax_Return_Number { get; set; }
+        [Display(Name = "Tax Registration Number")]
+        public string Tax_Registration_Number { get; set; }
         // [Required(ErrorMessage = "Please select a file.")]
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
@@ -131,6 +131,16 @@ namespace CustomModel
         [Display(Name = "Profile Image")]
         public IFormFile Profile_Image_File { get; set; }
         public string Profile_Image { get; set; }
+
+        public string Insurance { get; set; }
+        public IFormFile Insurance_File { get; set; }
+        public string Insurance_Title { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Insurance ExpiryDate")]
+        public DateTime Insurance_ExpiryDate { get; set; }
+
     }
     public class FileUploadModel
     {

@@ -12,6 +12,6 @@ namespace CustomModel
         public string Postal_Code { get; set; }
         public string Company_Email { get; set; }
         public string Trade_License_No { get; set; }
-        public long Tax_Return_Number { get; set; }
+        public string Tax_Registration_Number { get; set; }
     }
 }

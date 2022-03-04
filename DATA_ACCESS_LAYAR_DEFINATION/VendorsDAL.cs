@@ -105,9 +105,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             {
                 result = result.Where(x => x.Trade_License_No.Trim().ToUpper() == search.Trade_License_No.Trim().ToUpper());
             }
-            if (search.Tax_Return_Number > 0)
+            if (!String.IsNullOrEmpty(search.Tax_Registration_Number))
             {
-                result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
+                result = result.Where(x => x.Tax_Return_Number.ToString() == search.@Tax_Registration_Number);
             }
             IOrderedQueryable<VendorsEntities> OrderedQuery = null;
 
@@ -186,12 +186,16 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Modified_at", DateTime.Now);
             dbparams.Add("ModifiedBy", entity.ModifiedBy);
             dbparams.Add("Isactive", true);
+
             dbparams.Add("Country_Code", entity.Country_Code);
             dbparams.Add("Std_Code", entity.Std_Code);
+
             dbparams.Add("StatusTypeDetailID", entity.StatusTypeDetailID);
             dbparams.Add("ApprovedDate", entity.ApprovedDate);
             dbparams.Add("Remarks", entity.Remarks);
             dbparams.Add("IsShowAdmin", entity.IsShowAdmin);
+            dbparams.Add("Profile_Image", entity.Profile_Image);
+
             //dbparams.Add("Isdeleted", entity.Isdeleted);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateVendors", dbparams, commandType: CommandType.StoredProcedure));
             return result;

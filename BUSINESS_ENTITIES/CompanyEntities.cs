@@ -26,7 +26,7 @@ namespace BUSINESS_ENTITIES
         public string Trade_License_No { get; set; }
         public DateTime Tradelicense_Expiry_Date { get; set; }
         public string Tradelicense_Copy { get; set; }
-        public long Tax_Return_Number { get; set; }
+        public string Tax_Registration_Number { get; set; }
         public string TRN_Certificate { get; set; }
         public string Owner_Passport_Copy { get; set; }
         public string Owner_Visa_Copy { get; set; }
@@ -47,5 +47,9 @@ namespace BUSINESS_ENTITIES
         public string Remarks { get; set; }
         //public string TenantTypeId { get; set; }
         public string Profile_Image { get; set; }
+        public string Insurance { get; set; }
+        public string Insurance_Title { get; set; }
+        public DateTime Insurance_ExpiryDate { get; set; }
+
     }
 }

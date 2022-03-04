@@ -41,7 +41,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Trade_License_No", entity.Trade_License_No);
             dbparams.Add("Tradelicense_Expiry_Date", entity.Tradelicense_Expiry_Date);
             dbparams.Add("Tradelicense_Copy", entity.Tradelicense_Copy);
-            dbparams.Add("Tax_Return_Number", entity.Tax_Return_Number);
+            dbparams.Add("Tax_Registration_Number", entity.Tax_Registration_Number);
             dbparams.Add("TRN_Certificate", entity.TRN_Certificate);
             dbparams.Add("Owner_Passport_Copy", entity.Owner_Passport_Copy);
             dbparams.Add("Owner_Visa_Copy", entity.Owner_Visa_Copy);
@@ -56,6 +56,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Std_Code", entity.Std_Code);
             //dbparams.Add("TenantTypeId", entity.TenantTypeId);
             dbparams.Add("Profile_Image", entity.Profile_Image);
+            dbparams.Add("Insurance", entity.Insurance);
+            dbparams.Add("Insurance_Title", entity.Insurance_Title);
+            dbparams.Add("Insurance_ExpiryDate", entity.Insurance_ExpiryDate);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
 
@@ -94,9 +97,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             {
                 result = result.Where(x => x.Trade_License_No.Trim().ToUpper() == search.Trade_License_No.Trim().ToUpper());
             }
-            if (search.Tax_Return_Number > 0)
+            if (!String.IsNullOrEmpty(search.Tax_Registration_Number))
             {
-                result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
+                result = result.Where(x => x.Tax_Registration_Number == search.Tax_Registration_Number);
             }
             IOrderedQueryable<CompanyEntities> OrderedQuery = null;
 
@@ -152,7 +155,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Trade_License_No", entity.Trade_License_No);
             dbparams.Add("Tradelicense_Expiry_Date", entity.Tradelicense_Expiry_Date);
             dbparams.Add("Tradelicense_Copy", entity.Tradelicense_Copy);
-            dbparams.Add("Tax_Return_Number", entity.Tax_Return_Number);
+            dbparams.Add("Tax_Registration_Number", entity.Tax_Registration_Number);
             dbparams.Add("TRN_Certificate", entity.TRN_Certificate);
             dbparams.Add("Owner_Passport_Copy", entity.Owner_Passport_Copy);
             dbparams.Add("Owner_Visa_Copy", entity.Owner_Visa_Copy);
@@ -169,6 +172,10 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Remarks", entity.Remarks);
             dbparams.Add("IsShowAdmin", entity.IsShowAdmin);
             dbparams.Add("Profile_Image", entity.Profile_Image);
+            dbparams.Add("Insurance", entity.Insurance);
+            dbparams.Add("Insurance_Title", entity.Insurance_Title);
+            dbparams.Add("Insurance_ExpiryDate", entity.Insurance_ExpiryDate);
+
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateCompanies", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
