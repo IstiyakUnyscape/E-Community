@@ -155,7 +155,7 @@ namespace CustomModel
         public List<string> Additional_Certificate_ExpiryDate { get; set; }
         [Required(ErrorMessage = "Please select a Service Type.")]
         [Display(Name = "Service Type")]
-        public int Service_Type { get; set; }
+        public string Service_Type { get; set; }
         public string ModifiedBy { get; set; }
         public string CreatedBy { get; set; }
         //public DateTime Created_at { get; set; }

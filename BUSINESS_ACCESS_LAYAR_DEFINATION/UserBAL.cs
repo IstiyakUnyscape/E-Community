@@ -190,5 +190,15 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             }
             return data;
         }
+
+        public IEnumerable<UserModel> GetAllUser()
+        {
+            var data = _UserDAL.GetAll();
+            foreach (var obj in data)
+            {
+                obj.Id = _Iencryption.EncryptID(obj.Id);
+            }
+            return _mapper.Map<IEnumerable<UserModel>>(data.ToArray()); ;
+        }
     }
 }
