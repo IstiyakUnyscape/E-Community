@@ -26,6 +26,21 @@ namespace E_Community.Controllers
         {
             _UserBAL = new UserBAL(mapper, emailCofiguration);
         }
+        [HttpGet, Route("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = _UserBAL.GetAllUser();
+            //var pagedList = new PagedStaticList<CompanyModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
+            return Ok(await Task.FromResult(result));
+            //if (list.Result != null)
+            //{
+            //    return Ok(new { Code = 200, data = list, Message = "Data Access Succesffully ", });
+            //}
+            //else
+            //{
+            //    return Ok(new { Code = 204, data = list, Message = "No Data Found", });
+            //}
+        }
         [HttpPost, Route("UserLogin")]
         public async Task<IActionResult> Login(LoginEntitiies obj)
         {

@@ -45,7 +45,7 @@ namespace BUSINESS_ENTITIES
         public string Additional_Certificate { get; set; }
         //public string Additional_Certificate_Title { get; set; }
         //public DateTime Additional_Certificate_ExpiryDate { get; set; }
-        public int Service_Type { get; set; }
+        public string Service_Type { get; set; }
         public DateTime Created_at { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? Modified_at { get; set; }

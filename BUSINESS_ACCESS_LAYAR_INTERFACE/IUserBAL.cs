@@ -9,6 +9,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
 {
     public interface IUserBAL
     {
+        IEnumerable<UserModel> GetAllUser();
         Task<UserModel> UserLogin(LoginEntitiies obj);
         public Task<string> CreateUser(string obj);
         public Task<bool> VerificatoinLink(string UserId);
