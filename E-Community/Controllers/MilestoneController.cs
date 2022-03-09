@@ -94,7 +94,7 @@ namespace E_Community.Controllers
             if (Id != null)
             {
                 var res = _MilestoneBAL.DeleteMilestone(Id);
-                if (res.Result == 0)
+                if (res.Result > 0)
                 {
                     return Ok(new { Code = 200, Message = "Data Deleted Successfully ", });
                 }
@@ -107,9 +107,8 @@ namespace E_Community.Controllers
             {
                 return BadRequest();
             }
-        }
-
-        [HttpPut, Route("UpdateProject")]
+        }               
+        [HttpPut, Route("UpdateMilestone")]
         public IActionResult Update([FromForm] MilestoneModel entites)
         {
 

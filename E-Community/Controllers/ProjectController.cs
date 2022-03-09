@@ -87,7 +87,7 @@ namespace E_Community.Controllers
             if (Id != null)
             {
                 var res = _ProjectBAL.DeleteProject(Id);
-                if (res.Result == 0)
+                if (res.Result > 0)
                 {
                     return Ok(new { Code = 200, Message = "Data Deleted Successfully ", });
                 }
