@@ -94,5 +94,12 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             var res = _dapper.GetAll<TypeMasterDetailEntities>("sp_TypeMasterDetail", dbparams, commandType: CommandType.StoredProcedure);
             return res;
         }
+
+        public IEnumerable<StaffEntities> GetStaff()
+        {
+            var dbparams = new DynamicParameters();
+            var res = _dapper.GetAll<StaffEntities>("sp_GetStaff", dbparams, commandType: CommandType.StoredProcedure);
+            return res;
+        }
     }
 }

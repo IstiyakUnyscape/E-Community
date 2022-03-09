@@ -18,6 +18,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
         IEnumerable<Type_Of_VisitEntities> GetVisitType();
         IEnumerable<Type_of_DeliveryEntities> GetDeliveryType();
         IEnumerable<TypeMasterDetailEntities> GetTypeMasterDetail();
+        IEnumerable<StaffEntities> GetStaff();
 
     }
 }

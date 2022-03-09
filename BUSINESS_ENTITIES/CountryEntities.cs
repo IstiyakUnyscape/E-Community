@@ -53,4 +53,16 @@ namespace BUSINESS_ENTITIES
         public int Sequence { get; set; }
 
     }
+    public class CommunityEntities
+    {
+        public int Id { get; set; }
+        public string CommunityName { get; set; }
+        
+
+    }
+    public class StaffEntity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
 }
