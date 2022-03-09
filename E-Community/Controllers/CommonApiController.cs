@@ -149,5 +149,47 @@ namespace E_Community.Controllers
                 return Ok(new { Code = 204, data = result, Message = "No Data Found", });
             }
         }
+        [HttpGet, Route("GetCommunity")]
+        public async Task<IActionResult> GetCommunity()
+        {
+
+            var result = _CommonApiBAL.GetCommunity();
+            if (result != null)
+            {
+                return Ok(await Task.FromResult(result));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = result, Message = "No Data Found", });
+            }
+        }
+        [HttpGet, Route("GetDesignationBytenant")]
+        public async Task<IActionResult> GetDesignation(int TenantTypeId, int TenantId)
+        {
+
+            var result = _CommonApiBAL.GetDesignationByTenantId(TenantTypeId, TenantId);
+            if (result != null)
+            {
+                return Ok(await Task.FromResult(result));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = result, Message = "No Data Found", });
+            }
+        }
+        [HttpGet, Route("GetStaffByDesignationId")]
+        public async Task<IActionResult> GetStaffByDesignationId( int DesignationId)
+        {
+
+            var result = _CommonApiBAL.GetStaffByDesignationId(DesignationId);
+            if (result != null)
+            {
+                return Ok(await Task.FromResult(result));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = result, Message = "No Data Found", });
+            }
+        }
     }
 }
