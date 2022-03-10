@@ -48,6 +48,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("CreatedBy", entity.CreatedBy);
             dbparams.Add("Isactive", true);
             dbparams.Add("Isdeleted", false);
+            dbparams.Add("IsProject", entity.IsProject);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertRiskRegistry", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
@@ -149,6 +150,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Isactive", true);
             dbparams.Add("StatusTypeDetailId", entity.StatusTypeDetailId);
             dbparams.Add("Remarks", entity.Remarks);
+            dbparams.Add("IsProject", entity.IsProject);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateRiskRegistry", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
