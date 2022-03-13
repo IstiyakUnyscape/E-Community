@@ -11,6 +11,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
     public interface IProjectBAL
     {
         public StaticPagedList<ProjectModel> GetAllProject(SearchCompanyModel search);
+        public StaticPagedList<ProjectViewModel> GetAllProjectView(SearchCompanyModel search);
         public ProjectModel GetProjectById(string id);
         public Task<int> CreateProject(ProjectModel entities);
         public Task<int> UpdateProject(ProjectModel entities);

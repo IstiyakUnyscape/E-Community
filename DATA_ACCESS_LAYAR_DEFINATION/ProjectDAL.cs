@@ -104,6 +104,59 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return OrderedQuery.ToPagedList(search.PageNo, search.PageSize);
         }
 
+        public IPagedList<ProjectViewModelEntities> GetAllProject(SearchCompanyModel search)
+        {
+            var query = "select * from vw_Project";
+            IQueryable<ProjectViewModelEntities> result = _dapper.GetAll<ProjectViewModelEntities>(query).Distinct().AsQueryable();
+            //if (!string.IsNullOrEmpty(search.Name))
+            //{
+            //    result = result.Where(x => x.Title.Trim().ToUpper() == search.Name.Trim().ToUpper());
+            //}
+            //if (!string.IsNullOrEmpty(search.Company_Email))
+            //{
+            //    result = result.Where(x => x.Company_Email_Id.Trim().ToUpper() == search.Company_Email.Trim().ToUpper());
+            //}
+            //if (!string.IsNullOrEmpty(search.Postal_Code))
+            //{
+            //    result = result.Where(x => x.Postal_Code.Trim().ToUpper() == search.Postal_Code.Trim().ToUpper());
+            //}
+            //if (!string.IsNullOrEmpty(search.Postal_Code))
+            //{
+            //    result = result.Where(x => x.Postal_Code.Trim().ToUpper() == search.Postal_Code.Trim().ToUpper());
+            //}
+            //if (!string.IsNullOrEmpty(search.Trade_License_No))
+            //{
+            //    result = result.Where(x => x.Trade_License_No.Trim().ToUpper() == search.Trade_License_No.Trim().ToUpper());
+            //}
+            //if (search.Tax_Return_Number > 0)
+            //{
+            //    result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
+            //}
+            IOrderedQueryable<ProjectViewModelEntities> OrderedQuery = null;
+
+            if (!string.IsNullOrEmpty(search.SortColumn))
+            {
+                Type type = typeof(ProjectEntities);
+                PropertyInfo property = type.GetProperty(search.SortColumn);
+                if (property != null)
+                {
+                    if (search.SortDirection.ToUpper() == "desc".ToUpper())
+                        OrderedQuery = result.OrderByDescending(search.SortColumn);
+                    else
+                        OrderedQuery = result.OrderBy(search.SortColumn);
+                }
+                else
+                {
+                    OrderedQuery = result.OrderByDescending(x => x.Id);
+                }
+            }
+            else
+            {
+                OrderedQuery = result.OrderByDescending(x => x.Id);
+            }
+            return OrderedQuery.ToPagedList(search.PageNo, search.PageSize);
+        }
+
         public async Task<ProjectEntities> GetById(int id)
         {
             var dbparams = new DynamicParameters();

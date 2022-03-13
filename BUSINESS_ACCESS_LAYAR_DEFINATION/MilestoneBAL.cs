@@ -24,6 +24,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         private readonly Utility utility;
         private readonly Iencryption _Iencryption;
         private readonly IMapper _mapper;
+        private readonly IProjectDAL _ProjectDAL;
         public MilestoneBAL(IWebHostEnvironment _host, IMapper mapper)
         {
             _mapper = mapper;
@@ -31,6 +32,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             utility = new Utility();
             _Iencryption = new EncryptionDefination();
             webHostEnvironment = _host;
+            _ProjectDAL = new ProjectDAL();
         }
 
         public StaticPagedList<MilestoneModel> GetAllMilestone(SearchCompanyModel search)
@@ -113,6 +115,18 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             var data = _mapper.Map<IEnumerable<MilestoneModel>>(entities);
             return data;
         }
+        public bool ValidateStartEndDtae(int ProjectId, DateTime StartDate, DateTime EndDatetDate)
+        {
+            var res = _ProjectDAL.GetById(ProjectId).Result;
+            if(res.Estimated_StartDate.Date < StartDate.Date && res.Estimated_EndDate.Date > EndDatetDate.Date)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
+        }
     }
 }

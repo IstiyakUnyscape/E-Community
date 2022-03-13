@@ -123,5 +123,13 @@ namespace E_Community.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost, Route("GetAllProjectList")]
+        public async Task<IActionResult> GetAllProjectList([FromForm] SearchCompanyModel search)
+        {
+            var result = _ProjectBAL.GetAllProjectView(search);
+            var pagedList = new PagedStaticList<ProjectViewModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
+            return Ok(await Task.FromResult(pagedList));
+
+        }
     }
 }

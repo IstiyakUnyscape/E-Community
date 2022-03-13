@@ -16,5 +16,6 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
         public Task<int> CreateMilestone(MilestoneModel entities);
         public Task<int> UpdateMilestone(MilestoneModel entities);
         public Task<int> DeleteMilestone(string id);
+        bool ValidateStartEndDtae(int ProjectId, DateTime StartDate, DateTime EndDatetDate);
     }
 }

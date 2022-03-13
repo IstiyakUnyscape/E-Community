@@ -27,6 +27,7 @@ namespace AutoMapperService
             CreateMap<MilestoneEntities, MilestoneModel>().ReverseMap();
             CreateMap<RiskCategorysEntities, RiskCategorysModel>().ReverseMap();
             CreateMap<RiskRegistryEntities, RiskRegistryModel>().ReverseMap();
+            CreateMap<ProjectViewModelEntities, ProjectViewModel>().ReverseMap();
         }
     }
 }
