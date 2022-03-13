@@ -66,25 +66,33 @@ namespace E_Community.Controllers
         {
 
             int i = 0;
-            if (ModelState.IsValid)
+            var validate = _MilestoneBAL.ValidateStartEndDtae(entities.ProjectId, entities.Estimated_StartDate, entities.Estimated_EndDate);
+            if (validate == true)
             {
-                if (entities != null)
+                if (ModelState.IsValid)
                 {
-                    i = await _MilestoneBAL.CreateMilestone(entities);
-                }
+                    if (entities != null)
+                    {
+                        i = await _MilestoneBAL.CreateMilestone(entities);
+                    }
 
+                }
+                else
+                {
+                    return BadRequest();
+                }
+                if (i > 0)
+                {
+                    return Ok(new { Code = 200, Message = "Project Save and Sent Notification.", });
+                }
+                else
+                {
+                    return Ok(new { Code = 204, Message = "Something went wrong", });
+                }
             }
             else
             {
-                return BadRequest();
-            }
-            if (i > 0)
-            {
-                return Ok(new { Code = 200, Message = "Project Save and Sent Notification.", });
-            }
-            else
-            {
-                return Ok(new { Code = 204, Message = "Something went wrong", });
+                return Ok(new { Code = 204, Message = "MileStone StartDate And EndADate between Project StartDate And EndADate!", });
             }
         }
 
@@ -111,9 +119,11 @@ namespace E_Community.Controllers
         [HttpPut, Route("UpdateMilestone")]
         public IActionResult Update([FromForm] MilestoneModel entites)
         {
-
-            if (ModelState.IsValid)
+            var validate = _MilestoneBAL.ValidateStartEndDtae(entites.ProjectId, entites.Estimated_StartDate, entites.Estimated_EndDate);
+            if (validate == true)
             {
+              if (ModelState.IsValid)
+              {
                 var res = _MilestoneBAL.UpdateMilestone(entites);
                 if (res.Result > 0)
                 {
@@ -123,10 +133,15 @@ namespace E_Community.Controllers
                 {
                     return Ok(new { Code = 204, Message = "Data Not Found", });
                 }
+              }
+              else
+              {
+                return BadRequest();
+              }
             }
             else
             {
-                return BadRequest();
+                return Ok(new { Code = 204, Message = "MileStone StartDate And EndADate between Project StartDate And EndADate!", });
             }
         }
     }

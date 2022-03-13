@@ -105,5 +105,20 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             var data = _mapper.Map<ProjectEntities>(entities);
             return await _ProjectDAL.Update(data);
         }
+
+        public StaticPagedList<ProjectViewModel> GetAllProjectView(SearchCompanyModel search)
+        {
+            var data = _ProjectDAL.GetAllProject(search);
+            if (data == null) new StaticPagedList<ProjectViewModel>(new List<ProjectViewModel>(), search.PageNo + 1, search.PageSize, 0);
+            foreach (var obj in data)
+            {
+                obj.Id = _Iencryption.EncryptID(obj.Id);
+                
+            }
+            var rdata = _mapper.Map<IEnumerable<ProjectViewModel>>(data.ToArray());
+            var mData = data.GetMetaData();
+            var pagedList = new StaticPagedList<ProjectViewModel>(rdata, mData);
+            return pagedList;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace CustomModel
         public string Id { get; set; }
         public int Community { get; set; }
         public int Designation { get; set; }
-        public string Name { get; set; }
+        public int Name { get; set; }
         public string Project_Description { get; set; }
         public DateTime Estimated_StartDate { get; set; }
         public DateTime Estimated_EndDate { get; set; }
@@ -34,4 +34,11 @@ namespace CustomModel
         {
          public string Upload_Document { get; set; }
         }
+    public class ProjectViewModel : ProjectModel
+    {
+        public string CommunityName { get; set; }
+        public string DesignationName { get; set; }
+        public string StaffName { get; set; }
+        public string Status { get; set; }
+    }
 }

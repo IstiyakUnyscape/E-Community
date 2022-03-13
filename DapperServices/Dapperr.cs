@@ -54,21 +54,47 @@ namespace DapperServices
 
         public T Get<T>(string sp, DynamicParameters parms, CommandType commandType = CommandType.StoredProcedure)
         {
-            using (db = _con.GetConnection())
+            try
             {
-                return db.Query<T>(sp, parms, commandType: commandType).FirstOrDefault();
+                using (db = _con.GetConnection())
+                {
+                    return db.Query<T>(sp, parms, commandType: commandType).FirstOrDefault();
+                }
             }
-
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<T> GetAll<T>(string sp, DynamicParameters parms, CommandType commandType = CommandType.StoredProcedure)
         {
-            using (db = _con.GetConnection())
+            try
             {
-                return db.Query<T>(sp, parms, commandType: commandType).ToList();
+                using (db = _con.GetConnection())
+                {
+                    return db.Query<T>(sp, parms, commandType: commandType).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
-
+        public List<T> GetAll<T>(string query)
+        {
+            try
+            {
+                using (db = _con.GetConnection())
+                {
+                    return db.Query<T>(query).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public T Insert<T>(string sp, DynamicParameters parms, CommandType commandType = CommandType.StoredProcedure)
         {
             T result;
