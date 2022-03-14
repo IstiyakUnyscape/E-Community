@@ -19,8 +19,8 @@ namespace CustomModel
         public string Upload_Pictures { get; set; }
         public List<IFormFile> Attach_Documents_Files { get; set; }
         public string Attach_Documents { get; set; }
-        //public long Mobile_No { get; set; }
-        //public string EmailId { get; set; }
+        public long Mobile_No { get; set; }
+        public string EmailId { get; set; }
         //public decimal Price { get; set; }
         public string Availability_To_Contact { get; set; }
         //public DateTime Created_at { get; set; }
