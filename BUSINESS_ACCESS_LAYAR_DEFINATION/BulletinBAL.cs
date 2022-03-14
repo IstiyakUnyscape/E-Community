@@ -45,8 +45,12 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                 }
                 entities.Upload_Pictures = JsonConvert.SerializeObject(objfile);
             }
-            if (entities.Attach_Documents_Files.Count > 0)
+            if(entities.Attach_Documents_Files==null)
             {
+            }
+            else
+            if (entities.Attach_Documents_Files.Count > 0)
+             {
                 List<Attach_Documents_FileJson> objfile = new List<Attach_Documents_FileJson>();
                 foreach (var file in entities.Attach_Documents_Files)
                 {
