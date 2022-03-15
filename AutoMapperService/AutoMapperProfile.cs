@@ -28,6 +28,7 @@ namespace AutoMapperService
             CreateMap<RiskCategorysEntities, RiskCategorysModel>().ReverseMap();
             CreateMap<RiskRegistryEntities, RiskRegistryModel>().ReverseMap();
             CreateMap<ProjectViewModelEntities, ProjectViewModel>().ReverseMap();
+            CreateMap<NoticesEntities, NoticesModel>().ReverseMap();
         }
     }
 }
