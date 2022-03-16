@@ -205,5 +205,19 @@ namespace E_Community.Controllers
                 return Ok(new { Code = 204, data = result, Message = "No Data Found", });
             }
         }
+        [HttpGet, Route("GetUnitOwner")]
+        public async Task<IActionResult> GetUnit()
+        {
+
+            var result = _CommonApiBAL.GetUnit();
+            if (result != null)
+            {
+                return Ok(await Task.FromResult(result));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = result, Message = "No Data Found", });
+            }
+        }
     }
 }

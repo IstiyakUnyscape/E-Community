@@ -34,7 +34,8 @@ namespace AutoMapperService
             CreateMap<RiskRegistryViewEntities, RiskRegistryViewModel>().ReverseMap();
             CreateMap<NoticesEntities, NoticesModel>().ReverseMap();
             CreateMap<NoticesViewEntities, NoticesModel>().ReverseMap();
-           
+            CreateMap<UnitEntities, UnitModel>().ReverseMap();
+
 
         }
     }
