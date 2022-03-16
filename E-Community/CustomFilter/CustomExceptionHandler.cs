@@ -23,6 +23,40 @@ namespace E_Community.CustomFilter
             string stackTrace = context.Exception.StackTrace;
             string path = context.ActionDescriptor.DisplayName;
 
+
+            try
+            {
+                errorMessage = context.Exception.Message;
+            }
+            catch (Exception E)
+            {
+                errorMessage = "CustomExceptionHandler (Line 30): " + E.Message;
+            }
+            try
+            {
+                innerMessage = context.Exception.InnerException.Message;
+            }
+            catch (Exception E)
+            {
+                errorMessage = "CustomExceptionHandler (Line 38): " + E.Message;
+            }
+            try
+            {
+                stackTrace = context.Exception.StackTrace;
+            }
+            catch (Exception E)
+            {
+                errorMessage = "CustomExceptionHandler (Line 46): " + E.Message;
+            }
+            try
+            {
+                path = context.ActionDescriptor.DisplayName;
+            }
+            catch (Exception E)
+            {
+                errorMessage = "CustomExceptionHandler (Line 54): " + E.Message;
+            }
+
             HttpResponse response = context.HttpContext.Response;
             response.StatusCode = (int)statusCode;
             response.ContentType = "application/json";
