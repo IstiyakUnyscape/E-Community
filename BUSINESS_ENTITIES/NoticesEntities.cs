@@ -25,4 +25,10 @@ namespace BUSINESS_ENTITIES
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
     }
+    public class NoticesViewEntities : NoticesEntities
+    {
+        public int UserId { get; set; }
+        public int TenantID { get; set; }
+        public int TenantTypeId { get; set; }
+    }
 }

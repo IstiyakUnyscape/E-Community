@@ -50,7 +50,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return res;
         }
 
-        public IPagedList<ProjectEntities> GetAll(SearchCompanyModel search)
+        public IPagedList<ProjectEntities> GetAll(SearchCompanyEntities search)
         {
             var dbparams = new DynamicParameters();
             //dbparams.Add("Id", id, DbType.Int32);
@@ -104,14 +104,22 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return OrderedQuery.ToPagedList(search.PageNo, search.PageSize);
         }
 
-        public IPagedList<ProjectViewModelEntities> GetAllProject(SearchCompanyModel search)
+        public IPagedList<ProjectViewModelEntities> GetAllProject(SearchCompanyEntities search)
         {
             var query = "select * from vw_Project";
             IQueryable<ProjectViewModelEntities> result = _dapper.GetAll<ProjectViewModelEntities>(query).Distinct().AsQueryable();
-            //if (!string.IsNullOrEmpty(search.Name))
-            //{
-            //    result = result.Where(x => x.Title.Trim().ToUpper() == search.Name.Trim().ToUpper());
-            //}
+            if (search.UserId >0)
+            {
+                result = result.Where(x => x.UserId == search.UserId);
+            }
+            if (search.TenantID > 0)
+            {
+                result = result.Where(x => x.TenantID == search.TenantID);
+            }
+            if (search.TenantTypeId > 0)
+            {
+                result = result.Where(x => x.TenantTypeId == search.TenantTypeId);
+            }
             //if (!string.IsNullOrEmpty(search.Company_Email))
             //{
             //    result = result.Where(x => x.Company_Email_Id.Trim().ToUpper() == search.Company_Email.Trim().ToUpper());

@@ -59,7 +59,12 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public StaticPagedList<ProjectModel> GetAllProject(SearchCompanyModel search)
         {
-            var data = _ProjectDAL.GetAll(search);
+            if (!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _ProjectDAL.GetAll(Search);
             if (data == null) new StaticPagedList<ProjectModel>(new List<ProjectModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {
@@ -108,7 +113,12 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public StaticPagedList<ProjectViewModel> GetAllProjectView(SearchCompanyModel search)
         {
-            var data = _ProjectDAL.GetAllProject(search);
+            if(!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _ProjectDAL.GetAllProject(Search);
             if (data == null) new StaticPagedList<ProjectViewModel>(new List<ProjectViewModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {

@@ -11,7 +11,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
 {
     public interface IEventDAL
     {
-        IPagedList<EventEntities> GetAll(SearchCompanyModel search);
+        IPagedList<EventViewEntities> GetAll(SearchCompanyEntities search);
         Task<EventEntities> GetById(int id);
         Task<int> Create(EventEntities entity);
         Task<int> Update(EventEntities entity);

@@ -31,4 +31,13 @@ namespace BUSINESS_ENTITIES
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
     }
+    public class MilestoneViewEntities : MilestoneEntities
+    {
+        public string Project_Description { get; set; }
+        public string Assigned_To_StaffName { get; set; }
+        public string Status { get; set; }
+        public int UserId { get; set; }
+        public int TenantID { get; set; }
+        public int TenantTypeId { get; set; }
+    }
 }
