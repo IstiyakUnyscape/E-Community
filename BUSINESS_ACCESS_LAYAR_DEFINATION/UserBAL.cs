@@ -103,9 +103,9 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                     return data;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-
+                throw;
             }
             return data;
         }
@@ -114,6 +114,11 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         {
             int status=0;
             var id = _Iencryption.DecryptID(UserId);
+
+            if (_UserDAL.GetAll().Where(x => x.Id == id).FirstOrDefault().IsPasswordCreated == true)
+            {
+                return (status = 3);
+            }
             var res =await _UserDAL.ValidateVerificationCode(id,Code);
             var currentdate = DateTime.Now;
             var expiredate = res.Created_at.AddDays(7); //Convert.ToInt32(currentdate.Subtract(res.Created_at));
@@ -184,9 +189,9 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                     return data;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                throw;
             }
             return data;
         }
