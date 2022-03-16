@@ -123,7 +123,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         public bool ValidateStartEndDtae(int ProjectId, DateTime StartDate, DateTime EndDatetDate)
         {
             var res = _ProjectDAL.GetById(ProjectId).Result;
-            if(res.Estimated_StartDate.Date < StartDate.Date && res.Estimated_EndDate.Date > EndDatetDate.Date)
+            if(res.Estimated_StartDate.Date <= StartDate.Date && res.Estimated_EndDate.Date >= EndDatetDate.Date)
             {
                 return true;
             }
