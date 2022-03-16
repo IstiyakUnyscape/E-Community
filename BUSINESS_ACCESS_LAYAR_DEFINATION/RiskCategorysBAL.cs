@@ -51,10 +51,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         {
               var data = _RiskCategorysDAL.GetAll(search);
                 if(data==null) new StaticPagedList<RiskCategorysModel>(new List<RiskCategorysModel>(), search.PageNo + 1, search.PageSize, 0);
-            foreach (var obj in data)
-            {
-                obj.id = _Iencryption.EncryptID(obj.id);
-            }
+            //foreach (var obj in data)
+            //{
+            //    obj.id = _Iencryption.EncryptID(obj.id);
+            //}
                 var rdata= _mapper.Map<IEnumerable<RiskCategorysModel>>(data.ToArray());
                 var mData = data.GetMetaData();
                 var pagedList = new StaticPagedList<RiskCategorysModel>(rdata, mData);
