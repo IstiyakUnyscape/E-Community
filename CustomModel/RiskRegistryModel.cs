@@ -38,4 +38,15 @@ namespace CustomModel
         //public bool Isdeleted { get; set; }
         public bool IsProject { get; set; }
     }
+    public class RiskRegistryViewModel : RiskRegistryModel
+    {
+        public string CommunityName { get; set; }
+        public string Risk_Category_Name { get; set; }
+        public string OwnerName { get; set; }
+        public string Assigned_To_StaffName { get; set; }
+        public string Status { get; set; }
+        public int UserId { get; set; }
+        public int TenantID { get; set; }
+        public int TenantTypeId { get; set; }
+    }
 }

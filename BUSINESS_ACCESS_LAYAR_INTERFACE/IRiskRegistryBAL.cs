@@ -10,7 +10,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
 {
     public interface IRiskRegistryBAL
     {
-        public StaticPagedList<RiskRegistryModel> GetAllRiskRegistry(SearchCompanyModel search);
+        public StaticPagedList<RiskRegistryViewModel> GetAllRiskRegistry(SearchCompanyModel search);
         public RiskRegistryModel GetRiskRegistryById(string id);
         public Task<int> CreateRiskRegistry(RiskRegistryModel entities);
         public Task<int> UpdateRiskRegistry(RiskRegistryModel entities);

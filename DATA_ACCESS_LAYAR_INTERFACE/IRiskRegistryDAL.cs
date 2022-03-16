@@ -11,7 +11,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
 {
     public interface IRiskRegistryDAL
     {
-        IPagedList<RiskRegistryEntities> GetAll(SearchCompanyModel search);
+        IPagedList<RiskRegistryViewEntities> GetAll(SearchCompanyEntities search);
         Task<RiskRegistryEntities> GetById(int id);
         Task<int> Create(RiskRegistryEntities entity);
         Task<int> Update(RiskRegistryEntities entity);

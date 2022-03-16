@@ -61,11 +61,27 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return res;
         }
 
-        public IPagedList<RiskRegistryEntities> GetAll(SearchCompanyModel search)
+        public IPagedList<RiskRegistryViewEntities> GetAll(SearchCompanyEntities search)
         {
             var dbparams = new DynamicParameters();
-            //dbparams.Add("Id", id, DbType.Int32);
-            IQueryable<RiskRegistryEntities> result = _dapper.GetAll<RiskRegistryEntities>("sp_GetRiskRegistry", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
+            var query = "Select * from vw_RiskRegistry";
+            IQueryable<RiskRegistryViewEntities> result = _dapper.GetAll<RiskRegistryViewEntities>(query).Distinct().AsQueryable();
+            if (search.UserId > 0)
+            {
+                result = result.Where(x => x.UserId == search.UserId);
+            }
+            if (search.TenantID > 0)
+            {
+                result = result.Where(x => x.TenantID == search.TenantID);
+            }
+            if (search.TenantTypeId > 0)
+            {
+                result = result.Where(x => x.TenantTypeId == search.TenantTypeId);
+            }
+            if (search.CommunityId > 0)
+            {
+                result = result.Where(x => x.CommunityId == search.CommunityId);
+            }
             //if (!string.IsNullOrEmpty(search.Name))
             //{
             //    result = result.Where(x => x.Title.Trim().ToUpper() == search.Name.Trim().ToUpper());
@@ -90,11 +106,11 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             //{
             //    result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
             //}
-            IOrderedQueryable<RiskRegistryEntities> OrderedQuery = null;
+            IOrderedQueryable<RiskRegistryViewEntities> OrderedQuery = null;
 
             if (!string.IsNullOrEmpty(search.SortColumn))
             {
-                Type type = typeof(RiskRegistryEntities);
+                Type type = typeof(RiskRegistryViewEntities);
                 PropertyInfo property = type.GetProperty(search.SortColumn);
                 if (property != null)
                 {

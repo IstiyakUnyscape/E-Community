@@ -37,4 +37,15 @@ namespace BUSINESS_ENTITIES
         public bool IsProject { get; set; }
 
     }
+    public class RiskRegistryViewEntities: RiskRegistryEntities
+    {
+        public string CommunityName { get; set; }
+        public string Risk_Category_Name { get; set; }
+        public string OwnerName { get; set; }
+        public string Assigned_To_StaffName { get; set; }
+        public string Status { get; set; }
+        public int UserId { get; set; }
+        public int TenantID { get; set; }
+        public int TenantTypeId { get; set; }
+    }
 }

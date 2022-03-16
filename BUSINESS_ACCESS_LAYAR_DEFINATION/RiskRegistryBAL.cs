@@ -56,17 +56,22 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             return await _RiskRegistryDAL.Delete(Id);
         }
 
-        public StaticPagedList<RiskRegistryModel> GetAllRiskRegistry(SearchCompanyModel search)
+        public StaticPagedList<RiskRegistryViewModel> GetAllRiskRegistry(SearchCompanyModel search)
         {
-            var data = _RiskRegistryDAL.GetAll(search);
-            if (data == null) new StaticPagedList<RiskRegistryModel>(new List<RiskRegistryModel>(), search.PageNo + 1, search.PageSize, 0);
+            if (!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _RiskRegistryDAL.GetAll(Search);
+            if (data == null) new StaticPagedList<RiskRegistryViewModel>(new List<RiskRegistryViewModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {
                 obj.Id = _Iencryption.EncryptID(obj.Id);
             }
-            var rdata = _mapper.Map<IEnumerable<RiskRegistryModel>>(data.ToArray());
+            var rdata = _mapper.Map<IEnumerable<RiskRegistryViewModel>>(data.ToArray());
             var mData = data.GetMetaData();
-            var pagedList = new StaticPagedList<RiskRegistryModel>(rdata, mData);
+            var pagedList = new StaticPagedList<RiskRegistryViewModel>(rdata, mData);
             return pagedList;
         }
 
