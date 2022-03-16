@@ -18,10 +18,45 @@ namespace E_Community.CustomFilter
                         ((HttpWebResponse)(context.Exception as WebException).Response) != null) ?
                          ((HttpWebResponse)(context.Exception as WebException).Response).StatusCode
                          : getErrorCode(context.Exception.GetType());
+
             string errorMessage = context.Exception.Message;
             string innerMessage = context.Exception.InnerException.Message;
             string stackTrace = context.Exception.StackTrace;
             string path = context.ActionDescriptor.DisplayName;
+
+
+            try
+            {
+                errorMessage = context.Exception.Message;
+            }
+            catch (Exception E)
+            {
+                errorMessage = "CustomExceptionHandler (Line 30): " + E.Message;
+            }
+            try
+            {
+                innerMessage = context.Exception.InnerException.Message;
+            }
+            catch (Exception E)
+            {
+                errorMessage = "CustomExceptionHandler (Line 38): " + E.Message;
+            }
+            try
+            {
+                stackTrace = context.Exception.StackTrace;
+            }
+            catch (Exception E)
+            {
+                errorMessage = "CustomExceptionHandler (Line 46): " + E.Message;
+            }
+            try
+            {
+                path = context.ActionDescriptor.DisplayName;
+            }
+            catch (Exception E)
+            {
+                errorMessage = "CustomExceptionHandler (Line 54): " + E.Message;
+            }
 
             HttpResponse response = context.HttpContext.Response;
             response.StatusCode = (int)statusCode;
@@ -36,7 +71,7 @@ namespace E_Community.CustomFilter
                 errorCode = (int)statusCode,
                 errorType = "",
                 innerMessage = innerMessage,
-                message = errorMessage,
+                message = $"Date & Time : {DateTime.Now.ToString("0:dd-MM-yyyy hh:mm:ss tt")} "+$" {errorMessage}",
                 path = path
 
 
