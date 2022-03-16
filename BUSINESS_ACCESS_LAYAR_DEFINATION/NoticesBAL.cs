@@ -34,7 +34,12 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public StaticPagedList<NoticesModel> GetAllNotices(SearchCompanyModel search)
         {
-            var data = _NoticesDAL.GetAll(search);
+            if (!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _NoticesDAL.GetAll(Search);
             if (data == null) new StaticPagedList<NoticesModel>(new List<NoticesModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {

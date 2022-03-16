@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomModel
+namespace BUSINESS_ENTITIES
 {
-    public class CommonSearchModel
+    public class CommonSearchEntities
     {
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public int TenantID { get; set; }
         public int TenantTypeId { get; set; }
         public int PageNo { get; set; }

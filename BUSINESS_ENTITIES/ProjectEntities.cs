@@ -34,5 +34,8 @@ namespace BUSINESS_ENTITIES
         public string DesignationName { get; set; }
         public string StaffName { get; set; }
         public string Status { get; set; }
+        public int UserId { get; set; }
+        public int TenantID { get; set; }
+        public int TenantTypeId { get; set; }
     }
 }

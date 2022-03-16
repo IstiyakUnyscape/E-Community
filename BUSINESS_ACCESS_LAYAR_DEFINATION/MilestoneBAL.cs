@@ -35,17 +35,22 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             _ProjectDAL = new ProjectDAL();
         }
 
-        public StaticPagedList<MilestoneModel> GetAllMilestone(SearchCompanyModel search)
+        public StaticPagedList<MilestoneViewModel> GetAllMilestone(SearchCompanyModel search)
         {
-            var data = _MilestoneDAL.GetAll(search);
-            if (data == null) new StaticPagedList<MilestoneModel>(new List<MilestoneModel>(), search.PageNo + 1, search.PageSize, 0);
+            if (!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _MilestoneDAL.GetAll(Search);
+            if (data == null) new StaticPagedList<MilestoneViewModel>(new List<MilestoneViewModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {
                 obj.Id = _Iencryption.EncryptID(obj.Id);
             }
-            var rdata = _mapper.Map<IEnumerable<MilestoneModel>>(data.ToArray());
+            var rdata = _mapper.Map<IEnumerable<MilestoneViewModel>>(data.ToArray());
             var mData = data.GetMetaData();
-            var pagedList = new StaticPagedList<MilestoneModel>(rdata, mData);
+            var pagedList = new StaticPagedList<MilestoneViewModel>(rdata, mData);
             return pagedList;
         }
 
@@ -109,10 +114,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             return await _MilestoneDAL.Delete(Id);
         }
 
-        public IEnumerable<MilestoneModel> GetMilestoneByProjectId(int id)
+        public IEnumerable<MilestoneViewModel> GetMilestoneByProjectId(int id)
         {
             var entities = _MilestoneDAL.GetAll().Where(x=>x.ProjectId==id).AsEnumerable();
-            var data = _mapper.Map<IEnumerable<MilestoneModel>>(entities);
+            var data = _mapper.Map<IEnumerable<MilestoneViewModel>>(entities);
             return data;
         }
         public bool ValidateStartEndDtae(int ProjectId, DateTime StartDate, DateTime EndDatetDate)

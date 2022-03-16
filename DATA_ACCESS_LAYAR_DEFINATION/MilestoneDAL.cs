@@ -54,11 +54,22 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return res;
         }
 
-        public IPagedList<MilestoneEntities> GetAll(SearchCompanyModel search)
+        public IPagedList<MilestoneViewEntities> GetAll(SearchCompanyEntities search)
         {
-            var dbparams = new DynamicParameters();
-            //dbparams.Add("Id", id, DbType.Int32);
-            IQueryable<MilestoneEntities> result = _dapper.GetAll<MilestoneEntities>("sp_GetMilestone", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
+            var query = "select * from vw_Milestone";
+            IQueryable<MilestoneViewEntities> result = _dapper.GetAll<MilestoneViewEntities>(query).Distinct().AsQueryable();
+            if (search.UserId > 0)
+            {
+                result = result.Where(x => x.UserId == search.UserId);
+            }
+            if (search.TenantID > 0)
+            {
+                result = result.Where(x => x.TenantID == search.TenantID);
+            }
+            if (search.TenantTypeId > 0)
+            {
+                result = result.Where(x => x.TenantTypeId == search.TenantTypeId);
+            }
             //if (!string.IsNullOrEmpty(search.Name))
             //{
             //    result = result.Where(x => x.Title.Trim().ToUpper() == search.Name.Trim().ToUpper());
@@ -83,11 +94,11 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             //{
             //    result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
             //}
-            IOrderedQueryable<MilestoneEntities> OrderedQuery = null;
+            IOrderedQueryable<MilestoneViewEntities> OrderedQuery = null;
 
             if (!string.IsNullOrEmpty(search.SortColumn))
             {
-                Type type = typeof(MilestoneEntities);
+                Type type = typeof(MilestoneViewEntities);
                 PropertyInfo property = type.GetProperty(search.SortColumn);
                 if (property != null)
                 {
@@ -108,10 +119,10 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return OrderedQuery.ToPagedList(search.PageNo, search.PageSize);
         }
 
-        public IEnumerable<MilestoneEntities> GetAll()
+        public IEnumerable<MilestoneViewEntities> GetAll()
         {
             var dbparams = new DynamicParameters();
-            var res = _dapper.GetAll<MilestoneEntities>("sp_GetMilestone", dbparams, commandType: CommandType.StoredProcedure);
+            var res = _dapper.GetAll<MilestoneViewEntities>("vw_Milestone", dbparams, commandType: CommandType.StoredProcedure);
             return res;
         }
 

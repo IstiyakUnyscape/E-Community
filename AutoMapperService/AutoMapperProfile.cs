@@ -13,6 +13,7 @@ namespace AutoMapperService
     {
         public AutoMapperProfile()
         {
+            CreateMap<SearchCompanyEntities, SearchCompanyModel>().ReverseMap();
             CreateMap<CompanyEntities, CompanyModel>().ReverseMap();
             CreateMap<StaffEntities, StaffModel>().ReverseMap();
             CreateMap<VendorsEntities, VendorsModel>().ReverseMap();
@@ -23,12 +24,17 @@ namespace AutoMapperService
             CreateMap<RoleEntities, RoleModel>().ReverseMap();
             CreateMap<BulletinEntities, BulletinModel>().ReverseMap();
             CreateMap<EventEntities, EventModel>().ReverseMap();
+            CreateMap<EventViewEntities, EventModel>().ReverseMap();
             CreateMap<ProjectEntities, ProjectModel>().ReverseMap();
+            CreateMap<ProjectViewModelEntities, ProjectViewModel>().ReverseMap();
             CreateMap<MilestoneEntities, MilestoneModel>().ReverseMap();
+            CreateMap<MilestoneViewEntities, MilestoneViewModel>().ReverseMap();
             CreateMap<RiskCategorysEntities, RiskCategorysModel>().ReverseMap();
             CreateMap<RiskRegistryEntities, RiskRegistryModel>().ReverseMap();
-            CreateMap<ProjectViewModelEntities, ProjectViewModel>().ReverseMap();
             CreateMap<NoticesEntities, NoticesModel>().ReverseMap();
+            CreateMap<NoticesViewEntities, NoticesModel>().ReverseMap();
+           
+
         }
     }
 }

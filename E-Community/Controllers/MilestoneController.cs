@@ -83,7 +83,7 @@ namespace E_Community.Controllers
                 }
                 if (i > 0)
                 {
-                    return Ok(new { Code = 200, Message = "Project Save and Sent Notification.", });
+                    return Ok(new { Code = 200, Message = "MileStone Save Successfully.", });
                 }
                 else
                 {

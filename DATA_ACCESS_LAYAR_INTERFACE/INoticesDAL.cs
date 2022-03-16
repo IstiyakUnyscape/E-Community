@@ -11,7 +11,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
 {
     public interface INoticesDAL
     {
-        IPagedList<NoticesEntities> GetAll(SearchCompanyModel search);
+        IPagedList<NoticesViewEntities> GetAll(SearchCompanyEntities search);
         Task<NoticesEntities> GetById(int id);
         Task<int> Create(NoticesEntities entity);
         Task<int> Update(NoticesEntities entity);

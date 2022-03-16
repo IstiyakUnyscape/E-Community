@@ -11,9 +11,9 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
 {
     public interface IMilestoneDAL
     {
-        IPagedList<MilestoneEntities> GetAll(SearchCompanyModel search);
+        IPagedList<MilestoneViewEntities> GetAll(SearchCompanyEntities search);
         Task<MilestoneEntities> GetById(int id);
-        IEnumerable<MilestoneEntities> GetAll();
+        IEnumerable<MilestoneViewEntities> GetAll();
         Task<int> Create(MilestoneEntities entity);
         Task<int> Update(MilestoneEntities entity);
         Task<int> Delete(int id);

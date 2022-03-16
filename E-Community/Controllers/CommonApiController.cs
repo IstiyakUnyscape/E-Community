@@ -163,6 +163,20 @@ namespace E_Community.Controllers
                 return Ok(new { Code = 204, data = result, Message = "No Data Found", });
             }
         }
+        [HttpGet, Route("GetCommunityById")]
+        public async Task<IActionResult> GetCommunityById(int id)
+        {
+
+            var result = _CommonApiBAL.GetCommunity().Where(x=>x.Id==id).FirstOrDefault();
+            if (result != null)
+            {
+                return Ok(await Task.FromResult(result));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = result, Message = "No Data Found", });
+            }
+        }
         [HttpGet, Route("GetDesignationBytenant")]
         public async Task<IActionResult> GetDesignation(int TenantTypeId, int TenantId)
         {

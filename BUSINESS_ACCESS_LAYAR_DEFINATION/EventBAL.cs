@@ -50,7 +50,12 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public StaticPagedList<EventModel> GetAllEvent(SearchCompanyModel search)
         {
-            var data = _EventDAL.GetAll(search);
+            if (!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _EventDAL.GetAll(Search);
             if (data == null) new StaticPagedList<EventModel>(new List<EventModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {

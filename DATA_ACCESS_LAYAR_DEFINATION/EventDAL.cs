@@ -49,11 +49,23 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return res;
         }
 
-        public IPagedList<EventEntities> GetAll(SearchCompanyModel search)
+        public IPagedList<EventViewEntities> GetAll(SearchCompanyEntities search)
         {
             var dbparams = new DynamicParameters();
             //dbparams.Add("Id", id, DbType.Int32);
-            IQueryable<EventEntities> result = _dapper.GetAll<EventEntities>("sp_GetEvent", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
+            IQueryable<EventViewEntities> result = _dapper.GetAll<EventViewEntities>("sp_GetEvent", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
+            if (search.UserId > 0)
+            {
+                result = result.Where(x => x.UserId == search.UserId);
+            }
+            if (search.TenantID > 0)
+            {
+                result = result.Where(x => x.TenantID == search.TenantID);
+            }
+            if (search.TenantTypeId > 0)
+            {
+                result = result.Where(x => x.TenantTypeId == search.TenantTypeId);
+            }
             //if (!string.IsNullOrEmpty(search.Name))
             //{
             //    result = result.Where(x => x.Title.Trim().ToUpper() == search.Name.Trim().ToUpper());
@@ -78,11 +90,11 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             //{
             //    result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
             //}
-            IOrderedQueryable<EventEntities> OrderedQuery = null;
+            IOrderedQueryable<EventViewEntities> OrderedQuery = null;
 
             if (!string.IsNullOrEmpty(search.SortColumn))
             {
-                Type type = typeof(EventEntities);
+                Type type = typeof(EventViewEntities);
                 PropertyInfo property = type.GetProperty(search.SortColumn);
                 if (property != null)
                 {
