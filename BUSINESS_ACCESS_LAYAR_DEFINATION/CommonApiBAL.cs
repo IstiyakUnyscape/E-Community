@@ -85,5 +85,9 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             }
             return entity;
         }
+        public IEnumerable<UnitEntities> GetUnit()
+        {
+            return _CommonApiDAL.GetUnit();
+        }
     }
 }

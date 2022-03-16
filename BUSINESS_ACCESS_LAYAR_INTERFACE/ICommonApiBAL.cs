@@ -20,5 +20,6 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
         public IEnumerable<CommunityEntities> GetCommunity();
         public IEnumerable<DesignationEntities> GetDesignationByTenantId(int TenantTypeId, int TenantId); 
         public IEnumerable<StaffEntity> GetStaffByDesignationId(int id);
+        public IEnumerable<UnitEntities> GetUnit();
     }
 }
