@@ -31,7 +31,7 @@ namespace E_Community.Controllers
         }
         // GET: api/<StaffController>
         [HttpPost, Route("GetAll")]
-        public async Task<IActionResult> GetAll([FromForm] SearchStaffModel search)
+        public async Task<IActionResult> GetAll([FromForm] SearchCompanyModel search)
         {
             var result = _StaffBAL.GetAllStaff(search);
             var pagedList = new PagedStaticList<StaffModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };

@@ -76,4 +76,15 @@ namespace CustomModel
         public IFormFile Profile_Image_File { get; set; }
         public string Profile_Image { get; set; }
     }
+    public class StaffViewModel : StaffModel
+    {
+        public string LoginUserId { get; set; }
+        public string Company_Name { get; set; }
+        public string DesignationName { get; set; }
+        public string Reporting_To_Name { get; set; }
+        public string Country_Name { get; set; }
+        public string State_Name { get; set; }
+        public string City_Name { get; set; }
+
+    }
 }
