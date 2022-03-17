@@ -29,11 +29,11 @@ namespace BUSINESS_ENTITIES
         public DateTime Created_at { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
-        public int Country_Code { get; set; }
-        public int Std_Code { get; set; }
+        public int? Country_Code { get; set; }
+        public int? Std_Code { get; set; }
         public int TenantTypeId { get; set; }
         public string Profile_Image { get; set; }
     }

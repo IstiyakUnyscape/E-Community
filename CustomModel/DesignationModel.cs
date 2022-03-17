@@ -19,16 +19,16 @@ namespace CustomModel
         public string DesignationDescription { get; set; }
 
         [Display(Name = "Tenant Type ID")]
-        public int TenantTypeID { get; set; }
+        public int? TenantTypeID { get; set; }
 
         [Display(Name = "Tenant ID")]
-        public long TenantID { get; set; }
+        public long? TenantID { get; set; }
         //public DateTime Created_at { get; set; }
-        public int CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }
         //public bool Isactive { get; set; }
         //public bool Isdeleted { get; set; }
         //public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
 
 
 

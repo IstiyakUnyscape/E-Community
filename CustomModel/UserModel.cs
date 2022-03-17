@@ -17,8 +17,8 @@ namespace CustomModel
         public string token { get; set; }
         public int RoleID { get; set; }
         public string Role { get; set; }
-        public int TenantID { get; set; }
-        public int TenantTypeId { get; set; }
-        public int SelfTenantTypeId { get; set; }
+        public int? TenantID { get; set; }
+        public int? TenantTypeId { get; set; }
+        public int? SelfTenantTypeId { get; set; }
     }
 }

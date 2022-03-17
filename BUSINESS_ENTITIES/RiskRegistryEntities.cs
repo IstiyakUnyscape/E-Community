@@ -26,12 +26,12 @@ namespace BUSINESS_ENTITIES
         public DateTime Target_Closure_date { get; set; }
         public string Reason_For_Closure { get; set; }
         public string Upload_Document { get; set; }
-        public int StatusTypeDetailId { get; set; }
+        public int? StatusTypeDetailId { get; set; }
         public string Remarks { get; set; }
         public DateTime Created_at { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
         public bool IsProject { get; set; }

@@ -35,17 +35,17 @@ namespace CustomModel
         public string Community { get; set; }
         [Required]
         [Display(Name = "Floor")]
-        public int Floor { get; set; }
+        public int? Floor { get; set; }
         [Required]
-        public int Unit { get; set; }
+        public int? Unit { get; set; }
         [Required]
         [Display(Name = "Date of visit")]
         [DataType(DataType.Date) ,DisplayFormat(DataFormatString ="yyyy-MM-dd")]
-        public DateTime Date_of_visit { get; set; }
+        public DateTime? Date_of_visit { get; set; }
         [Required]
         [Display(Name = "Time of visit")]
         [DataType(DataType.Time)]
-        public DateTime Time_of_visit { get; set; }
+        public DateTime? Time_of_visit { get; set; }
         [Display(Name = "Purpose of the visit")]
         public string Purpose_of_the_visit { get; set; }
         [Display(Name = "Parking Required")]
@@ -81,11 +81,11 @@ namespace CustomModel
         public IFormFile Staff_ID_Card_Image_File { get; set; }
         public string Staff_ID_Card_Image { get; set; }
         [Display(Name = "Type of Delivery")]
-        public int Type_of_Delivery { get; set; }
+        public int? Type_of_Delivery { get; set; }
         [Display(Name = "Company Name")]
         public string Company_Name { get; set; }
         [Display(Name = "Number of Staff to Reach the Unit")]
-        public int Number_of_Staff_to_Reach_the_Unit { get; set; }
+        public int? Number_of_Staff_to_Reach_the_Unit { get; set; }
         [Display(Name = "Scope of Work")]
         public string Scope_of_Work { get; set; }
         [Display(Name = "Materials carrie in")]
@@ -93,7 +93,7 @@ namespace CustomModel
         [Display(Name = "Service Provider Staff Name")]
         public string Service_Provider_Staff_Name { get; set; }
         [Display(Name = "Staff Mobile Number")]
-        public long Staff_Mobile_Number { get; set; }
+        public long? Staff_Mobile_Number { get; set; }
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]

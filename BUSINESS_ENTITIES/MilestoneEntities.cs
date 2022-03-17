@@ -14,7 +14,7 @@ namespace BUSINESS_ENTITIES
         public string Description { get; set; }
         public DateTime Estimated_StartDate { get; set; }
         public DateTime Estimated_EndDate { get; set; }
-        public int Estimated_Duration { get; set; }
+        public int Estimated_Duration { get; set; }      
         public Decimal? Payment { get; set; }
         public float? Percentage { get; set; }
         public DateTime? Actual_StartDate { get; set; }
@@ -27,7 +27,7 @@ namespace BUSINESS_ENTITIES
         public DateTime Created_at { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
     }

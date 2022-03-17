@@ -21,7 +21,7 @@ namespace BUSINESS_ENTITIES
         public DateTime Created_at { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
     }

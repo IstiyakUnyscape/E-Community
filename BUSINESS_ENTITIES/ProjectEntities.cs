@@ -11,7 +11,7 @@ namespace BUSINESS_ENTITIES
         public string Id { get; set; }
         public int Community { get; set; }
         public int Designation { get; set; }
-        public int Name { get; set; }
+        public int? Name { get; set; }
         public string Project_Description { get; set; }
         public DateTime Estimated_StartDate { get; set; }
         public DateTime Estimated_EndDate { get; set; }
@@ -24,7 +24,7 @@ namespace BUSINESS_ENTITIES
         public DateTime Created_at { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? Modified_at { get; set; }
-        public int ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
     }

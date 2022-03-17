@@ -11,6 +11,7 @@ namespace CustomModel
     public class StaffModel
     {
         public string Id { get; set; }
+        [Required]
         public int Tenant_Id { get; set; }
         [Display(Name = "First Name")]
         [Required]
@@ -65,8 +66,8 @@ namespace CustomModel
         public string ModifiedBy { get; set; }
         //public bool Isactive { get; set; }
         //public bool Isdeleted { get; set; }
-        public int Country_Code { get; set; }
-        public int Std_Code { get; set; }
+        public int? Country_Code { get; set; }
+        public int? Std_Code { get; set; }
         public int TenantTypeId { get; set; }
         [DataType(DataType.Upload)]
         [MaxFileSize(1 * 1024 * 1024)]
