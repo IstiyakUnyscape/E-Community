@@ -22,8 +22,8 @@ namespace CustomModel
         public DateTime Estimated_EndDate { get; set; }
         [Required]
         public int Estimated_Duration { get; set; }
-        public Decimal Payment { get; set; }
-        public float Percentage { get; set; }
+        public Decimal? Payment { get; set; }
+        public float? Percentage { get; set; }
         public DateTime? Actual_StartDate { get; set; }
         public DateTime? Actual_EndDate { get; set; }
         public int? Actual_Duration { get; set; }
@@ -31,8 +31,7 @@ namespace CustomModel
         public DateTime? DeadLine { get; set; }
         public List<IFormFile> Upload_Document_File { get; set; }
         public string Upload_Document { get; set; }
-        [Required]
-        public int StatusTypeDetailId { get; set; }
+        public int? StatusTypeDetailId { get; set; }
         //public DateTime Created_at { get; set; }
         [Required]
         public string CreatedBy { get; set; }

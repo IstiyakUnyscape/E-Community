@@ -109,11 +109,11 @@ namespace E_Community.Controllers
             {
                 if (res.Result == 2)
                 {
-                    return Ok(new { Code = 200, StatusCode = 2, Message = "Link is Expired", });
+                    return BadRequest(new { Code = 400, StatusCode = 2, Message = "Link is Expired", });
                 }
                 else
                 {
-                    return Ok(new { Code = 200, StatusCode = 3, Message = "Email Verified Password is Assigned"});
+                    return BadRequest(new { Code = 400, StatusCode = 3, Message = "Email Already Verified with this Link. Password is already Created by User."});
                 }
                 
             }
@@ -129,7 +129,7 @@ namespace E_Community.Controllers
             }
             else
             {
-                return Ok(new { Code = 204, Message = "Password Is Not Created", });
+                return BadRequest(new { Code = 400, Message = "Password Is Not Created", });
             }
 
         }
