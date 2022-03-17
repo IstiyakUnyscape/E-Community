@@ -11,7 +11,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
 {
     public interface IStaffDAL
     {
-        IPagedList<StaffEntities> GetAll(SearchStaffModel search);
+        IPagedList<StaffViewEntities> GetAll(SearchCompanyEntities search);
         StaffEntities GetById(int id);
         Task<int> Create(StaffEntities entity);
         Task<int> Update(StaffEntities entity);

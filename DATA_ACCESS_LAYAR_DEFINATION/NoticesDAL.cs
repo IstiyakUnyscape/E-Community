@@ -28,6 +28,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Description", entity.Description);
             dbparams.Add("Community", entity.Community);
             dbparams.Add("Unit", entity.Unit);
+            dbparams.Add("Vendor", entity.Vendor);
             dbparams.Add("StartDate", entity.StartDate, System.Data.DbType.Date);
             dbparams.Add("EndDate", entity.EndDate, System.Data.DbType.Date);
             dbparams.Add("StartTime", entity.StartTime, System.Data.DbType.Time);
@@ -131,6 +132,7 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Description", entity.Description);
             dbparams.Add("Community", entity.Community);
             dbparams.Add("Unit", entity.Unit);
+            dbparams.Add("Vendor", entity.Vendor);
             dbparams.Add("StartDate", entity.StartDate, System.Data.DbType.Date);
             dbparams.Add("EndDate", entity.EndDate, System.Data.DbType.Date);
             dbparams.Add("StartTime", entity.StartTime, System.Data.DbType.Time);

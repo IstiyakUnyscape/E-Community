@@ -11,7 +11,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
 {
     public interface IStaffBAL
     {
-        public StaticPagedList<StaffModel> GetAllStaff(SearchStaffModel search);
+        public StaticPagedList<StaffViewModel> GetAllStaff(SearchCompanyModel search);
         public StaffModel GetStaffById(string id);
         public Task<string> CreateStaff(StaffModel entities);
         public Task<int> UpdateStaff(StaffModel entities);

@@ -16,6 +16,7 @@ namespace AutoMapperService
             CreateMap<SearchCompanyEntities, SearchCompanyModel>().ReverseMap();
             CreateMap<CompanyEntities, CompanyModel>().ReverseMap();
             CreateMap<StaffEntities, StaffModel>().ReverseMap();
+            CreateMap<StaffViewEntities, StaffViewModel>().ReverseMap();
             CreateMap<VendorsEntities, VendorsModel>().ReverseMap();
             CreateMap<GuestEntities, GuestModel>().ReverseMap();
             CreateMap<DeveloperEntities, DeveloperModel>().ReverseMap();

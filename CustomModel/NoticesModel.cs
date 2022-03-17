@@ -17,6 +17,7 @@ namespace CustomModel
         public string Description { get; set; }
         public string Community { get; set; }
         public string Unit { get; set; }
+        public string Vendor { get; set; }
         //public DateTime? StartDate { get; set; }
         //public DateTime? EndDate { get; set; }
         //public TimeSpan? StartTime { get; set; }

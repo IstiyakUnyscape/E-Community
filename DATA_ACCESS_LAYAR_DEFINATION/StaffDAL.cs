@@ -61,11 +61,22 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return res;
         }
 
-        public IPagedList<StaffEntities> GetAll(SearchStaffModel search)
+        public IPagedList<StaffViewEntities> GetAll(SearchCompanyEntities search)
         {
-            var dbparams = new DynamicParameters();
-            //dbparams.Add("Id", id, DbType.Int32);
-            IQueryable<StaffEntities> result = _dapper.GetAll<StaffEntities>("sp_GetStaff", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
+            var query = "Select * from vw_Staff";
+            IQueryable<StaffViewEntities> result = _dapper.GetAll<StaffViewEntities>(query).Distinct().AsQueryable();
+            if (search.UserId > 0)
+            {
+                result = result.Where(x => x.UserId == search.UserId);
+            }
+            if (search.TenantID > 0)
+            {
+                result = result.Where(x => x.TenantID == search.TenantID);
+            }
+            if (search.TenantTypeId > 0)
+            {
+                result = result.Where(x => x.TenantTypeId == search.TenantTypeId);
+            }
             //if (!string.IsNullOrEmpty(search.Name))
             //{
             //    result = result.Where(x => x.F_Name.Trim().ToUpper() == search.Name.Trim().ToUpper());
@@ -90,11 +101,11 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             //{
             //    result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
             //}
-            IOrderedQueryable<StaffEntities> OrderedQuery = null;
+            IOrderedQueryable<StaffViewEntities> OrderedQuery = null;
 
             if (!string.IsNullOrEmpty(search.SortColumn))
             {
-                Type type = typeof(StaffEntities);
+                Type type = typeof(StaffViewEntities);
                 PropertyInfo property = type.GetProperty(search.SortColumn);
                 if (property != null)
                 {

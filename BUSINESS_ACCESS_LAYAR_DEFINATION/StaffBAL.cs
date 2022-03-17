@@ -61,17 +61,22 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             return await _StaffDAL.Delete(Id);
         }
 
-        public StaticPagedList<StaffModel> GetAllStaff(SearchStaffModel search)
+        public StaticPagedList<StaffViewModel> GetAllStaff(SearchCompanyModel search)
         {
-            var data = _StaffDAL.GetAll(search);
-            if (data == null) new StaticPagedList<StaffModel>(new List<StaffModel>(), search.PageNo + 1, search.PageSize, 0);
+            if (!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _StaffDAL.GetAll(Search);
+            if (data == null) new StaticPagedList<StaffViewModel>(new List<StaffViewModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {
                 obj.Id = _Iencryption.EncryptID(obj.Id);
             }
-            var rdata = _mapper.Map<IEnumerable<StaffModel>>(data.ToArray());
+            var rdata = _mapper.Map<IEnumerable<StaffViewModel>>(data.ToArray());
             var mData = data.GetMetaData();
-            var pagedList = new StaticPagedList<StaffModel>(rdata, mData);
+            var pagedList = new StaticPagedList<StaffViewModel>(rdata, mData);
             return pagedList;
         }
 
