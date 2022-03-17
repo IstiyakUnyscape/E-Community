@@ -11,14 +11,14 @@ namespace CustomModel
     public class RiskCategorysModel
     {
         public string Id { get; set; }
-        //[Required]
+        [Required]
         [Display(Name = "Risk Category Name")]
         public string Risk_Category_Name { get; set; }
         [Display(Name = "Tenant ID")]
-        public long TenantID { get; set; }
+        public long? TenantID { get; set; }
 
         [Display(Name = "Tenant Type ID")]
-        public int TenantTypeID { get; set; }
+        public int? TenantTypeID { get; set; }
         
         //public DateTime Created_at { get; set; }
         public string CreatedBy { get; set; }

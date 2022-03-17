@@ -140,7 +140,7 @@ namespace CustomModel
         public string Additional_Insurance { get; set; }
         [Display(Name = "Additional Insurance ExpiryDate")]
         [DataType(DataType.Date)]
-        public DateTime Additional_Insurance_ExpiryDate { get; set; }
+        public DateTime? Additional_Insurance_ExpiryDate { get; set; }
         [Required(ErrorMessage = "Please select a file.")]
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
@@ -163,10 +163,10 @@ namespace CustomModel
 
         //public bool Isactive { get; set; }
         //public bool Isdeleted { get; set; }
-        public int Country_Code { get; set; }
-        public int Std_Code { get; set; }
+        public int? Country_Code { get; set; }
+        public int? Std_Code { get; set; }
         public bool IsShowAdmin { get; set; }
-        public int StatusTypeDetailID { get; set; }
+        public int? StatusTypeDetailID { get; set; }
         public DateTime? ApprovedDate { get; set; }
         public string Remarks { get; set; }
         [DataType(DataType.Upload)]

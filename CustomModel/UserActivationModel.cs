@@ -15,7 +15,7 @@ namespace CustomModel
         [Required]
         public string VerificationCode { get; set; }
         public bool IsVerified { get; set; }
-        public DateTime IsVerified_at { get; set; }
+        public DateTime? IsVerified_at { get; set; }
         public DateTime Created_at { get; set; }
     }
 }
