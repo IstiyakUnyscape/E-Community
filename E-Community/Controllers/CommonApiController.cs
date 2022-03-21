@@ -219,5 +219,19 @@ namespace E_Community.Controllers
                 return Ok(new { Code = 204, data = result, Message = "No Data Found", });
             }
         }
+        [HttpGet, Route("GetMenuByRoleId")]
+        public async Task<IActionResult> GetMenuByRoleId(int Roleid)
+        {
+
+            var result = _CommonApiBAL.GetMenuByRoleId(Roleid);
+            if (result != null)
+            {
+                return Ok(await Task.FromResult(result));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = result, Message = "No Data Found", });
+            }
+        }
     }
 }

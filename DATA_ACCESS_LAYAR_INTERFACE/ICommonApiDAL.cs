@@ -20,6 +20,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
         IEnumerable<TypeMasterDetailEntities> GetTypeMasterDetail();
         IEnumerable<StaffEntities> GetStaff();
         IEnumerable<UnitEntities> GetUnit();
+        IEnumerable<MenuEntities> GetMenuByRoleId(int Roleid);
 
     }
 }

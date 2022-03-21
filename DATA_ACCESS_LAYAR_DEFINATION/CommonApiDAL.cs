@@ -107,5 +107,12 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             var res = _dapper.GetAll<UnitEntities>("sp_GetUnit", dbparams, commandType: CommandType.StoredProcedure);
             return res;
         }
+        public IEnumerable<MenuEntities> GetMenuByRoleId(int Roleid)
+        {
+            var dbparams = new DynamicParameters();
+            dbparams.Add("Roleid", Roleid, DbType.Int32);
+            var res = _dapper.GetAll<MenuEntities>("sp_GetMenuByRoleId", dbparams, commandType: CommandType.StoredProcedure);
+            return res;
+        }
     }
 }

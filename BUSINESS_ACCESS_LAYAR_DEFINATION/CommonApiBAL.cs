@@ -1,5 +1,6 @@
 ﻿using BUSINESS_ACCESS_LAYAR_INTERFACE;
 using BUSINESS_ENTITIES;
+using CustomModel;
 using DATA_ACCESS_LAYAR_DEFINATION;
 using DATA_ACCESS_LAYAR_INTERFACE;
 using System;
@@ -88,6 +89,10 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         public IEnumerable<UnitEntities> GetUnit()
         {
             return _CommonApiDAL.GetUnit();
+}
+        public IEnumerable<MenuEntities> GetMenuByRoleId(int Roleid)
+        {
+            return _CommonApiDAL.GetMenuByRoleId(Roleid);         
         }
     }
 }
