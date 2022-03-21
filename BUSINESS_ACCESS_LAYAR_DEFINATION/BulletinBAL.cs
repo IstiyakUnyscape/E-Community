@@ -34,7 +34,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         }
         public async Task<int> CreateBulletin(BulletinModel entities)
         {
-            if (entities.Upload_Pictures_File.Count > 0)
+            if (entities.Upload_Pictures_File!=null)
             {
                 List<Upload_Pictures_FileJson> objfile = new List<Upload_Pictures_FileJson>();
                 foreach (var file in entities.Upload_Pictures_File)
@@ -45,11 +45,8 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                 }
                 entities.Upload_Pictures = JsonConvert.SerializeObject(objfile);
             }
-            if(entities.Attach_Documents_Files==null)
-            {
-            }
-            else
-            if (entities.Attach_Documents_Files.Count > 0)
+           
+             if (entities.Attach_Documents_Files!=null)
              {
                 List<Attach_Documents_FileJson> objfile = new List<Attach_Documents_FileJson>();
                 foreach (var file in entities.Attach_Documents_Files)
@@ -104,7 +101,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         public async Task<int> UpdateBulletin(BulletinModel entities)
         {
             entities.Id = _Iencryption.DecryptID(entities.Id);
-            if (entities.Upload_Pictures_File.Count > 0)
+            if (entities.Upload_Pictures_File!=null)
             {
                 List<Upload_Pictures_FileJson> objfile = new List<Upload_Pictures_FileJson>();
                 foreach (var file in entities.Upload_Pictures_File)
@@ -115,7 +112,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                 }
                 entities.Upload_Pictures = JsonConvert.SerializeObject(objfile);
             }
-            if (entities.Attach_Documents_Files.Count > 0)
+            if (entities.Attach_Documents_Files != null)
             {
                 List<Attach_Documents_FileJson> objfile = new List<Attach_Documents_FileJson>();
                 foreach (var file in entities.Attach_Documents_Files)

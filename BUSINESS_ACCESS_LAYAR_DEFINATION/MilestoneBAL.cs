@@ -73,7 +73,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
        
         public async Task<int> CreateMilestone(MilestoneModel entities)
         {
-            if (entities.Upload_Document_File.Count > 0)
+            if (entities.Upload_Document_File!=null)
             {
                 List<Documents_FileJson> objfile = new List<Documents_FileJson>();
                 foreach (var file in entities.Upload_Document_File)
@@ -92,7 +92,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         public async Task<int> UpdateMilestone(MilestoneModel entities)
         {
             entities.Id = _Iencryption.DecryptID(entities.Id);
-            if (entities.Upload_Document_File.Count > 0)
+            if (entities.Upload_Document_File!=null)
             {
                 List<Documents_FileJson> objfile = new List<Documents_FileJson>();
                 foreach (var file in entities.Upload_Document_File)
