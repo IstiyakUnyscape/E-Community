@@ -89,5 +89,19 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         {
             return _CommonApiDAL.GetUnit();
         }
+
+        public IEnumerable<StaffEntity> GetStaff()
+        {
+            var res = _CommonApiDAL.GetStaff();
+            List<StaffEntity> entity = new List<StaffEntity>();
+            foreach (var obj in res)
+            {
+                StaffEntity staffEntity = new StaffEntity();
+                staffEntity.Id = Convert.ToInt32(obj.Id);
+                staffEntity.Name = obj.F_Name + " " + obj.L_Name;
+                entity.Add(staffEntity);
+            }
+            return entity;
+        }
     }
 }
