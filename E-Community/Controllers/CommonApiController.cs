@@ -191,6 +191,20 @@ namespace E_Community.Controllers
                 return Ok(new { Code = 204, data = result, Message = "No Data Found", });
             }
         }
+        [HttpGet, Route("GetStaff")]
+        public async Task<IActionResult> GetStaff()
+        {
+
+            var result = _CommonApiBAL.GetStaff();
+            if (result != null)
+            {
+                return Ok(await Task.FromResult(result));
+            }
+            else
+            {
+                return Ok(new { Code = 204, data = result, Message = "No Data Found", });
+            }
+        }
         [HttpGet, Route("GetStaffByDesignationId")]
         public async Task<IActionResult> GetStaffByDesignationId( int DesignationId)
         {
