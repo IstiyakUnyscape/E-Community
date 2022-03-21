@@ -1,4 +1,5 @@
 ﻿using BUSINESS_ENTITIES;
+using CustomModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
         public IEnumerable<StaffEntity> GetStaffByDesignationId(int id);
         public IEnumerable<StaffEntity> GetStaff();
         public IEnumerable<UnitEntities> GetUnit();
+        public IEnumerable<MenuEntities> GetMenuByRoleId(int Roleid);
+
     }
 }

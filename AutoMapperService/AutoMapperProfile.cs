@@ -36,6 +36,7 @@ namespace AutoMapperService
             CreateMap<NoticesEntities, NoticesModel>().ReverseMap();
             CreateMap<NoticesViewEntities, NoticesModel>().ReverseMap();
             CreateMap<UnitEntities, UnitModel>().ReverseMap();
+            CreateMap<MenuEntities, MenuModel>().ReverseMap();
 
 
         }
