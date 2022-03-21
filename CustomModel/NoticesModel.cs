@@ -25,7 +25,6 @@ namespace CustomModel
         public string UploadDocument { get; set; }
         public IFormFile Upload_Document_File { get; set; }
         //public DateTime Created_at { get; set; }
-        [Required]
         public string CreatedBy { get; set; }
         //public DateTime? Modified_at { get; set; }
         public string ModifiedBy { get; set; }

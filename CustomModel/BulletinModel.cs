@@ -24,7 +24,6 @@ namespace CustomModel
         //public decimal Price { get; set; }
         public string Availability_To_Contact { get; set; }
         //public DateTime Created_at { get; set; }
-        [Required]
         public string CreatedBy { get; set; }
         //public DateTime? Modified_at { get; set; }
         public string ModifiedBy { get; set; }

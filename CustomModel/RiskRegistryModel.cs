@@ -49,7 +49,6 @@ namespace CustomModel
         public int? StatusTypeDetailId { get; set; }
         public string Remarks { get; set; }
         // public DateTime Created_at { get; set; }
-        [Required]
         public string CreatedBy { get; set; }
         //public DateTime? Modified_at { get; set; }
         public string ModifiedBy { get; set; }

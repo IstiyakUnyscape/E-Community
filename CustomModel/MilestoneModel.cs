@@ -33,7 +33,6 @@ namespace CustomModel
         public string Upload_Document { get; set; }
         public int? StatusTypeDetailId { get; set; }
         //public DateTime Created_at { get; set; }
-        [Required]
         public string CreatedBy { get; set; }
         //public DateTime? Modified_at { get; set; }
         public string ModifiedBy { get; set; }
