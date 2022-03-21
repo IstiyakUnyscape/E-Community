@@ -64,7 +64,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public async Task<int> CreateDeveloper(DeveloperModel entities)
         {
-            if (entities.License_Document_File.Length > 0)
+            if (entities.License_Document_File!=null)
             {
                 entities.License_Document = utility.FileUpload("UploadFile", entities.License_Document_File, webHostEnvironment);
             }
