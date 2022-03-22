@@ -11,7 +11,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
 {
     public interface IBulletinDAL
     {
-        IPagedList<BulletinEntities> GetAll(SearchCompanyModel search);
+        IPagedList<BulletinViewEntities> GetAll(SearchCompanyEntities search);
         Task<BulletinEntities> GetById(int id);
         Task<int> Create(BulletinEntities entity);
         Task<int> Update(BulletinEntities entity);

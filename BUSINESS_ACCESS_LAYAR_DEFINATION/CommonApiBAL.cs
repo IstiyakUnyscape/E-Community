@@ -92,7 +92,13 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 }
         public IEnumerable<MenuEntities> GetMenuByRoleId(int Roleid)
         {
-            return _CommonApiDAL.GetMenuByRoleId(Roleid);         
+
+            var res = _CommonApiDAL.GetMenuByRoleId(Roleid);
+            foreach (var list in res)
+            {
+                list.Url = list.Controller_Name + "/" + list.ActionName + "/" + list.Optional_RouteValues;
+            }
+            return res;
         }
 
         public IEnumerable<StaffEntity> GetStaff()

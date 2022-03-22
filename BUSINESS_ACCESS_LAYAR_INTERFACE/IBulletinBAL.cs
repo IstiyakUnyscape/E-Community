@@ -10,7 +10,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
 {
     public interface IBulletinBAL
     {
-        public StaticPagedList<BulletinModel> GetAllBulletin(SearchCompanyModel search);
+        public StaticPagedList<BulletinViewModel> GetAllBulletin(SearchCompanyModel search);
         public BulletinModel GetBulletinById(string id);
         public Task<int> CreateBulletin(BulletinModel entities);
         public Task<int> UpdateBulletin(BulletinModel entities);

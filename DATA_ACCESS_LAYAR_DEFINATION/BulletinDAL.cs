@@ -48,11 +48,11 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return res;
         }
 
-        public IPagedList<BulletinEntities> GetAll(SearchCompanyModel search)
+        public IPagedList<BulletinViewEntities> GetAll(SearchCompanyEntities search)
         {
             var dbparams = new DynamicParameters();
             //dbparams.Add("Id", id, DbType.Int32);
-            IQueryable<BulletinEntities> result = _dapper.GetAll<BulletinEntities>("sp_GetBulletin", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
+            IQueryable<BulletinViewEntities> result = _dapper.GetAll<BulletinViewEntities>("sp_GetBulletin", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
             //if (!string.IsNullOrEmpty(search.Name))
             //{
             //    result = result.Where(x => x.Title.Trim().ToUpper() == search.Name.Trim().ToUpper());
@@ -77,11 +77,11 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             //{
             //    result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
             //}
-            IOrderedQueryable<BulletinEntities> OrderedQuery = null;
+            IOrderedQueryable<BulletinViewEntities> OrderedQuery = null;
 
             if (!string.IsNullOrEmpty(search.SortColumn))
             {
-                Type type = typeof(BulletinEntities);
+                Type type = typeof(BulletinViewEntities);
                 PropertyInfo property = type.GetProperty(search.SortColumn);
                 if (property != null)
                 {

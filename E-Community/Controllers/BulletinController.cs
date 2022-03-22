@@ -30,7 +30,7 @@ namespace E_Community.Controllers
         public async Task<IActionResult> GetAll([FromForm] SearchCompanyModel search)
         {
             var result = _BulletinBAL.GetAllBulletin(search);
-            var pagedList = new PagedStaticList<BulletinModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
+            var pagedList = new PagedStaticList<BulletinViewModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
             return Ok(await Task.FromResult(pagedList));
         }
         [HttpGet, Route("GetByID")]
