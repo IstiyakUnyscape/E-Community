@@ -26,6 +26,8 @@ namespace CustomModel
         public string Http_Method { get; set; }
         [Display(Name = "Optional RouteValues")]
         public string Optional_RouteValues { get; set; }
+        public string CreatedBy { get; set; }        
+        public string ModifiedBy { get; set; }
 
     }
 }
