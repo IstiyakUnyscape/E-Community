@@ -24,6 +24,7 @@ namespace AutoMapperService
             CreateMap<DesignationEntities, DesignationModel>().ReverseMap();
             CreateMap<RoleEntities, RoleModel>().ReverseMap();
             CreateMap<BulletinEntities, BulletinModel>().ReverseMap();
+            CreateMap<BulletinViewEntities, BulletinViewModel>().ReverseMap();
             CreateMap<EventEntities, EventModel>().ReverseMap();
             CreateMap<EventViewEntities, EventModel>().ReverseMap();
             CreateMap<ProjectEntities, ProjectModel>().ReverseMap();

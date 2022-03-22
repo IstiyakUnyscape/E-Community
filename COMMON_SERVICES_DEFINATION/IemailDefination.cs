@@ -8,15 +8,18 @@ using System.Linq;
 using MailKit.Net.Smtp;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
 namespace COMMON_SERVICES_DEFINATION
 {
     public class IemailDefination : Iemail
     {
         private readonly EmailCofiguration _mailSettings;
-        public IemailDefination(EmailCofiguration mailSettings)
+        private IWebHostEnvironment _webHostEnvironment;
+        public IemailDefination(EmailCofiguration mailSettings, IWebHostEnvironment _host)
         {
             _mailSettings = mailSettings;
+            _webHostEnvironment = _host;
         }
         public async Task<bool> SendasynchronouslyEmail(MailRequestEntites mailRequestEntites)
         {
@@ -63,9 +66,9 @@ namespace COMMON_SERVICES_DEFINATION
                             }
                         }
                     }
-                    //MailContent = System.IO.File.ReadAllText(_mailSettings.TemplatePath);
-                    //MailContent = MailContent.Replace("__ActivationURL__", mailRequestEntites.Body);
-                    builder.HtmlBody = mailRequestEntites.Body;//MailContent;
+                    MailContent = System.IO.File.ReadAllText(_webHostEnvironment.ContentRootPath + "\\" + _mailSettings.TemplatePath);
+                    MailContent = MailContent.Replace("_link_", mailRequestEntites.Body);
+                    builder.HtmlBody = MailContent;//mailRequestEntites.Body;
                     email.Body = builder.ToMessageBody();
                     using (var client = new SmtpClient())
                     {

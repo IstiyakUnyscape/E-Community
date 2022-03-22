@@ -68,17 +68,22 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             return await _BulletinDAL.Delete(Id);
         }
 
-        public StaticPagedList<BulletinModel> GetAllBulletin(SearchCompanyModel search)
+        public StaticPagedList<BulletinViewModel> GetAllBulletin(SearchCompanyModel search)
         {
-            var data = _BulletinDAL.GetAll(search);
-            if (data == null) new StaticPagedList<BulletinModel>(new List<BulletinModel>(), search.PageNo + 1, search.PageSize, 0);
+            if (!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _BulletinDAL.GetAll(Search);
+            if (data == null) new StaticPagedList<BulletinViewModel>(new List<BulletinViewModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {
                 obj.Id = _Iencryption.EncryptID(obj.Id);
             }
-            var rdata = _mapper.Map<IEnumerable<BulletinModel>>(data.ToArray());
+            var rdata = _mapper.Map<IEnumerable<BulletinViewModel>>(data.ToArray());
             var mData = data.GetMetaData();
-            var pagedList = new StaticPagedList<BulletinModel>(rdata, mData);
+            var pagedList = new StaticPagedList<BulletinViewModel>(rdata, mData);
             return pagedList;
         }
 

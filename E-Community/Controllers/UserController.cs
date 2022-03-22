@@ -5,6 +5,7 @@ using BUSINESS_ENTITIES;
 using CustomModel;
 using E_Community.CustomFilter;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,9 +23,9 @@ namespace E_Community.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserBAL _UserBAL;
-        public UserController(IMapper mapper, EmailCofiguration emailCofiguration)
+        public UserController(IMapper mapper, EmailCofiguration emailCofiguration, IWebHostEnvironment webHostEnvironment)
         {
-            _UserBAL = new UserBAL(mapper, emailCofiguration);
+            _UserBAL = new UserBAL(mapper, emailCofiguration, webHostEnvironment);
         }
         [HttpGet, Route("GetAll")]
         public async Task<IActionResult> GetAll()
@@ -45,13 +46,13 @@ namespace E_Community.Controllers
         public async Task<IActionResult> Login(LoginEntitiies obj)
         {
             var res = _UserBAL.UserLogin(obj);
-            if(res.Result!=null)
+            if (res.Result != null)
             {
                 return Ok(await Task.FromResult(res));
             }
             else
             {
-               return Ok(new { Code = 204, data = res, Message = "No Data Found", });
+                return Ok(new { Code = 204, data = res, Message = "No Data Found", });
             }
         }
         [HttpPost, Route("RegisterUser")]
@@ -59,7 +60,7 @@ namespace E_Community.Controllers
         {
 
             string i = null;
-           
+
             if (EmailId != null)
             {
                 i = _UserBAL.CreateUser(EmailId).Result;
@@ -67,15 +68,15 @@ namespace E_Community.Controllers
             if (i != "-1")
             {
                 var res = _UserBAL.VerificatoinLink(i);
-                if(res.Result==true)
+                if (res.Result == true)
                 {
-                    return Ok(new { Code = 200, Result=res.Result, Message = "Verification link is Sent on the email", });
+                    return Ok(new { Code = 200, Result = res.Result, Message = "Verification link is Sent on the email", });
                 }
                 else
                 {
                     return Ok(new { Code = 200, Message = "Registation Successfully But Not Sent Verification Link", });
                 }
-                
+
             }
             else
             {
@@ -86,7 +87,7 @@ namespace E_Community.Controllers
         public IActionResult Send(string userid)
         {
             var res = _UserBAL.VerificatoinLink(userid);
-            if(res.Result ==true)
+            if (res.Result == true)
             {
                 return Ok(new { Code = 200, Message = "Verification link is Sent on the email", });
             }
@@ -94,16 +95,16 @@ namespace E_Community.Controllers
             {
                 return Ok(new { Code = 204, Message = "Verification Link Not Sent!", });
             }
-            
+
         }
         [HttpGet, Route("VerifyUserEmail")]
-        public IActionResult UserVarified(string userid,string code)
+        public IActionResult UserVarified(string userid, string code)
         {
             var res = _UserBAL.UserVerified(userid, code);
-            if(res.Result== 1)
+            if (res.Result == 1)
             {
 
-                return Ok(new { Code = 200, StatusCode=1, Message = "Success", });
+                return Ok(new { Code = 200, StatusCode = 1, Message = "Success", });
             }
             else
             {
@@ -113,14 +114,14 @@ namespace E_Community.Controllers
                 }
                 else
                 {
-                    return BadRequest(new { Code = 400, StatusCode = 3, Message = "Email Already Verified with this Link. Password is already Created by User."});
+                    return BadRequest(new { Code = 400, StatusCode = 3, Message = "Email Already Verified with this Link. Password is already Created by User." });
                 }
-                
+
             }
-            
+
         }
         [HttpPost, Route("CreatePassword")]
-        public IActionResult CreatePassword(string userid,string Password)
+        public IActionResult CreatePassword(string userid, string Password)
         {
             var res = _UserBAL.CreatePassword(userid, Password);
             if (res.Result == 1)

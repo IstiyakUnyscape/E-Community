@@ -22,7 +22,7 @@ namespace BUSINESS_ENTITIES
         public int? ModifiedBy { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
-
+        public string Url { get; set; }
 
 
     }

@@ -6,6 +6,7 @@ using COMMON_SERVICES_INTERFACE;
 using CustomModel;
 using DATA_ACCESS_LAYAR_DEFINATION;
 using DATA_ACCESS_LAYAR_INTERFACE;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -26,13 +27,13 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         private readonly IMapper _mapper;
         private readonly IGetAppsetting _igetAppsetting;
         private readonly Iemail _mailService;
-        public UserBAL(IMapper mapper, EmailCofiguration emailCofiguration)
+        public UserBAL(IMapper mapper, EmailCofiguration emailCofiguration, IWebHostEnvironment webHostEnvironment)
         {
             _mapper = mapper;
             _UserDAL = new UserDAL();
             _Iencryption = new EncryptionDefination();
             _igetAppsetting = new GetAppsettingDefination();
-            _mailService = new IemailDefination(emailCofiguration);
+            _mailService = new IemailDefination(emailCofiguration, webHostEnvironment);
         }
 
         public async Task<string> CreateUser(string obj)
@@ -42,8 +43,8 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             //var guid = Guid.NewGuid().ToString().Replace("-", "");
             //var password = guid.Substring(0,8);
             //entities.Password= _Iencryption.EncryptID(password);
-            var res= await _UserDAL.Create(entities);
-            if(res==-1)
+            var res = await _UserDAL.Create(entities);
+            if (res == -1)
             {
                 return res.ToString();
             }
@@ -51,26 +52,27 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 return _Iencryption.EncryptID(res.ToString());
             }
-            
+
         }
 
         public async Task<bool> VerificatoinLink(string UserId)
         {
-            bool send= false;
-            var id= _Iencryption.DecryptID(UserId);
+            bool send = false;
+            var id = _Iencryption.DecryptID(UserId);
             var _data = _UserDAL.GetAll().Where(x => x.Id == id).FirstOrDefault();
             string VerificationCode = Guid.NewGuid().ToString();
             var res = await _UserDAL.UserActivation(id, VerificationCode);
             var configuration = _igetAppsetting.getIconfiguration();
             var Url = configuration.GetSection("BaseUrl").Value;
-            var varifylink= "<br /><a href ='" +Url+ "create-password?UserId=" + UserId + "&VerificationCode=" + VerificationCode + "'>Click here to activate your account.</a>";
+            // var varifylink= "<br /><a href ='" +Url+ "create-password?UserId=" + UserId + "&VerificationCode=" + VerificationCode + "'>Click here to activate your account.</a>";
+            var varifylink = Url + "create-password?UserId=" + UserId + "&VerificationCode=" + VerificationCode;
             MailRequestEntites _obj = new MailRequestEntites(new string[] { _data.Email_id }, varifylink, new List<IFormFile> { });
-            if(res==1)
+            if (res == 1)
             {
-               send = await _mailService.SendasynchronouslyEmail(_obj);
+                send = await _mailService.SendasynchronouslyEmail(_obj);
             }
             return send;
-             
+
         }
 
         public async Task<UserModel> UserLogin(LoginEntitiies obj)
@@ -80,8 +82,8 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 var configuration = _igetAppsetting.getIconfiguration();
                 var Key = configuration.GetSection("JWTKEY").Value;
-                string pwd=  _Iencryption.EncryptID(obj.Password); ;
-                var _data = _UserDAL.GetAll().Where(x => x.Email_id == obj.Email && x.Password ==pwd).FirstOrDefault();
+                string pwd = _Iencryption.EncryptID(obj.Password); ;
+                var _data = _UserDAL.GetAll().Where(x => x.Email_id == obj.Email && x.Password == pwd).FirstOrDefault();
                 data = _mapper.Map<UserModel>(_data);
                 if (data != null)
                 {
@@ -99,11 +101,11 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                     };
                     var token = tokenHandler.CreateToken(tokenDescriptor);
                     data.token = tokenHandler.WriteToken(token);
-                    data.Id= _Iencryption.EncryptID(data.Id);
+                    data.Id = _Iencryption.EncryptID(data.Id);
                     return data;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -112,17 +114,17 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
 
         public async Task<int> UserVerified(string UserId, string Code)
         {
-            int status=0;
+            int status = 0;
             var id = _Iencryption.DecryptID(UserId);
 
             if (_UserDAL.GetAll().Where(x => x.Id == id).FirstOrDefault().IsPasswordCreated == true)
             {
                 return (status = 3);
             }
-            var res =await _UserDAL.ValidateVerificationCode(id,Code);
+            var res = await _UserDAL.ValidateVerificationCode(id, Code);
             var currentdate = DateTime.Now;
             var expiredate = res.Created_at.AddDays(7); //Convert.ToInt32(currentdate.Subtract(res.Created_at));
-           
+
             if (res.IsVerified == true)
             {
                 status = 1;
@@ -141,13 +143,13 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
                 else
                 {
                     var Isvarified = await _UserDAL.UserVerification(id, Code);
-                    if(Isvarified==1)
+                    if (Isvarified == 1)
                     {
                         status = 1;
                     }
                 }
             }
-            
+
             return status;
         }
 
@@ -163,7 +165,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             var data = new UserModel();
             try
             {
-                var id= _Iencryption.DecryptID(UserId);
+                var id = _Iencryption.DecryptID(UserId);
                 var password = _Iencryption.EncryptID(Password);
                 var configuration = _igetAppsetting.getIconfiguration();
                 var Key = configuration.GetSection("JWTKEY").Value;
