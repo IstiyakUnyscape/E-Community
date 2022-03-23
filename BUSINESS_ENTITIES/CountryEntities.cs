@@ -65,4 +65,9 @@ namespace BUSINESS_ENTITIES
         public int Id { get; set; }
         public string Name { get; set; }
     }
+    public class VendorsEntity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
 }

@@ -19,6 +19,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
         IEnumerable<Type_of_DeliveryEntities> GetDeliveryType();
         IEnumerable<TypeMasterDetailEntities> GetTypeMasterDetail();
         IEnumerable<StaffEntities> GetStaff();
+        IEnumerable<VendorsEntities> GetVendor();
         IEnumerable<UnitEntities> GetUnit();
         IEnumerable<MenuEntities> GetMenuByRoleId(int Roleid);
 
