@@ -114,5 +114,19 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             }
             return entity;
         }
+
+        public IEnumerable<VendorsEntity> GetVendor()
+        {
+            var res = _CommonApiDAL.GetVendor();
+            List<VendorsEntity> entity = new List<VendorsEntity>();
+            foreach (var obj in res)
+            {
+                VendorsEntity vendorsEntity = new VendorsEntity();
+                vendorsEntity.Id = Convert.ToInt32(obj.Id);
+                vendorsEntity.Name = obj.Company_Name; 
+                entity.Add(vendorsEntity);
+            }
+            return entity;
+        }
     }
 }
