@@ -14,11 +14,14 @@ namespace BUSINESS_ENTITIES
         public string Community { get; set; }
         public string Unit { get; set; }
         public string Vendor { get; set; }
+        public string Staff { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public TimeSpan? StartTime { get; set; }
         public TimeSpan? EndTime { get; set; }
         public string UploadDocument { get; set; }
+        public int NoticeIssueForDetailId { get; set; }
+        public int NoticeTypeDetailID { get; set; }
         public DateTime Created_at { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? Modified_at { get; set; }

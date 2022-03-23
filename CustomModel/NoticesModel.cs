@@ -18,12 +18,14 @@ namespace CustomModel
         public string Community { get; set; }
         public string Unit { get; set; }
         public string Vendor { get; set; }
-        //public DateTime? StartDate { get; set; }
-        //public DateTime? EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         //public TimeSpan? StartTime { get; set; }
         //public TimeSpan? EndTime { get; set; }
         public string UploadDocument { get; set; }
         public IFormFile Upload_Document_File { get; set; }
+        public int? NoticeIssueForDetailId { get; set; }
+        public int? NoticeTypeDetailID { get; set; }
         //public DateTime Created_at { get; set; }
         public string CreatedBy { get; set; }
         //public DateTime? Modified_at { get; set; }
