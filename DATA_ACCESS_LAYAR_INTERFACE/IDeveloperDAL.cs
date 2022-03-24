@@ -11,7 +11,7 @@ namespace DATA_ACCESS_LAYAR_INTERFACE
 {
     public interface IDeveloperDAL
     {
-        IPagedList<DeveloperEntities> GetAll(SearchCompanyModel search);
+        IPagedList<DeveloperViewEntities> GetAll(SearchCompanyEntities search);
         Task<DeveloperEntities> GetById(int id);
         Task<int> Create(DeveloperEntities entity);
         Task<int> Update(DeveloperEntities entity);

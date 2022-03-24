@@ -39,7 +39,10 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("License_Document", entity.License_Document);
             dbparams.Add("Created_at", DateTime.Now);
             dbparams.Add("Isactive", true);
-            dbparams.Add("Isdeleted", false);
+            dbparams.Add("CreatedBy", entity.CreatedBy);
+            dbparams.Add("TenantID", entity.TenantID);
+            dbparams.Add("TenantTypeId", entity.TenantTypeId);
+
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertDeveloper", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
@@ -52,12 +55,22 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             return res;
         }
 
-        public IPagedList<DeveloperEntities> GetAll(SearchCompanyModel search)
+        public IPagedList<DeveloperViewEntities> GetAll(SearchCompanyEntities search)
         {
-            var dbparams = new DynamicParameters();
-            //dbparams.Add("Id", id, DbType.Int32);
-            IQueryable<DeveloperEntities> result = _dapper.GetAll<DeveloperEntities>("sp_GetDevelopers", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
-            //if (!string.IsNullOrEmpty(search.Name))
+            var query = "select * from vw_Developers";
+            IQueryable<DeveloperViewEntities> result = _dapper.GetAll<DeveloperViewEntities>(query).Distinct().AsQueryable();
+            if (search.UserId > 0)
+            {
+                result = result.Where(x => x.UserId == search.UserId);
+            }
+            if (search.TenantID > 0)
+            {
+                result = result.Where(x => x.TenantID == search.TenantID);
+            }
+            if (search.TenantTypeId > 0)
+            {
+                result = result.Where(x => x.TenantTypeId == search.TenantTypeId);
+            }//if (!string.IsNullOrEmpty(search.Name))
             //{
             //    result = result.Where(x => x.F_Name.Trim().ToUpper() == search.Name.Trim().ToUpper());
             //}
@@ -81,11 +94,11 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             //{
             //    result = result.Where(x => x.Tax_Return_Number == search.Tax_Return_Number);
             //}
-            IOrderedQueryable<DeveloperEntities> OrderedQuery = null;
+            IOrderedQueryable<DeveloperViewEntities> OrderedQuery = null;
 
             if (!string.IsNullOrEmpty(search.SortColumn))
             {
-                Type type = typeof(DeveloperEntities);
+                Type type = typeof(DeveloperViewEntities);
                 PropertyInfo property = type.GetProperty(search.SortColumn);
                 if (property != null)
                 {
@@ -131,7 +144,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("License_Document", entity.License_Document);
             dbparams.Add("Modified_at", DateTime.Now);
             dbparams.Add("Isactive", true);
-            //dbparams.Add("Isdeleted", false);
+            dbparams.Add("ModifiedBy", entity.ModifiedBy);
+            dbparams.Add("TenantID", entity.TenantID);
+            dbparams.Add("TenantTypeId", entity.TenantTypeId);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateDeveloper", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }

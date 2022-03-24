@@ -24,7 +24,7 @@ namespace E_Community.Controllers
         public async Task<IActionResult> GetAll([FromForm] SearchCompanyModel search)
         {
             var result = _DeveloperBAL.GetAllDeveloper(search);
-            var pagedList = new PagedStaticList<DeveloperModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
+            var pagedList = new PagedStaticList<DeveloperViewModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
             return Ok(await Task.FromResult(pagedList));
            
         }
@@ -66,7 +66,7 @@ namespace E_Community.Controllers
             {
                 return BadRequest();
             }
-            if (i == 0)
+            if (i >0)
             {
                 return Ok(new { Code = 200, Message = "Registation Successfully", });
             }
@@ -81,7 +81,7 @@ namespace E_Community.Controllers
             if (Id != null)
             {
                 var res = _DeveloperBAL.DeleteDeveloper(Id);
-                if (res.Result == 0)
+                if (res.Result > 0)
                 {
                     return Ok(new { Code = 200, Message = "Data Deleted Successfully ", });
                 }
@@ -102,7 +102,7 @@ namespace E_Community.Controllers
             if (ModelState.IsValid)
             {
                 var res = _DeveloperBAL.UpdateDeveloper(entites);
-                if (res.Result == 0)
+                if (res.Result > 0)
                 {
                     return Ok(new { Code = 200, Message = "Data Update Successfully ", });
                 }

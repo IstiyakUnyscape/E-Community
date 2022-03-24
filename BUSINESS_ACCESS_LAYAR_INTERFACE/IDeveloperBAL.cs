@@ -10,7 +10,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
 {
     public interface IDeveloperBAL
     {
-        public StaticPagedList<DeveloperModel> GetAllDeveloper(SearchCompanyModel search);
+        public StaticPagedList<DeveloperViewModel> GetAllDeveloper(SearchCompanyModel search);
         public DeveloperModel GetDeveloperById(string id);
         public Task<int> CreateDeveloper(DeveloperModel entities);
         public Task<int> UpdateDeveloper(DeveloperModel entities);

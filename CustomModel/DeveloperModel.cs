@@ -43,5 +43,15 @@ namespace CustomModel
         [Display(Name = "License Document File")]
         public IFormFile License_Document_File { get; set; }
         public string License_Document { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
+        public int? TenantTypeId { get; set; }
+        public int? TenantID { get; set; }
+    }
+    public class DeveloperViewModel : DeveloperModel
+    {
+        public string Country_Name { get; set; }
+        public string State_Name { get; set; }
+        public string City_Name { get; set; }
     }
 }
