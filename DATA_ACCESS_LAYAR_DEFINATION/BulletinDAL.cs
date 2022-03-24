@@ -50,9 +50,20 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
 
         public IPagedList<BulletinViewEntities> GetAll(SearchCompanyEntities search)
         {
-            var dbparams = new DynamicParameters();
-            //dbparams.Add("Id", id, DbType.Int32);
-            IQueryable<BulletinViewEntities> result = _dapper.GetAll<BulletinViewEntities>("sp_GetBulletin", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
+            var query = "select * from vw_Bulletin";
+            IQueryable<BulletinViewEntities> result = _dapper.GetAll<BulletinViewEntities>(query).Distinct().AsQueryable();
+            if (search.UserId > 0)
+            {
+                result = result.Where(x => x.UserId == search.UserId);
+            }
+            if (search.TenantID > 0)
+            {
+                result = result.Where(x => x.TenantID == search.TenantID);
+            }
+            if (search.TenantTypeId > 0)
+            {
+                result = result.Where(x => x.TenantTypeId == search.TenantTypeId);
+            }
             //if (!string.IsNullOrEmpty(search.Name))
             //{
             //    result = result.Where(x => x.Title.Trim().ToUpper() == search.Name.Trim().ToUpper());

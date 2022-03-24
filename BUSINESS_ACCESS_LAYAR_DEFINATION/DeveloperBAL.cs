@@ -32,17 +32,22 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             webHostEnvironment = _host;
         }
 
-        public StaticPagedList<DeveloperModel> GetAllDeveloper(SearchCompanyModel search)
+        public StaticPagedList<DeveloperViewModel> GetAllDeveloper(SearchCompanyModel search)
         {
-            var data = _DeveloperDAL.GetAll(search);
-            if (data == null) new StaticPagedList<DeveloperModel>(new List<DeveloperModel>(), search.PageNo + 1, search.PageSize, 0);
+            if (!string.IsNullOrEmpty(search.UserId))
+            {
+                search.UserId = _Iencryption.EncryptID(search.UserId);
+            }
+            var Search = _mapper.Map<SearchCompanyEntities>(search);
+            var data = _DeveloperDAL.GetAll(Search);
+            if (data == null) new StaticPagedList<DeveloperViewModel>(new List<DeveloperViewModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {
                 obj.Id = _Iencryption.EncryptID(obj.Id);
             }
-            var rdata = _mapper.Map<IEnumerable<DeveloperModel>>(data.ToArray());
+            var rdata = _mapper.Map<IEnumerable<DeveloperViewModel>>(data.ToArray());
             var mData = data.GetMetaData();
-            var pagedList = new StaticPagedList<DeveloperModel>(rdata, mData);
+            var pagedList = new StaticPagedList<DeveloperViewModel>(rdata, mData);
             return pagedList;
         }
 
@@ -68,7 +73,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.License_Document = utility.FileUpload("UploadFile", entities.License_Document_File, webHostEnvironment);
             }
-            
+            entities.CreatedBy = _Iencryption.DecryptID(entities.CreatedBy);
             var data = _mapper.Map<DeveloperEntities>(entities);
             return await _DeveloperDAL.Create(data);
         }
@@ -84,7 +89,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.License_Document = entities.License_Document;
             }
-            
+            entities.ModifiedBy = _Iencryption.DecryptID(entities.ModifiedBy);
             var data = _mapper.Map<DeveloperEntities>(entities);
             return await _DeveloperDAL.Update(data);
         }

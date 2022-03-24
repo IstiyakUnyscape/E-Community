@@ -24,5 +24,16 @@ namespace BUSINESS_ENTITIES
         public DateTime? Modified_at { get; set; }
         public bool Isactive { get; set; }
         public bool Isdeleted { get; set; }
+        public int CreatedBy { get; set; }
+        public int? ModifiedBy { get; set; }
+        public int TenantTypeId { get; set; }
+        public int TenantID { get; set; }
+    }
+    public class DeveloperViewEntities : DeveloperEntities
+    {
+        public string Country_Name { get; set; }
+        public string State_Name { get; set; }
+        public string City_Name { get; set; }
+        public int UserId { get; set; }
     }
 }
