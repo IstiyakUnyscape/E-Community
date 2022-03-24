@@ -61,7 +61,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Profile_Image = utility.FileUpload("UploadProfileImage", entities.Profile_Image_File, webHostEnvironment);
             }
-            if (entities.Additional_CertificatesFiles.Count > 0)
+            if (entities.Additional_CertificatesFiles!=null)
             {
                 List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
                 List<FilesDynamic> addtionalFilesDynamics = utility.GetListModel(entities.Additional_CertificatesFiles,entities.Additional_Certificate_Title, entities.Additional_Certificate_ExpiryDate);
@@ -178,7 +178,7 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             {
                 entities.Profile_Image = entities.Profile_Image;
             }
-            if (entities.Additional_CertificatesFiles.Count > 0)
+            if (entities.Additional_CertificatesFiles!=null)
             {
                 List<AdditionalCertificateJson> Jsondata = new List<AdditionalCertificateJson>();
                 List<FilesDynamic> addtionalFilesDynamics = utility.GetListModel(entities.Additional_CertificatesFiles, entities.Additional_Certificate_Title, entities.Additional_Certificate_ExpiryDate);
