@@ -35,18 +35,28 @@ namespace DapperServices
             {
                 if (db.State == ConnectionState.Closed)
                     db.Open();
-                using var transaction = db.BeginTransaction();
+                using var tran = db.BeginTransaction();
                 try
                 {
-                    db.Query<T>(sp, parms, commandType: commandType, transaction: transaction);
-                    transaction.Commit();
+                    db.Query<T>(sp, parms, commandType: commandType, transaction: tran);
+                    tran.Commit();
                     result = parms.Get<T>("retVal") ; //get output parameter value
                     
                 }
-                catch (Exception ex)
+                catch (SqlException)
                 {
-                    transaction.Rollback();
-                    throw ex;
+                    tran.Rollback();
+                    throw;
+                }
+                catch (Exception)
+                {
+                    tran.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    if (db.State == ConnectionState.Open)
+                        db.Close();
                 }
             };
             return result;
@@ -61,9 +71,20 @@ namespace DapperServices
                     return db.Query<T>(sp, parms, commandType: commandType).FirstOrDefault();
                 }
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw ex;
+                //transaction.Rollback();
+                throw;
+            }
+            catch (Exception)
+            {
+                //transaction.Rollback();
+                throw;
+            }
+            finally
+            {
+                if (db.State == ConnectionState.Open)
+                    db.Close();
             }
         }
 
@@ -76,9 +97,20 @@ namespace DapperServices
                     return db.Query<T>(sp, parms, commandType: commandType).ToList();
                 }
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw ex;
+                //transaction.Rollback();
+                throw;
+            }
+            catch (Exception)
+            {
+                //transaction.Rollback();
+                throw;
+            }
+            finally
+            {
+                if (db.State == ConnectionState.Open)
+                    db.Close();
             }
         }
         public List<T> GetAll<T>(string query)
@@ -90,9 +122,20 @@ namespace DapperServices
                     return db.Query<T>(query).ToList();
                 }
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw ex;
+                //transaction.Rollback();
+                throw;
+            }
+            catch (Exception)
+            {
+                //transaction.Rollback();
+                throw;
+            }
+            finally
+            {
+                if (db.State == ConnectionState.Open)
+                    db.Close();
             }
         }
         public T Insert<T>(string sp, DynamicParameters parms, CommandType commandType = CommandType.StoredProcedure)
@@ -112,17 +155,32 @@ namespace DapperServices
                             result = db.Query<T>(sp, parms, commandType: commandType, transaction: tran).FirstOrDefault();
                             tran.Commit();
                         }
-                        catch (Exception ex)
+                        catch (SqlException)
                         {
                             tran.Rollback();
-                            this.Dispose();
-                            throw ex;
+                            throw;
+                        }
+                        catch (Exception)
+                        {
+                            tran.Rollback();
+                            throw;
+                        }
+                        finally
+                        {
+                            if (db.State == ConnectionState.Open)
+                                db.Close();
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (SqlException)
                 {
-                    throw ex;
+                    //transaction.Rollback();
+                    throw;
+                }
+                catch (Exception)
+                {
+                    //transaction.Rollback();
+                    throw;
                 }
                 finally
                 {
@@ -150,18 +208,33 @@ namespace DapperServices
                             result = db.Query<T>(sp, parms, commandType: commandType, transaction: tran).FirstOrDefault();
                             tran.Commit();
                         }
-                        catch (Exception ex)
+                        catch (SqlException)
                         {
                             tran.Rollback();
-                            this.Dispose();
-                            throw ex;
+                            throw;
+                        }
+                        catch (Exception)
+                        {
+                            tran.Rollback();
+                            throw;
+                        }
+                        finally
+                        {
+                            if (db.State == ConnectionState.Open)
+                                db.Close();
                         }
                     }
                        
                 }
-                catch (Exception ex)
+                catch (SqlException)
                 {
-                    throw ex;
+                    //tran.Rollback();
+                    throw;
+                }
+                catch (Exception)
+                {
+                    //tran.Rollback();
+                    throw;
                 }
                 finally
                 {
