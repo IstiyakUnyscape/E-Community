@@ -34,31 +34,31 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
         }
         public async Task<int> CreateVendors(VendorsModel entities)
         {
-            if (entities.Tradelicense_Copy_File.Length > 0)
+            if (entities.Tradelicense_Copy_File!=null)
             {
                 entities.Tradelicense_Copy = utility.FileUpload("UploadFile", entities.Tradelicense_Copy_File, webHostEnvironment);
             }
-            if (entities.TRN_Certificate_File.Length > 0)
+            if (entities.TRN_Certificate_File != null)
             {
                 entities.TRN_Certificate = utility.FileUpload("UploadFile", entities.TRN_Certificate_File, webHostEnvironment);
             }
-            if (entities.Owner_Passport_Copy_File.Length > 0)
+            if (entities.Owner_Passport_Copy_File != null)
             {
                 entities.Owner_Passport_Copy = utility.FileUpload("UploadFile", entities.Owner_Passport_Copy_File, webHostEnvironment);
             }
-            if (entities.Owner_Visa_Copy_File.Length > 0)
+            if (entities.Owner_Visa_Copy_File != null)
             {
                 entities.Owner_Visa_Copy = utility.FileUpload("UploadFile", entities.Owner_Visa_Copy_File, webHostEnvironment);
             }
-            if (entities.Third_Party_Liability_Insurance_Copy_File.Length > 0)
+            if (entities.Third_Party_Liability_Insurance_Copy_File != null)
             {
                 entities.Third_Party_Liability_Insurance_Copy = utility.FileUpload("UploadFile", entities.Third_Party_Liability_Insurance_Copy_File, webHostEnvironment);
             }
-            if (entities.Workmen_Compensation_Insurance_Copy_File.Length > 0)
+            if (entities.Workmen_Compensation_Insurance_Copy_File != null)
             {
                 entities.Workmen_Compensation_Insurance_Copy = utility.FileUpload("UploadFile", entities.Workmen_Compensation_Insurance_Copy_File, webHostEnvironment);
             }
-            if (entities.Additional_Insurance_File.Length > 0)
+            if (entities.Additional_Insurance_File != null)
             {
                 entities.Additional_Insurance = utility.FileUpload("UploadFile", entities.Additional_Insurance_File, webHostEnvironment);
             }

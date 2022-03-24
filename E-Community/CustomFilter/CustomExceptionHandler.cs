@@ -19,7 +19,7 @@ namespace E_Community.CustomFilter
                          ((HttpWebResponse)(context.Exception as WebException).Response).StatusCode
                          : getErrorCode(context.Exception.GetType());
             string errorMessage = context.Exception.Message;
-            string innerMessage = context.Exception.InnerException.Message;
+            string innerMessage = String.Empty;// context.Exception.InnerException.Message;
             string stackTrace = context.Exception.StackTrace;
             string path = context.ActionDescriptor.DisplayName;
 
@@ -30,7 +30,7 @@ namespace E_Community.CustomFilter
             }
             catch (Exception E)
             {
-                errorMessage = "CustomExceptionHandler (Line 30): " + E.Message;
+                innerMessage = "CustomExceptionHandler (Line 30): " + E.ToString();
             }
             try
             {
@@ -38,7 +38,7 @@ namespace E_Community.CustomFilter
             }
             catch (Exception E)
             {
-                errorMessage = "CustomExceptionHandler (Line 38): " + E.Message;
+                innerMessage = "CustomExceptionHandler (Line 38): " + E.ToString();
             }
             try
             {
@@ -46,7 +46,7 @@ namespace E_Community.CustomFilter
             }
             catch (Exception E)
             {
-                errorMessage = "CustomExceptionHandler (Line 46): " + E.Message;
+                innerMessage = "CustomExceptionHandler (Line 46): " + E.ToString();
             }
             try
             {
@@ -54,7 +54,7 @@ namespace E_Community.CustomFilter
             }
             catch (Exception E)
             {
-                errorMessage = "CustomExceptionHandler (Line 54): " + E.Message;
+                innerMessage = "CustomExceptionHandler (Line 54): " + E.ToString();
             }
 
             HttpResponse response = context.HttpContext.Response;

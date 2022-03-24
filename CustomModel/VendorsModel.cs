@@ -116,7 +116,7 @@ namespace CustomModel
         [Display(Name = "Third Party Liability Insurance Copy")]
         public IFormFile Third_Party_Liability_Insurance_Copy_File { get; set; }
         public string Third_Party_Liability_Insurance_Copy { get; set; }
-        [Required]
+        //[Required]
         [DataType(DataType.Date)]
         [Display(Name = "Third Party Liability Insurance Copy Expiry Date")]
         public DateTime Third_Party_Liability_Insurance_Copy_ExpiryDate { get; set; }
@@ -127,7 +127,7 @@ namespace CustomModel
         [Display(Name = "Workmen Compensation Insurance Copy")]
         public IFormFile Workmen_Compensation_Insurance_Copy_File { get; set; }
         public string Workmen_Compensation_Insurance_Copy { get; set; }
-        [Required]
+        //[Required]
         [DataType(DataType.Date)]
         [Display(Name = "Workmen Compensation Insurance Expiry Date")]
         public DateTime Workmen_Compensation_Insurance_ExpiryDate { get; set; }
@@ -141,7 +141,7 @@ namespace CustomModel
         [Display(Name = "Additional Insurance ExpiryDate")]
         [DataType(DataType.Date)]
         public DateTime? Additional_Insurance_ExpiryDate { get; set; }
-        [Required(ErrorMessage = "Please select a file.")]
+        //[Required(ErrorMessage = "Please select a file.")]
         [DataType(DataType.Upload)]
         [MaxFileSize(2 * 1024 * 1024)]
         [AllowedExtensions(new string[] { ".pdf", ".jpeg" })]
