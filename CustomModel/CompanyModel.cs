@@ -135,8 +135,6 @@ namespace CustomModel
         public string Insurance { get; set; }
         public IFormFile Insurance_File { get; set; }
         public string Insurance_Title { get; set; }
-
-        [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Insurance ExpiryDate")]
         public DateTime? Insurance_ExpiryDate { get; set; }
