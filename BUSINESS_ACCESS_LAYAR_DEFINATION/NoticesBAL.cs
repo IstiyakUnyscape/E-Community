@@ -32,22 +32,37 @@ namespace BUSINESS_ACCESS_LAYAR_DEFINATION
             webHostEnvironment = _host;
         }
 
-        public StaticPagedList<NoticesModel> GetAllNotices(SearchCompanyModel search)
+        public StaticPagedList<NoticesViewModel> GetAllNotices(SearchCompanyModel search)
         {
+
             if (!string.IsNullOrEmpty(search.UserId))
             {
                 search.UserId = _Iencryption.EncryptID(search.UserId);
             }
             var Search = _mapper.Map<SearchCompanyEntities>(search);
             var data = _NoticesDAL.GetAll(Search);
-            if (data == null) new StaticPagedList<NoticesModel>(new List<NoticesModel>(), search.PageNo + 1, search.PageSize, 0);
+            var currentDate = DateTime.Now;
+            
+            if (data == null) new StaticPagedList<NoticesViewModel>(new List<NoticesViewModel>(), search.PageNo + 1, search.PageSize, 0);
             foreach (var obj in data)
             {
                 obj.Id = _Iencryption.EncryptID(obj.Id);
+                if(obj.StartDate>currentDate)
+                {
+                    obj.Status = "Upcomming";
+                }
+                else if(obj.StartDate<=currentDate && obj.EndDate >= currentDate)
+                    {
+                    obj.Status = "Active";
+                  }
+                else
+                {
+                    obj.Status = "Expaired";
+                }
             }
-            var rdata = _mapper.Map<IEnumerable<NoticesModel>>(data.ToArray());
+            var rdata = _mapper.Map<IEnumerable<NoticesViewModel>>(data.ToArray());
             var mData = data.GetMetaData();
-            var pagedList = new StaticPagedList<NoticesModel>(rdata, mData);
+            var pagedList = new StaticPagedList<NoticesViewModel>(rdata, mData);
             return pagedList;
         }
 

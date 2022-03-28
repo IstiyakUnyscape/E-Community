@@ -41,6 +41,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("CreatedBy", entity.CreatedBy);
             dbparams.Add("Isactive", true);
             dbparams.Add("Isdeleted", false);
+            dbparams.Add("Designation", entity.Designation);
+            dbparams.Add("TenantID", entity.TenantID);
+            dbparams.Add("TenantTypeId", entity.TenantTypeId);
             var result = await Task.FromResult(_dapper.Insert<int>("sp_InsertNotices", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
@@ -55,13 +58,8 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
 
         public IPagedList<NoticesViewEntities> GetAll(SearchCompanyEntities search)
         {
-            var dbparams = new DynamicParameters();
-            //dbparams.Add("Id", id, DbType.Int32);
-            IQueryable<NoticesViewEntities> result = _dapper.GetAll<NoticesViewEntities>("sp_GetNotices", dbparams, commandType: CommandType.StoredProcedure).Distinct().AsQueryable();
-            if (search.UserId > 0)
-            {
-                result = result.Where(x => x.UserId == search.UserId);
-            }
+            var query = "select * from vw_Notice";
+            IQueryable<NoticesViewEntities> result = _dapper.GetAll<NoticesViewEntities>(query).Distinct().AsQueryable();
             if (search.TenantID > 0)
             {
                 result = result.Where(x => x.TenantID == search.TenantID);
@@ -147,6 +145,9 @@ namespace DATA_ACCESS_LAYAR_DEFINATION
             dbparams.Add("Modified_at", DateTime.Now);
             dbparams.Add("ModifiedBy", entity.ModifiedBy);
             dbparams.Add("Isactive", true);
+            dbparams.Add("Designation", entity.Designation);
+            dbparams.Add("TenantID", entity.TenantID);
+            dbparams.Add("TenantTypeId", entity.TenantTypeId);
             var result = await Task.FromResult(_dapper.Update<int>("sp_UpdateNotices", dbparams, commandType: CommandType.StoredProcedure));
             return result;
         }
