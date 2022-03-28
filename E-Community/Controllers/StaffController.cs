@@ -34,7 +34,7 @@ namespace E_Community.Controllers
         public async Task<IActionResult> GetAll([FromForm] SearchCompanyModel search)
         {
             var result = _StaffBAL.GetAllStaff(search);
-            var pagedList = new PagedStaticList<StaffModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
+            var pagedList = new PagedStaticList<StaffViewModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
             return Ok(await Task.FromResult(pagedList));
             //if (list.Result != null)
             //{
