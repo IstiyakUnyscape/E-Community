@@ -32,5 +32,15 @@ namespace CustomModel
         public string ModifiedBy { get; set; }
         public bool Isactive { get; set; }
         //public bool Isdeleted { get; set; }
+        public int Designation { get; set; }
+        public int? TenantID { get; set; }
+        public int? TenantTypeId { get; set; }
+    }
+    public class NoticesViewModel : NoticesModel
+    {
+        public string Status { get; set; }
+        public string NoticeIssueFor { get; set; }
+        public string NoticeType { get; set; }
+        public string DesignationName { get; set; }
     }
 }

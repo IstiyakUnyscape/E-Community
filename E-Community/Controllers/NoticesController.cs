@@ -29,8 +29,9 @@ namespace E_Community.Controllers
         [HttpPost, Route("GetAll")]
         public async Task<IActionResult> GetAll([FromForm] SearchCompanyModel search)
         {
+
             var result = _NoticesBAL.GetAllNotices(search);
-            var pagedList = new PagedStaticList<NoticesModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
+            var pagedList = new PagedStaticList<NoticesViewModel> { Items = result, PageNumber = result.PageNumber, PageSize = result.PageSize, TotalItemCount = result.TotalItemCount };
             return Ok(await Task.FromResult(pagedList));
         }
         [HttpGet, Route("GetByID")]

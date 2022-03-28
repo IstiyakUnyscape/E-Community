@@ -10,7 +10,7 @@ namespace BUSINESS_ACCESS_LAYAR_INTERFACE
 {
     public interface INoticesBAL
     {
-        public StaticPagedList<NoticesModel> GetAllNotices(SearchCompanyModel search);
+        public StaticPagedList<NoticesViewModel> GetAllNotices(SearchCompanyModel search);
         public NoticesModel GetNoticesById(string id);
         public Task<int> CreateNotices(NoticesModel entities);
         public Task<int> UpdateNotices(NoticesModel entities);
